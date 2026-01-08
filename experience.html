@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zachary Lanz - Professional Experience & Education | CTI Consultant Career History">
+    <title>Experience | Zachary Lanz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="matrix-bg" id="matrix-canvas"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-prompt">root@zacharylanz:~$</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">./home</a></li>
+                <li><a href="experience.html" class="nav-link active">./experience</a></li>
+                <li><a href="portfolio.html" class="nav-link">./portfolio</a></li>
+                <li><a href="index.html#contact" class="nav-link">./contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Experience Section -->
+    <section class="experience page-section" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="terminal-prompt">$</span> grep -r "experience" ./career/
+                </h2>
+                <div class="section-line"></div>
+                <p class="section-description">A comprehensive overview of my professional journey in cyber threat intelligence, security analysis, and education.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- EY Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Senior Cyber Threat Intelligence Consultant</h3>
+                            <span class="company">Ernst & Young</span>
+                            <span class="date">03/2025 - Present</span>
+                            <span class="location">Arlington, VA</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Led CTI consulting engagements for consumer goods, energy, insurance, and finance clients, translating stakeholder priorities into intelligence requirements and products</li>
+                            <li>Increased intelligence adoption through intelligence product catalogues with defined purposes, cadences, and success metrics</li>
+                            <li>Authored multi-industry CTI deliverables on APTs, ransomware, vulnerabilities, and geopolitical drivers</li>
+                            <li>Deployed and configured Threat Intelligence Platforms (TIPs) to automate intelligence lifecycle</li>
+                            <li>Conducted OSINT investigations using premium platforms to track adversary infrastructure</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">TIP Deployment</span>
+                            <span class="tag">OSINT</span>
+                            <span class="tag">APT Analysis</span>
+                            <span class="tag">Risk Assessment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NuHarbor Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Threat Intelligence Lead</h3>
+                            <span class="company">NuHarbor Security</span>
+                            <span class="date">01/2023 - 03/2025</span>
+                            <span class="location">Remote</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Led 100% of Threat Operations strategy, enhancing collection, analysis, and dissemination processes</li>
+                            <li>Increased cross-team intelligence dissemination by 80% through strategic reporting initiatives</li>
+                            <li>Delivered 75% reduction in TIP licensing costs via ThreatConnect to OpenCTI migration</li>
+                            <li>Pioneered internal threat intelligence knowledge base with daily threat actor analysis</li>
+                            <li>Modernized intelligence operations with STIX and ICD203 standards</li>
+                            <li>Curated IOC feeds for proactive threat detection across 60 clients</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">OpenCTI</span>
+                            <span class="tag">STIX/TAXII</span>
+                            <span class="tag">TTP Analysis</span>
+                            <span class="tag">IOC Curation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VMware Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Information Security Analyst</h3>
+                            <span class="company">VMware</span>
+                            <span class="date">07/2021 - 12/2022</span>
+                            <span class="location">Palo Alto, CA</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Increased employee security engagement by 45% through targeted awareness content</li>
+                            <li>Achieved 99% compliance rate with security policies through role-based training programs</li>
+                            <li>Launched Security Training and Awareness Risk (STAR) Assessment with 70% improvement in phishing detection</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">Security Awareness</span>
+                            <span class="tag">Training Development</span>
+                            <span class="tag">Phishing Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GE Experience -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Cybersecurity Threat Management Intern</h3>
+                            <span class="company">GE Power</span>
+                            <span class="date">06/2020 - 11/2020</span>
+                            <span class="location">Remote</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Produced weekly executive threat reports on vulnerabilities, APTs, and threat campaigns</li>
+                            <li>Identified and logged 16,000+ IOCs to enhance threat detection capabilities</li>
+                            <li>Resolved 6 incidents involving malware, ransomware, and APT phishing campaigns</li>
+                            <li>Analyzed ~20 phishing emails daily for threat intelligence tracking</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">Threat Analysis</span>
+                            <span class="tag">Incident Response</span>
+                            <span class="tag">IOC Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NY State Internship -->
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Policy and Program Development Unit Intern</h3>
+                            <span class="company">New York State Homeland Security and Emergency Services</span>
+                            <span class="date">09/2019 - 05/2020</span>
+                            <span class="location">Albany, NY</span>
+                        </div>
+                        <ul class="timeline-achievements">
+                            <li>Provided analytical support to inform cyber governance best practices, policies, and programs</li>
+                            <li>Created population data mobility tracker to inform NYS Senior Policy Advisor on COVID-19 response, enabling emergency supply resource allocation across NYS</li>
+                            <li>Created county emergency preparedness assessment (CEPA) tools to analyze capabilities across NYS</li>
+                            <li>Conducted hands-on assessments with multiple NYS county emergency response and security teams to identify threat, vulnerability, risk, and capability changes</li>
+                        </ul>
+                        <div class="tech-tags">
+                            <span class="tag">Policy Analysis</span>
+                            <span class="tag">Risk Assessment</span>
+                            <span class="tag">Emergency Preparedness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="education-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> cat education.log
+                </h3>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="edu-icon">🎓</div>
+                        <h4>Master of Science</h4>
+                        <p class="edu-field">Information Science & Intelligence Analysis</p>
+                        <p class="edu-school">State University of New York at Albany</p>
+                        <p class="edu-details">2019 - 2020 | 4.0 GPA</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="edu-icon">🎓</div>
+                        <h4>Bachelor of Science</h4>
+                        <p class="edu-field">Emergency Preparedness, Homeland Security & Cybersecurity</p>
+                        <p class="edu-school">State University of New York at Albany</p>
+                        <p class="edu-details">2016 - 2020 | Magna Cum Laude</p>
+                    </div>
+                    <div class="education-card">
+                        <div class="edu-icon">🌍</div>
+                        <h4>Study Abroad</h4>
+                        <p class="edu-field">Security Research</p>
+                        <p class="edu-school">Ben-Gurion University, Israel</p>
+                        <p class="edu-details">Jan 2019 - Jun 2019</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teaching Section -->
+            <div class="teaching-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> ls teaching/
+                </h3>
+                <div class="teaching-grid">
+                    <div class="teaching-card">
+                        <h4>Adjunct Professor</h4>
+                        <p class="teach-org">University at Albany, SUNY</p>
+                        <p class="teach-date">01/2024 - Present</p>
+                        <p class="teach-desc">Teaching 30+ graduate and senior students foundational CTI covering analytic techniques, adversary analysis, and intelligence writing.</p>
+                    </div>
+                    <div class="teaching-card">
+                        <h4>Volunteer Mentor: The Threat Within</h4>
+                        <p class="teach-org">IQ4</p>
+                        <p class="teach-date">08/2019 - 12/2023</p>
+                        <p class="teach-desc">Teaching college students insider threats and risk management practices in accordance with the NIST cybersecurity framework.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="page-cta">
+                <h3>Interested in collaborating?</h3>
+                <div class="cta-buttons">
+                    <a href="portfolio.html" class="btn btn-primary">
+                        <span class="btn-text">View Portfolio</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="index.html#contact" class="btn btn-secondary">
+                        <span class="btn-text">Get in Touch</span>
+                        <span class="btn-icon">⚡</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                <p class="footer-tagline">
+                    <span class="terminal-prompt">$</span> Intelligence-driven. Threat-focused. Impact-oriented.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

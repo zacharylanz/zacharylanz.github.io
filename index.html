@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zachary Lanz - Cyber Threat Intelligence Practitioner | CTI Consultant, Analyst, and Educator">
+    <title>Zachary Lanz | Cyber Threat Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="matrix-bg" id="matrix-canvas"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="terminal-prompt">root@zacharylanz:~$</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">./home</a></li>
+                <li><a href="experience.html" class="nav-link">./experience</a></li>
+                <li><a href="portfolio.html" class="nav-link">./portfolio</a></li>
+                <li><a href="index.html#contact" class="nav-link">./contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="glitch-wrapper">
+                    <h1 class="hero-title glitch" data-text="ZACHARY LANZ">ZACHARY LANZ</h1>
+                </div>
+                <div class="typing-container">
+                    <p class="hero-subtitle">
+                        <span class="typing-text"></span>
+                        <span class="cursor">|</span>
+                    </p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <div class="stat-label">THREAT_LEVEL</div>
+                        <div class="stat-value" id="threat-level">CRITICAL</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">STATUS</div>
+                        <div class="stat-value" id="status">ACTIVE</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">CLEARANCE</div>
+                        <div class="stat-value" id="clearance">AUTHORIZED</div>
+                    </div>
+                </div>
+                <div class="cta-buttons">
+                    <a href="portfolio.html" class="btn btn-primary">
+                        <span class="btn-text">Access Portfolio</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="experience.html" class="btn btn-secondary">
+                        <span class="btn-text">View Experience</span>
+                        <span class="btn-icon">📋</span>
+                    </a>
+                    <a href="#contact" class="btn btn-tertiary">
+                        <span class="btn-text">Initiate Contact</span>
+                        <span class="btn-icon">⚡</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="terminal-prompt">$</span> cat about.txt
+                </h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <div class="terminal-title">about.sh</div>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="terminal-line"><span class="prompt">┌──(kali㉿threat-intel)-[~]</span></p>
+                        <p class="terminal-line"><span class="prompt">└─$</span> whoami</p>
+                        <p class="terminal-output">
+                            Cyber Threat Intelligence Practitioner with expertise in threat hunting, adversary profiling,
+                            and intelligence operations. Currently serving as a Senior CTI Consultant at Ernst & Young,
+                            where I translate complex threat landscapes into actionable intelligence for Fortune 500 clients.
+                        </p>
+                        <p class="terminal-line"><span class="prompt">└─$</span> cat mission.txt</p>
+                        <p class="terminal-output">
+                            I specialize in bridging the gap between raw threat data and strategic decision-making.
+                            From deploying Threat Intelligence Platforms to conducting OSINT investigations and tracking
+                            APT campaigns, I turn intelligence into impact.
+                        </p>
+                        <p class="terminal-line"><span class="prompt">└─$</span> ls achievements/</p>
+                        <p class="terminal-output achievements-list">
+                            • Led CTI strategy for 60+ clients across multiple industries<br>
+                            • Reduced TIP licensing costs by 75% through strategic platform migration<br>
+                            • Increased intelligence dissemination by 80% through process optimization<br>
+                            • Outstanding Young Alumni Award recipient (2023)<br>
+                            • Published researcher in cybersecurity intelligence<br>
+                            • Adjunct Professor teaching CTI to 30+ graduate students
+                        </p>
+                        <p class="terminal-line"><span class="prompt">└─$</span> ./display_skills.sh</p>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>Core Competencies</h4>
+                                <ul>
+                                    <li>Cyber Threat Intelligence</li>
+                                    <li>Threat Hunting & Analysis</li>
+                                    <li>Adversary Profiling</li>
+                                    <li>OSINT & Geopolitical Analysis</li>
+                                    <li>Risk Management</li>
+                                    <li>Technical Writing</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Tools & Platforms</h4>
+                                <ul>
+                                    <li>OpenCTI, ThreatConnect, MISP</li>
+                                    <li>Recorded Future, Mandiant</li>
+                                    <li>Splunk, CrowdStrike Falcon</li>
+                                    <li>Maltego, DomainTools</li>
+                                    <li>Python, PowerBI, Tableau</li>
+                                    <li>STIX/TAXII, MITRE ATT&CK</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="terminal-line blink-cursor"><span class="prompt">└─$</span> _</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="terminal-prompt">$</span> ./initiate_contact.sh
+                </h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <span class="btn-close"></span>
+                                <span class="btn-minimize"></span>
+                                <span class="btn-maximize"></span>
+                            </div>
+                            <div class="terminal-title">contact.sh</div>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="terminal-line"><span class="prompt">┌──(system㉿contact)-[~]</span></p>
+                            <p class="terminal-line"><span class="prompt">└─$</span> cat contact_info.txt</p>
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <span class="contact-label">EMAIL:</span>
+                                    <a href="mailto:zacharylanz@live.com">zacharylanz@live.com</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-label">PHONE:</span>
+                                    <a href="tel:+16315607572">(631) 560-7572</a>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-label">LOCATION:</span>
+                                    <span>Arlington, VA</span>
+                                </div>
+                                <div class="contact-item">
+                                    <span class="contact-label">LINKEDIN:</span>
+                                    <a href="https://linkedin.com/in/zacharylanz" target="_blank" rel="noopener">linkedin.com/in/zacharylanz</a>
+                                </div>
+                            </div>
+                            <p class="terminal-line"><span class="prompt">└─$</span> echo "Status: Available for consulting and collaboration"</p>
+                            <p class="terminal-output">Status: Available for consulting and collaboration</p>
+                            <p class="terminal-line blink-cursor"><span class="prompt">└─$</span> _</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                <p class="footer-tagline">
+                    <span class="terminal-prompt">$</span> Intelligence-driven. Threat-focused. Impact-oriented.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

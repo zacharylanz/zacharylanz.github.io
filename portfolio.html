@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zachary Lanz - Portfolio | Certifications, Publications, and GitHub Projects">
+    <title>Portfolio | Zachary Lanz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="matrix-bg" id="matrix-canvas"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-prompt">root@zacharylanz:~$</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">./home</a></li>
+                <li><a href="experience.html" class="nav-link">./experience</a></li>
+                <li><a href="portfolio.html" class="nav-link active">./portfolio</a></li>
+                <li><a href="index.html#contact" class="nav-link">./contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio page-section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="terminal-prompt">$</span> git clone portfolio.git
+                </h2>
+                <div class="section-line"></div>
+                <p class="section-description">A showcase of certifications, publications, research, and technical projects demonstrating expertise in cyber threat intelligence.</p>
+            </div>
+
+            <!-- Certifications & Publications -->
+            <div class="certs-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> cat certifications.txt
+                </h3>
+                <div class="certs-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">🎯</div>
+                        <h4>SANS FOR578</h4>
+                        <p>Cyber Threat Intelligence</p>
+                        <span class="cert-date">November 2025</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🛡️</div>
+                        <h4>CompTIA CySA+</h4>
+                        <p>Cybersecurity Analyst</p>
+                        <span class="cert-date">November 2023</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">📊</div>
+                        <h4>Splunk Fundamentals</h4>
+                        <p>Certificates 1 & 2</p>
+                        <span class="cert-date">February 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publications -->
+            <div class="publications-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> cat publications.txt
+                </h3>
+                <div class="publications-grid">
+                    <div class="publication-card">
+                        <div class="pub-icon">📄</div>
+                        <h4>Master's Thesis Research</h4>
+                        <p class="pub-title">Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories</p>
+                        <p class="pub-journal">International Journal of Cybersecurity Intelligence & Cybercrime: 5(1), 43-70</p>
+                        <p class="pub-date">April 2022</p>
+                        <a href="https://vc.bridgew.edu/ijcic/vol5/iss1/4/" target="_blank" rel="noopener" class="pub-link">
+                            View Publication →
+                        </a>
+                    </div>
+                    <div class="publication-card award-card">
+                        <div class="pub-icon">🏆</div>
+                        <h4>Outstanding Young Alumni Award</h4>
+                        <p class="pub-title">Awarded to alumni whose early career achievements and civic life demonstrate great promise and accomplishment beyond the norm expected in their field.</p>
+                        <p class="pub-date">May 2023</p>
+                        <p class="pub-description">Recognized by the State University of New York at Albany for exceptional early-career achievements in cyber threat intelligence and contributions to the field of cybersecurity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Projects -->
+            <div class="github-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> git log --all --graph
+                </h3>
+                <p class="section-description">Explore my technical projects and contributions on GitHub. Enter a username to fetch repositories dynamically.</p>
+                <div class="github-search">
+                    <input type="text" id="github-username" placeholder="Enter GitHub username (default: zacharylanz)" value="zacharylanz">
+                    <button id="fetch-repos" class="btn btn-primary">Fetch Repositories</button>
+                </div>
+                <div id="github-repos" class="github-grid">
+                    <!-- Repos will be loaded dynamically -->
+                    <div class="loading-message">
+                        <p>Enter your GitHub username and click "Fetch Repositories"</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="skills-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> cat technical_skills.txt
+                </h3>
+                <div class="skills-detailed-grid">
+                    <div class="skill-detailed-card">
+                        <h4>Threat Intelligence Platforms</h4>
+                        <div class="skill-items">
+                            <span class="skill-badge">OpenCTI</span>
+                            <span class="skill-badge">ThreatConnect</span>
+                            <span class="skill-badge">MISP</span>
+                            <span class="skill-badge">Recorded Future</span>
+                            <span class="skill-badge">Mandiant Advantage</span>
+                        </div>
+                    </div>
+                    <div class="skill-detailed-card">
+                        <h4>Security Tools</h4>
+                        <div class="skill-items">
+                            <span class="skill-badge">Splunk</span>
+                            <span class="skill-badge">CrowdStrike Falcon</span>
+                            <span class="skill-badge">Carbon Black</span>
+                            <span class="skill-badge">VirusTotal</span>
+                            <span class="skill-badge">Maltego</span>
+                        </div>
+                    </div>
+                    <div class="skill-detailed-card">
+                        <h4>OSINT & Investigation</h4>
+                        <div class="skill-items">
+                            <span class="skill-badge">DomainTools</span>
+                            <span class="skill-badge">SilentPush</span>
+                            <span class="skill-badge">Validin</span>
+                            <span class="skill-badge">Nmap</span>
+                            <span class="skill-badge">OSINT Techniques</span>
+                        </div>
+                    </div>
+                    <div class="skill-detailed-card">
+                        <h4>Data Analysis & Visualization</h4>
+                        <div class="skill-items">
+                            <span class="skill-badge">Tableau</span>
+                            <span class="skill-badge">PowerBI</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">Excel</span>
+                            <span class="skill-badge">Power Automate</span>
+                        </div>
+                    </div>
+                    <div class="skill-detailed-card">
+                        <h4>Frameworks & Standards</h4>
+                        <div class="skill-items">
+                            <span class="skill-badge">MITRE ATT&CK</span>
+                            <span class="skill-badge">STIX/TAXII</span>
+                            <span class="skill-badge">ICD203</span>
+                            <span class="skill-badge">NIST CSF</span>
+                        </div>
+                    </div>
+                    <div class="skill-detailed-card">
+                        <h4>Operating Systems</h4>
+                        <div class="skill-items">
+                            <span class="skill-badge">Windows 10/11</span>
+                            <span class="skill-badge">Kali Linux</span>
+                            <span class="skill-badge">Ubuntu</span>
+                            <span class="skill-badge">macOS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Affiliations -->
+            <div class="affiliations-section">
+                <h3 class="subsection-title">
+                    <span class="terminal-prompt">$</span> cat affiliations.txt
+                </h3>
+                <div class="affiliations-grid">
+                    <div class="affiliation-card">
+                        <div class="affiliation-icon">🛡️</div>
+                        <h4>University at Albany Cyber Defense Organization</h4>
+                        <p>Faculty advisor and contributor - running club workshops, strategy, information sharing, infrastructure design, and training. Continuing engagement with the next generation of cybersecurity professionals.</p>
+                    </div>
+                    <div class="affiliation-card">
+                        <div class="affiliation-icon">🎯</div>
+                        <h4>Cyber 9/12 Competitor</h4>
+                        <p>Team lead for University at Albany Cyber 9/12 competition team in 2018 and 2019. Competed in national cybersecurity strategy competitions focusing on crisis response and policy recommendations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="page-cta">
+                <h3>Let's work together</h3>
+                <p>Interested in threat intelligence consulting, speaking engagements, or collaboration opportunities?</p>
+                <div class="cta-buttons">
+                    <a href="experience.html" class="btn btn-secondary">
+                        <span class="btn-text">View Experience</span>
+                        <span class="btn-icon">📋</span>
+                    </a>
+                    <a href="index.html#contact" class="btn btn-primary">
+                        <span class="btn-text">Get in Touch</span>
+                        <span class="btn-icon">⚡</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                <p class="footer-tagline">
+                    <span class="terminal-prompt">$</span> Intelligence-driven. Threat-focused. Impact-oriented.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
