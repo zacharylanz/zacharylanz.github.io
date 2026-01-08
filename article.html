@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zachary Lanz - Blog Article">
+    <title>Article | Zachary Lanz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="matrix-bg" id="matrix-canvas"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-prompt">root@zacharylanz:~$</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Section -->
+    <article class="article-page page-section">
+        <div class="container article-container">
+            <!-- Article Header -->
+            <header class="article-header" id="article-header">
+                <!-- Dynamically loaded -->
+            </header>
+
+            <!-- Article Content -->
+            <div class="article-content" id="article-content">
+                <!-- Dynamically loaded -->
+            </div>
+
+            <!-- Article Footer -->
+            <footer class="article-footer" id="article-footer">
+                <!-- Dynamically loaded -->
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                <p class="footer-tagline">
+                    <span class="terminal-prompt">$</span> Intelligence-driven. Threat-focused. Impact-oriented.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Configure marked options
+        marked.setOptions({
+            breaks: true,
+            gfm: true,
+            headerIds: true,
+            mangle: false
+        });
+
+        // Get article ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        async function loadArticle() {
+            if (!articleId) {
+                showError('No article specified');
+                return;
+            }
+
+            try {
+                // Load blog posts metadata
+                const response = await fetch('blog-posts.json');
+                const data = await response.json();
+
+                // Find the post
+                const post = data.posts.find(p => p.id === articleId);
+
+                if (!post) {
+                    showError('Article not found');
+                    return;
+                }
+
+                // Update page title
+                document.title = `${post.title} | Zachary Lanz`;
+
+                // Update meta description
+                const metaDescription = document.querySelector('meta[name="description"]');
+                if (metaDescription) {
+                    metaDescription.content = post.subtitle || post.excerpt;
+                }
+
+                // Load and parse markdown
+                const markdownResponse = await fetch(post.markdownFile);
+                const markdownText = await markdownResponse.text();
+
+                // Parse markdown to HTML
+                const htmlContent = marked.parse(markdownText);
+
+                // Format date
+                const date = new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                // Populate article header
+                document.getElementById('article-header').innerHTML = `
+                    <div class="article-meta">
+                        <span class="article-category">${post.category}</span>
+                        <span class="article-date">${date}</span>
+                        <span class="article-reading-time">${post.readTime}</span>
+                    </div>
+                    <h1 class="article-title">${post.title}</h1>
+                    ${post.subtitle ? `<p class="article-subtitle">${post.subtitle}</p>` : ''}
+                    <div class="article-author">
+                        <img src="headshot.jpg" alt="Zachary Lanz" class="author-image">
+                        <div class="author-info">
+                            <span class="author-name">Zachary Lanz</span>
+                            <span class="author-title">Senior CTI Consultant, Ernst & Young</span>
+                        </div>
+                    </div>
+                `;
+
+                // Populate article content
+                document.getElementById('article-content').innerHTML = htmlContent;
+
+                // Populate article footer
+                document.getElementById('article-footer').innerHTML = `
+                    <div class="article-tags">
+                        <span class="tag-label">Topics:</span>
+                        ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="article-share">
+                        <a href="blog.html" class="btn btn-primary">
+                            <span class="btn-text">← Back to Blog</span>
+                        </a>
+                        <a href="index.html#contact" class="btn btn-secondary">
+                            <span class="btn-text">Get in Touch</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </div>
+                `;
+
+            } catch (error) {
+                console.error('Error loading article:', error);
+                showError('Failed to load article');
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('article-header').innerHTML = `
+                <h1 class="article-title">Error</h1>
+            `;
+            document.getElementById('article-content').innerHTML = `
+                <p style="text-align: center; color: var(--text-secondary); padding: 3rem;">
+                    ${message}. <a href="blog.html" style="color: var(--accent-primary);">Return to blog</a>
+                </p>
+            `;
+            document.getElementById('article-footer').innerHTML = '';
+        }
+
+        // Load article when page loads
+        document.addEventListener('DOMContentLoaded', loadArticle);
+    </script>
+</body>
+</html>

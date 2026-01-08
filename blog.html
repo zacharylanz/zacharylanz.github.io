@@ -48,38 +48,9 @@
                 <p class="section-description">Insights on cyber threat intelligence, adversary analysis, and security research. Deep dives into threat actor tactics, emerging vulnerabilities, and intelligence tradecraft.</p>
             </div>
 
-            <!-- Coming Soon Message -->
-            <div class="coming-soon-section">
-                <div class="coming-soon-card">
-                    <div class="coming-soon-icon">🚀</div>
-                    <h3>Coming Soon</h3>
-                    <p>I'm currently working on exciting content covering threat intelligence methodologies, adversary tracking techniques, and real-world CTI case studies.</p>
-                    <p class="coming-soon-subtitle">Stay tuned for in-depth articles on:</p>
-                    <ul class="coming-soon-topics">
-                        <li>Adversary profiling and attribution techniques</li>
-                        <li>OSINT investigations and collection strategies</li>
-                        <li>Threat intelligence platform implementation</li>
-                        <li>APT campaign analysis and tracking</li>
-                        <li>Intelligence writing and analytic methodologies</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Blog Cards Grid (Hidden until articles are published) -->
-            <div class="blog-grid" style="display: none;">
-                <!-- Example blog card structure for future use -->
-                <article class="blog-card">
-                    <div class="blog-card-header">
-                        <span class="blog-category">Threat Intelligence</span>
-                        <span class="blog-date">Jan 15, 2026</span>
-                    </div>
-                    <h3 class="blog-title">Example Article Title</h3>
-                    <p class="blog-excerpt">Brief description of the article content. This will be a teaser to encourage readers to click through...</p>
-                    <div class="blog-card-footer">
-                        <span class="read-time">5 min read</span>
-                        <a href="#" target="_blank" class="blog-read-more">Read More →</a>
-                    </div>
-                </article>
+                    <!-- Blog Cards Grid -->
+            <div class="blog-grid" id="blog-grid">
+                <!-- Blog posts will be dynamically loaded here -->
             </div>
 
             <!-- Call to Action -->
@@ -113,5 +84,61 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Load blog posts dynamically
+        async function loadBlogPosts() {
+            try {
+                const response = await fetch('blog-posts.json');
+                const data = await response.json();
+                const blogGrid = document.getElementById('blog-grid');
+
+                if (data.posts && data.posts.length > 0) {
+                    blogGrid.innerHTML = data.posts.map(post => {
+                        const date = new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+
+                        return `
+                            <article class="blog-card" onclick="window.location.href='article.html?id=${post.id}'">
+                                <div class="blog-card-header">
+                                    <span class="blog-category">${post.category}</span>
+                                    <span class="blog-date">${date}</span>
+                                </div>
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt}</p>
+                                <div class="blog-card-footer">
+                                    <span class="read-time">${post.readTime}</span>
+                                    <a href="article.html?id=${post.id}" class="blog-read-more" onclick="event.stopPropagation()">Read More →</a>
+                                </div>
+                            </article>
+                        `;
+                    }).join('');
+                } else {
+                    // Show coming soon message if no posts
+                    blogGrid.innerHTML = `
+                        <div class="coming-soon-section" style="grid-column: 1 / -1;">
+                            <div class="coming-soon-card">
+                                <div class="coming-soon-icon">🚀</div>
+                                <h3>Coming Soon</h3>
+                                <p>I'm currently working on exciting content covering threat intelligence methodologies, adversary tracking techniques, and real-world CTI case studies.</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+                document.getElementById('blog-grid').innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <p>Unable to load blog posts. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Load posts when page loads
+        document.addEventListener('DOMContentLoaded', loadBlogPosts);
+    </script>
 </body>
 </html>

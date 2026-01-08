@@ -182,6 +182,7 @@ body {
     border: 4px solid var(--accent-primary);
     box-shadow: 0 0 40px var(--glow-primary);
     object-fit: cover;
+    object-position: center;
     transition: var(--transition-normal);
 }
 
@@ -1335,6 +1336,7 @@ section {
     border-radius: 50%;
     border: 2px solid var(--accent-primary);
     object-fit: cover;
+    object-position: center;
 }
 
 .author-info {
