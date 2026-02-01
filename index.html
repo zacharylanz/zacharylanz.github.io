@@ -126,13 +126,57 @@
             </div>
 
             <!-- Intro -->
-            <div class="about-intro">
+            <div class="about-intro" id="about-adversary">
                 <p>Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic, actionable outcomes. Currently consulting at Ernst & Young.</p>
                 <p>I connect geopolitical events and global threat dynamics to the cyber risks that matter most to an organization. My work bridges tactical indicators and strategic intelligence, helping leadership understand their priority threats, assess risk, and take decisive action.</p>
             </div>
 
+            <!-- Diamond Model Navigation -->
+            <div class="diamond-model" aria-label="Diamond Model navigation">
+                <svg class="diamond-svg" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Diamond lines -->
+                    <line class="diamond-line" x1="250" y1="50" x2="430" y2="200"/>
+                    <line class="diamond-line" x1="430" y1="200" x2="250" y2="350"/>
+                    <line class="diamond-line" x1="250" y1="350" x2="70" y2="200"/>
+                    <line class="diamond-line" x1="70" y1="200" x2="250" y2="50"/>
+                    <!-- Cross lines -->
+                    <line class="diamond-line diamond-line-cross" x1="250" y1="50" x2="250" y2="350"/>
+                    <line class="diamond-line diamond-line-cross" x1="70" y1="200" x2="430" y2="200"/>
+
+                    <!-- Adversary (top) -->
+                    <a href="#about-adversary" class="diamond-vertex" data-target="about-adversary">
+                        <circle cx="250" cy="50" r="28" class="diamond-node"/>
+                        <text x="250" y="55" class="diamond-label">Adversary</text>
+                    </a>
+
+                    <!-- Capability (left) -->
+                    <a href="#about-capability" class="diamond-vertex" data-target="about-capability">
+                        <circle cx="70" cy="200" r="28" class="diamond-node"/>
+                        <text x="70" y="205" class="diamond-label">Capability</text>
+                    </a>
+
+                    <!-- Infrastructure (right) -->
+                    <a href="#about-infrastructure" class="diamond-vertex" data-target="about-infrastructure">
+                        <circle cx="430" cy="200" r="28" class="diamond-node"/>
+                        <text x="430" y="205" class="diamond-label">Infrastructure</text>
+                    </a>
+
+                    <!-- Victim (bottom) -->
+                    <a href="#about-victim" class="diamond-vertex" data-target="about-victim">
+                        <circle cx="250" cy="350" r="28" class="diamond-node"/>
+                        <text x="250" y="355" class="diamond-label">Victim</text>
+                    </a>
+
+                    <!-- Vertex sublabels -->
+                    <text x="250" y="14" class="diamond-sublabel">The Analyst</text>
+                    <text x="70" y="248" class="diamond-sublabel">What I Do</text>
+                    <text x="430" y="248" class="diamond-sublabel">Tools &amp; Platforms</text>
+                    <text x="250" y="395" class="diamond-sublabel">Integration Areas</text>
+                </svg>
+            </div>
+
             <!-- Focus Areas -->
-            <h3 class="subsection-title">What I Do</h3>
+            <h3 class="subsection-title" id="about-capability">What I Do</h3>
             <div class="about-focus-grid">
                 <div class="about-focus-card">
                     <div class="about-focus-icon">🎯</div>
@@ -161,14 +205,33 @@
                 </div>
                 <div class="about-focus-card">
                     <div class="about-focus-icon">🔍</div>
-                    <h4>OSINT & Infrastructure Tracking</h4>
-                    <p>Open-source intelligence collection and adversary infrastructure analysis using premium investigation platforms.</p>
+                    <h4>OSINT Collection</h4>
+                    <p>Open-source intelligence collection across surface, deep, and dark web sources using premium investigation platforms.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🌐</div>
+                    <h4>Infrastructure Tracking</h4>
+                    <p>Adversary infrastructure analysis, domain pivoting, and network mapping to uncover threat actor operations.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🧩</div>
+                    <h4>Threat Activity Clustering & Attribution</h4>
+                    <p>Grouping related intrusion activity into clusters based on shared TTPs, infrastructure, and targeting patterns to enable attribution and tracking.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🔬</div>
+                    <h4>Intrusion Analysis</h4>
+                    <p>Analyzing intrusion data using structured frameworks like the Diamond Model and Kill Chain to understand adversary operations and inform defensive action.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🏹</div>
+                    <h4>Threat Hunting</h4>
+                    <p>Intelligence-driven hypothesis generation and proactive hunt operations to detect adversary activity before automated alerting.</p>
                 </div>
             </div>
 
             <!-- Integration Areas -->
-            <h3 class="subsection-title">Where CTI Integrates</h3>
-            <p class="about-integration-intro">Intelligence drives action across security operations and the broader enterprise:</p>
+            <h3 class="subsection-title" id="about-victim">Experience Integrating CTI With:</h3>
             <div class="about-integration-tags">
                 <span class="tag">Vulnerability Management</span>
                 <span class="tag">Threat Hunting</span>
@@ -181,7 +244,7 @@
             </div>
 
             <!-- Tools & Platforms -->
-            <h3 class="subsection-title">Tools & Platforms</h3>
+            <h3 class="subsection-title" id="about-infrastructure">Tools & Platforms</h3>
             <div class="about-tools">
                 <span class="skill-badge">OpenCTI</span>
                 <span class="skill-badge">ThreatConnect</span>
@@ -199,10 +262,6 @@
                 <span class="skill-badge">MITRE ATT&CK</span>
             </div>
 
-            <!-- Terminal accent -->
-            <div class="about-mini-terminal">
-                <span class="prompt">└─$</span> whoami <span class="about-mini-output">&rarr; CTI Specialist</span>
-            </div>
         </div>
     </section>
 
