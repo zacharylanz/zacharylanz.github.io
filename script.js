@@ -47,11 +47,11 @@ function initTypingEffect() {
     const typingText = document.querySelector('.typing-text');
     if (!typingText) return;
     const phrases = [
-        "Senior Cyber Threat Intelligence Consultant",
-        "Threat Hunter & Adversary Analyst",
-        "OSINT Investigator",
-        "Adjunct Professor @ UAlbany",
-        "Published Security Researcher"
+        "Cyber Threat Intelligence Specialist",
+        "Building & Maturing CTI Programs",
+        "Geopolitical & Cyber Threat Analysis",
+        "Translating Tactical Intel to Strategic Action",
+        "Adjunct Professor @ UAlbany"
     ];
 
     let phraseIndex = 0;
@@ -445,20 +445,18 @@ function logPerformance() {
 // Theme Toggle (Light/Dark)
 // ===========================
 function initThemeToggle() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
 
     // Load saved theme or default to dark
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
-    updateToggleIcon(toggleBtn, savedTheme);
+    toggle.checked = savedTheme === 'light';
 
-    toggleBtn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = current === 'dark' ? 'light' : 'dark';
+    toggle.addEventListener('change', () => {
+        const next = toggle.checked ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        updateToggleIcon(toggleBtn, next);
 
         // Reset navbar inline styles so CSS variables take effect
         const navbar = document.querySelector('.nav-bar');
@@ -467,11 +465,6 @@ function initThemeToggle() {
             navbar.style.boxShadow = '';
         }
     });
-}
-
-function updateToggleIcon(btn, theme) {
-    btn.textContent = theme === 'dark' ? '☀' : '☾';
-    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
 }
 
 // Apply saved theme immediately (before DOMContentLoaded) to avoid flash

@@ -52,7 +52,10 @@
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">☀</button>
+                <label class="theme-switch" title="Toggle light/dark mode">
+                    <input type="checkbox" id="theme-toggle" aria-label="Toggle light/dark mode">
+                    <span class="theme-switch-track"><span class="theme-switch-thumb"></span></span>
+                </label>
                 <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>
@@ -155,7 +158,7 @@
 
         // Category nodes (always visible)
         const categoryNodes = [
-            { id: 'identity', label: 'Zachary Lanz', color: COLORS.identity, shape: 'circle', size: 40, font: { size: 16, color: '#fff', bold: true }, type: 'identity', desc: 'Senior Cyber Threat Intelligence Consultant at Ernst & Young. Threat hunter, OSINT investigator, adjunct professor, and published security researcher.' },
+            { id: 'identity', label: 'Zachary Lanz', color: COLORS.identity, shape: 'circle', size: 40, font: { size: 16, color: '#fff', bold: true }, type: 'identity', desc: 'Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently consulting at Ernst & Young.' },
             { id: 'cat-org', label: 'Organizations', color: COLORS.organization, shape: 'diamond', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Professional organizations and employers.' },
             { id: 'cat-skill', label: 'Skills', color: COLORS.skill, shape: 'hexagon', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Core competencies and expertise areas.' },
             { id: 'cat-tool', label: 'Tools', color: COLORS.tool, shape: 'box', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Security tools and platforms.' },
@@ -180,7 +183,7 @@
         const childData = {
             'cat-org': {
                 nodes: [
-                    { id: 'org-ey', label: 'Ernst & Young', desc: 'Senior CTI Consultant (2025-Present). Leading CTI consulting engagements for Fortune 500 clients across consumer goods, energy, insurance, and finance.' },
+                    { id: 'org-ey', label: 'Ernst & Young', desc: 'Senior CTI Consultant (2025-Present). Building and maturing CTI programs for Fortune 500 clients, integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management.' },
                     { id: 'org-nuharbor', label: 'NuHarbor Security', desc: 'Threat Intelligence Lead (2023-2025). Led 100% of Threat Operations strategy. Delivered 75% reduction in TIP costs via OpenCTI migration.' },
                     { id: 'org-vmware', label: 'VMware', desc: 'Information Security Analyst (2021-2022). Increased employee security engagement by 45% and achieved 99% security policy compliance.' },
                     { id: 'org-ge', label: 'GE Power', desc: 'Cybersecurity Threat Management Intern (2020). Identified 16,000+ IOCs and resolved 6 incidents involving malware and APT campaigns.' },
@@ -192,12 +195,12 @@
             },
             'cat-skill': {
                 nodes: [
-                    { id: 'skill-cti', label: 'Cyber Threat\nIntelligence', desc: 'Expertise in all-source intelligence collection, analysis, and dissemination. Specializing in strategic, operational, and tactical CTI.' },
-                    { id: 'skill-hunt', label: 'Threat Hunting\n& Analysis', desc: 'Proactive threat hunting using hypothesis-driven and indicator-driven approaches across enterprise environments.' },
-                    { id: 'skill-adversary', label: 'Adversary\nProfiling', desc: 'APT tracking, threat actor attribution, and adversary capability assessment using structured analytic techniques.' },
-                    { id: 'skill-osint', label: 'OSINT &\nGeopolitical Analysis', desc: 'Open-source intelligence collection and analysis. Geopolitical threat landscape assessments for strategic decision-making.' },
-                    { id: 'skill-risk', label: 'Risk\nManagement', desc: 'Enterprise risk assessment, threat-vulnerability mapping, and intelligence-driven risk prioritization.' },
-                    { id: 'skill-writing', label: 'Technical\nWriting', desc: 'Intelligence reports, threat advisories, and executive briefings. Published researcher and educator.' }
+                    { id: 'skill-cti', label: 'CTI Program\nDevelopment', desc: 'Building and maturing CTI programs end-to-end: intelligence requirements, collection strategies, analytic tradecraft, product catalogs, and stakeholder integration.' },
+                    { id: 'skill-integration', label: 'Intelligence\nIntegration', desc: 'Integrating CTI across security functions (vulnerability management, detection engineering, SOC/IR, threat hunting) and business units (crisis management, HR, communications).' },
+                    { id: 'skill-adversary', label: 'Adversary\nProfiling', desc: 'APT tracking, threat actor attribution, and adversary capability assessment using structured analytic techniques and TTP analysis.' },
+                    { id: 'skill-osint', label: 'Geopolitical &\nCyber Analysis', desc: 'Connecting geopolitical events and global threat dynamics to client-specific cyber risk. Translating tactical indicators into strategic intelligence.' },
+                    { id: 'skill-risk', label: 'Threat-Informed\nRisk', desc: 'Intelligence-driven risk prioritization. Helping organizations understand their priority threats and take decisive action.' },
+                    { id: 'skill-writing', label: 'Strategic\nCommunication', desc: 'Translating complex threats for technical and non-technical audiences. Executive briefings, threat advisories, and awareness content.' }
                 ],
                 color: COLORS.skill,
                 shape: 'hexagon'
