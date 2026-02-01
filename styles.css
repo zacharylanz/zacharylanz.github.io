@@ -65,12 +65,7 @@
 
 /* Light theme component overrides */
 [data-theme="light"] .hero-title {
-    color: var(--text-primary);
     text-shadow: none;
-}
-
-[data-theme="light"] .section-title {
-    color: var(--text-primary);
 }
 
 [data-theme="light"] .glitch::before,
@@ -90,7 +85,8 @@
 [data-theme="light"] .timeline-content:hover,
 [data-theme="light"] .education-card:hover,
 [data-theme="light"] .cert-card:hover,
-[data-theme="light"] .blog-card:hover {
+[data-theme="light"] .blog-card:hover,
+[data-theme="light"] .about-focus-card:hover {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -349,7 +345,7 @@ body {
     font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: #ffffff;
+    color: var(--text-primary);
     text-shadow: 0 0 20px var(--glow-primary);
     margin-bottom: 0;
 }
@@ -588,7 +584,7 @@ section {
 
 .section-title {
     font-size: clamp(2rem, 5vw, 3rem);
-    color: #ffffff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -602,7 +598,7 @@ section {
 
 .subsection-title {
     font-size: clamp(1.5rem, 3vw, 2rem);
-    color: #ffffff;
+    color: var(--text-primary);
     margin: var(--spacing-lg) 0 var(--spacing-md);
     font-weight: 500;
 }
@@ -708,6 +704,95 @@ section {
     color: var(--accent-primary);
     position: absolute;
     left: -1rem;
+}
+
+/* ===========================
+   About Section — Card Layout
+   =========================== */
+.about-intro {
+    max-width: 900px;
+    margin-bottom: var(--spacing-md);
+}
+
+.about-intro p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.about-focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.about-focus-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--accent-primary);
+    padding: 2rem;
+    transition: var(--transition-normal);
+}
+
+.about-focus-card:hover {
+    border-left-color: var(--accent-secondary);
+    box-shadow: 0 0 30px var(--glow-primary);
+}
+
+.about-focus-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.about-focus-card h4 {
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.about-focus-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.about-integration-intro {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+.about-integration-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.about-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.about-mini-terminal {
+    margin-top: var(--spacing-lg);
+    padding: 1rem 1.5rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    display: inline-block;
+}
+
+.about-mini-terminal .prompt {
+    color: var(--accent-primary);
+}
+
+.about-mini-output {
+    color: var(--accent-secondary);
 }
 
 /* ===========================
@@ -1456,7 +1541,7 @@ section {
 
 .article-title {
     font-size: clamp(2rem, 5vw, 3rem);
-    color: #ffffff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     line-height: 1.2;
     font-weight: 700;
@@ -1518,7 +1603,7 @@ section {
 }
 
 .article-content h2 {
-    color: #ffffff;
+    color: var(--text-primary);
     font-size: 1.8rem;
     margin-top: 3rem;
     margin-bottom: 1rem;

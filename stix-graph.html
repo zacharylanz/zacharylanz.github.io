@@ -459,6 +459,16 @@
                 return;
             }
             initGraph();
+
+            // Refresh graph colors when theme changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(m) {
+                    if (m.attributeName === 'data-theme' && network) {
+                        refreshGraph();
+                    }
+                });
+            });
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
         });
     })();
     </script>

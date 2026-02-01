@@ -124,68 +124,84 @@
                 <h2 class="section-title">About Me</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="about-content">
-                <div class="about-terminal">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn-close"></span>
-                            <span class="btn-minimize"></span>
-                            <span class="btn-maximize"></span>
-                        </div>
-                        <div class="terminal-title">about.sh</div>
-                    </div>
-                    <div class="terminal-body">
-                        <p class="terminal-line"><span class="prompt">┌──(kali㉿threat-intel)-[~]</span></p>
-                        <p class="terminal-line"><span class="prompt">└─$</span> whoami</p>
-                        <p class="terminal-output">
-                            Cyber Threat Intelligence specialist focused on building and maturing CTI programs,
-                            integrating intelligence across security and business stakeholders, and translating
-                            threat landscapes into strategic, actionable outcomes. Currently consulting at Ernst & Young.
-                        </p>
-                        <p class="terminal-line"><span class="prompt">└─$</span> cat mission.txt</p>
-                        <p class="terminal-output">
-                            I connect geopolitical events and global threat dynamics to the cyber risks that matter
-                            most to an organization. My work bridges tactical indicators and strategic intelligence,
-                            helping leadership understand their priority threats, assess risk, and take decisive action &mdash;
-                            from vulnerability management and detection engineering to crisis response and executive communications.
-                        </p>
-                        <p class="terminal-line"><span class="prompt">└─$</span> cat cti_integration.txt</p>
-                        <p class="terminal-output achievements-list">
-                            &bull; Vulnerability management &mdash; prioritizing patching with threat context<br>
-                            &bull; Threat hunting & detection engineering &mdash; hypothesis-driven hunts and detection rules<br>
-                            &bull; SOC & incident response &mdash; enriching alerts and accelerating triage<br>
-                            &bull; Crisis management &mdash; threat-informed scenario planning and response<br>
-                            &bull; Communications & awareness &mdash; translating threats for non-technical audiences<br>
-                            &bull; Risk management &mdash; intelligence-driven prioritization of enterprise risk
-                        </p>
-                        <p class="terminal-line"><span class="prompt">└─$</span> ./display_skills.sh</p>
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h4>Core Focus Areas</h4>
-                                <ul>
-                                    <li>CTI Program Development & Maturity</li>
-                                    <li>Intelligence Integration Across Stakeholders</li>
-                                    <li>Geopolitical & Cyber Threat Analysis</li>
-                                    <li>Tactical-to-Strategic Intelligence Translation</li>
-                                    <li>Adversary Profiling & TTP Analysis</li>
-                                    <li>OSINT & Infrastructure Tracking</li>
-                                </ul>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Tools & Platforms</h4>
-                                <ul>
-                                    <li>OpenCTI, ThreatConnect, MISP</li>
-                                    <li>Recorded Future, Mandiant</li>
-                                    <li>Splunk, CrowdStrike Falcon</li>
-                                    <li>Maltego, DomainTools</li>
-                                    <li>Python, PowerBI, Tableau</li>
-                                    <li>STIX/TAXII, MITRE ATT&CK</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <p class="terminal-line blink-cursor"><span class="prompt">└─$</span> _</p>
-                    </div>
+
+            <!-- Intro -->
+            <div class="about-intro">
+                <p>Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic, actionable outcomes. Currently consulting at Ernst & Young.</p>
+                <p>I connect geopolitical events and global threat dynamics to the cyber risks that matter most to an organization. My work bridges tactical indicators and strategic intelligence, helping leadership understand their priority threats, assess risk, and take decisive action.</p>
+            </div>
+
+            <!-- Focus Areas -->
+            <h3 class="subsection-title">What I Do</h3>
+            <div class="about-focus-grid">
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🎯</div>
+                    <h4>CTI Program Development</h4>
+                    <p>Building and maturing CTI programs end-to-end &mdash; intelligence requirements, collection strategies, analytic tradecraft, product catalogs, and stakeholder integration.</p>
                 </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🔗</div>
+                    <h4>Intelligence Integration</h4>
+                    <p>Integrating CTI across security functions and business units &mdash; from SOC and vulnerability management to crisis management and executive communications.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🌍</div>
+                    <h4>Geopolitical & Cyber Analysis</h4>
+                    <p>Connecting global events and threat dynamics to organization-specific cyber risk and priority threats.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">📊</div>
+                    <h4>Strategic Intelligence</h4>
+                    <p>Translating tactical indicators into strategic outcomes &mdash; helping leadership assess risk and take decisive action.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🕵️</div>
+                    <h4>Adversary Profiling</h4>
+                    <p>APT tracking, threat actor attribution, and TTP analysis using structured analytic techniques.</p>
+                </div>
+                <div class="about-focus-card">
+                    <div class="about-focus-icon">🔍</div>
+                    <h4>OSINT & Infrastructure Tracking</h4>
+                    <p>Open-source intelligence collection and adversary infrastructure analysis using premium investigation platforms.</p>
+                </div>
+            </div>
+
+            <!-- Integration Areas -->
+            <h3 class="subsection-title">Where CTI Integrates</h3>
+            <p class="about-integration-intro">Intelligence drives action across security operations and the broader enterprise:</p>
+            <div class="about-integration-tags">
+                <span class="tag">Vulnerability Management</span>
+                <span class="tag">Threat Hunting</span>
+                <span class="tag">Detection Engineering</span>
+                <span class="tag">SOC & Incident Response</span>
+                <span class="tag">Crisis Management</span>
+                <span class="tag">Communications & Awareness</span>
+                <span class="tag">Risk Management</span>
+                <span class="tag">HR & Insider Threat</span>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <h3 class="subsection-title">Tools & Platforms</h3>
+            <div class="about-tools">
+                <span class="skill-badge">OpenCTI</span>
+                <span class="skill-badge">ThreatConnect</span>
+                <span class="skill-badge">MISP</span>
+                <span class="skill-badge">Recorded Future</span>
+                <span class="skill-badge">Mandiant</span>
+                <span class="skill-badge">Splunk</span>
+                <span class="skill-badge">CrowdStrike Falcon</span>
+                <span class="skill-badge">Maltego</span>
+                <span class="skill-badge">DomainTools</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">PowerBI</span>
+                <span class="skill-badge">Tableau</span>
+                <span class="skill-badge">STIX/TAXII</span>
+                <span class="skill-badge">MITRE ATT&CK</span>
+            </div>
+
+            <!-- Terminal accent -->
+            <div class="about-mini-terminal">
+                <span class="prompt">└─$</span> whoami <span class="about-mini-output">&rarr; CTI Specialist</span>
             </div>
         </div>
     </section>

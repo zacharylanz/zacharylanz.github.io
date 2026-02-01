@@ -448,8 +448,8 @@ function initThemeToggle() {
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
-    // Load saved theme or default to dark
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+    // Load saved theme or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     toggle.checked = savedTheme === 'light';
 
@@ -470,9 +470,7 @@ function initThemeToggle() {
 // Apply saved theme immediately (before DOMContentLoaded) to avoid flash
 (function() {
     const saved = localStorage.getItem('theme');
-    if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
-    }
+    document.documentElement.setAttribute('data-theme', saved || 'light');
 })();
 
 // ===========================
