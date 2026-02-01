@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zachary Lanz - Interactive STIX Graph | Explore professional identity through a STIX-style network visualization">
+    <title>STIX Graph | Zachary Lanz</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="STIX Graph | Zachary Lanz">
+    <meta property="og:description" content="Interactive STIX-style network visualization of cyber threat intelligence expertise.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lanzsec.com/stix-graph.html">
+    <meta property="og:image" content="https://www.lanzsec.com/headshot.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="STIX Graph | Zachary Lanz">
+    <meta name="twitter:description" content="Interactive STIX-style network visualization of cyber threat intelligence expertise.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0d1f'/><text x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%236366f1' text-anchor='middle'>Z</text><rect x='10' y='82' width='80' height='3' rx='1' fill='%236366f1' opacity='0.6'/></svg>">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- vis-network -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="matrix-bg" id="matrix-canvas" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="terminal-prompt">root@zacharylanz:~$</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="experience.html" class="nav-link">Experience</a></li>
+                <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="stix-graph.html" class="nav-link active">STIX Graph</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">☀</button>
+                <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- STIX Graph Page -->
+    <div class="stix-page">
+        <div class="stix-header">
+            <h2 class="section-title">Interactive STIX Graph</h2>
+            <div class="section-line" style="margin: 0 auto 1rem;"></div>
+            <p class="section-description">Explore my professional identity as a STIX-style network. Click category nodes to expand and reveal details. Click again to collapse.</p>
+        </div>
+
+        <div class="stix-wrapper">
+            <div class="stix-graph-container">
+                <div id="stix-network"></div>
+            </div>
+
+            <!-- Legend -->
+            <div class="stix-legend">
+                <h4>Node Types</h4>
+                <div class="legend-item"><span class="legend-dot" style="background: #6366f1;"></span> Identity</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #8b5cf6;"></span> Organization</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #3b82f6;"></span> Skill</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #14b8a6;"></span> Tool</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Certification</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #06b6d4;"></span> Framework</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #ec4899;"></span> Publication</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Education</div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="stix-info-panel" id="info-panel">
+                <h3 id="info-title"></h3>
+                <p class="stix-info-type" id="info-type"></p>
+                <p class="stix-info-desc" id="info-desc"></p>
+                <button class="stix-info-close" id="info-close">Close</button>
+            </div>
+        </div>
+
+        <div class="stix-instructions">
+            Click a category node to expand &bull; Click again to collapse &bull; Drag to rearrange &bull; Scroll to zoom &bull; Click any node for details
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand-section">
+                    <p class="footer-brand"><a href="index.html">root@zacharylanz:~$</a></p>
+                    <p class="footer-copyright">&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="stix-graph.html">STIX Graph</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="footer-social-links">
+                        <a href="https://linkedin.com/in/zacharylanz" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://github.com/zacharylanz" target="_blank" rel="noopener">GitHub</a>
+                        <a href="mailto:zacharylanz@live.com">Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+
+    <script src="script.js"></script>
+    <script>
+    (function() {
+        // ========================
+        // STIX Graph Data
+        // ========================
+        const COLORS = {
+            identity: '#6366f1',
+            organization: '#8b5cf6',
+            skill: '#3b82f6',
+            tool: '#14b8a6',
+            certification: '#f59e0b',
+            framework: '#06b6d4',
+            publication: '#ec4899',
+            education: '#10b981',
+            category: '#374151'
+        };
+
+        // Category nodes (always visible)
+        const categoryNodes = [
+            { id: 'identity', label: 'Zachary Lanz', color: COLORS.identity, shape: 'circle', size: 40, font: { size: 16, color: '#fff', bold: true }, type: 'identity', desc: 'Senior Cyber Threat Intelligence Consultant at Ernst & Young. Threat hunter, OSINT investigator, adjunct professor, and published security researcher.' },
+            { id: 'cat-org', label: 'Organizations', color: COLORS.organization, shape: 'diamond', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Professional organizations and employers.' },
+            { id: 'cat-skill', label: 'Skills', color: COLORS.skill, shape: 'hexagon', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Core competencies and expertise areas.' },
+            { id: 'cat-tool', label: 'Tools', color: COLORS.tool, shape: 'box', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Security tools and platforms.' },
+            { id: 'cat-cert', label: 'Certifications', color: COLORS.certification, shape: 'star', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Professional certifications and training.' },
+            { id: 'cat-framework', label: 'Frameworks', color: COLORS.framework, shape: 'triangle', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Intelligence and security frameworks.' },
+            { id: 'cat-pub', label: 'Publications', color: COLORS.publication, shape: 'square', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Published research and awards.' },
+            { id: 'cat-edu', label: 'Education', color: COLORS.education, shape: 'circle', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Academic background and credentials.' }
+        ];
+
+        // Category edges (always visible)
+        const categoryEdges = [
+            { from: 'identity', to: 'cat-org', label: 'works-for', color: { color: COLORS.organization, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-skill', label: 'skilled-in', color: { color: COLORS.skill, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-tool', label: 'uses', color: { color: COLORS.tool, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-cert', label: 'has-certification', color: { color: COLORS.certification, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-framework', label: 'aligned-with', color: { color: COLORS.framework, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-pub', label: 'published', color: { color: COLORS.publication, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-edu', label: 'educated-at', color: { color: COLORS.education, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } }
+        ];
+
+        // Child nodes by category
+        const childData = {
+            'cat-org': {
+                nodes: [
+                    { id: 'org-ey', label: 'Ernst & Young', desc: 'Senior CTI Consultant (2025-Present). Leading CTI consulting engagements for Fortune 500 clients across consumer goods, energy, insurance, and finance.' },
+                    { id: 'org-nuharbor', label: 'NuHarbor Security', desc: 'Threat Intelligence Lead (2023-2025). Led 100% of Threat Operations strategy. Delivered 75% reduction in TIP costs via OpenCTI migration.' },
+                    { id: 'org-vmware', label: 'VMware', desc: 'Information Security Analyst (2021-2022). Increased employee security engagement by 45% and achieved 99% security policy compliance.' },
+                    { id: 'org-ge', label: 'GE Power', desc: 'Cybersecurity Threat Management Intern (2020). Identified 16,000+ IOCs and resolved 6 incidents involving malware and APT campaigns.' },
+                    { id: 'org-nys', label: 'NYS DHSES', desc: 'Policy & Program Development Intern (2019-2020). Created COVID-19 mobility tracker for NYS Senior Policy Advisor.' },
+                    { id: 'org-ualbany-teach', label: 'UAlbany (Adjunct)', desc: 'Adjunct Professor (2024-Present). Teaching 30+ graduate students foundational CTI, analytic techniques, and intelligence writing.' }
+                ],
+                color: COLORS.organization,
+                shape: 'diamond'
+            },
+            'cat-skill': {
+                nodes: [
+                    { id: 'skill-cti', label: 'Cyber Threat\nIntelligence', desc: 'Expertise in all-source intelligence collection, analysis, and dissemination. Specializing in strategic, operational, and tactical CTI.' },
+                    { id: 'skill-hunt', label: 'Threat Hunting\n& Analysis', desc: 'Proactive threat hunting using hypothesis-driven and indicator-driven approaches across enterprise environments.' },
+                    { id: 'skill-adversary', label: 'Adversary\nProfiling', desc: 'APT tracking, threat actor attribution, and adversary capability assessment using structured analytic techniques.' },
+                    { id: 'skill-osint', label: 'OSINT &\nGeopolitical Analysis', desc: 'Open-source intelligence collection and analysis. Geopolitical threat landscape assessments for strategic decision-making.' },
+                    { id: 'skill-risk', label: 'Risk\nManagement', desc: 'Enterprise risk assessment, threat-vulnerability mapping, and intelligence-driven risk prioritization.' },
+                    { id: 'skill-writing', label: 'Technical\nWriting', desc: 'Intelligence reports, threat advisories, and executive briefings. Published researcher and educator.' }
+                ],
+                color: COLORS.skill,
+                shape: 'hexagon'
+            },
+            'cat-tool': {
+                nodes: [
+                    { id: 'tool-opencti', label: 'OpenCTI', desc: 'Open-source threat intelligence platform. Led migration from ThreatConnect, saving 75% in licensing costs.' },
+                    { id: 'tool-threatconnect', label: 'ThreatConnect', desc: 'Threat intelligence platform for intelligence aggregation and operationalization.' },
+                    { id: 'tool-misp', label: 'MISP', desc: 'Malware Information Sharing Platform. Used for IOC sharing and threat intelligence collaboration.' },
+                    { id: 'tool-rf', label: 'Recorded Future', desc: 'Premium threat intelligence platform for real-time threat analysis and risk scoring.' },
+                    { id: 'tool-mandiant', label: 'Mandiant\nAdvantage', desc: 'Threat intelligence and adversary analysis platform from Google/Mandiant.' },
+                    { id: 'tool-splunk', label: 'Splunk', desc: 'SIEM platform for security monitoring, log analysis, and threat detection.' },
+                    { id: 'tool-crowdstrike', label: 'CrowdStrike\nFalcon', desc: 'Endpoint detection and response (EDR) platform for threat hunting and incident response.' },
+                    { id: 'tool-maltego', label: 'Maltego', desc: 'OSINT and link analysis tool for mapping adversary infrastructure and relationships.' },
+                    { id: 'tool-domaintools', label: 'DomainTools', desc: 'Domain intelligence platform for infrastructure analysis and threat actor tracking.' },
+                    { id: 'tool-python', label: 'Python', desc: 'Programming language for automation, data analysis, and security tooling development.' }
+                ],
+                color: COLORS.tool,
+                shape: 'box'
+            },
+            'cat-cert': {
+                nodes: [
+                    { id: 'cert-for578', label: 'SANS FOR578', desc: 'Cyber Threat Intelligence (November 2025). SANS Institute\'s premier CTI course covering intelligence lifecycle and tradecraft.' },
+                    { id: 'cert-cysa', label: 'CompTIA CySA+', desc: 'Cybersecurity Analyst (November 2023). Validates skills in threat detection, analysis, and response.' },
+                    { id: 'cert-splunk', label: 'Splunk\nFundamentals', desc: 'Splunk Fundamentals Certificates 1 & 2 (February 2023). Core competency in Splunk search, reporting, and dashboards.' }
+                ],
+                color: COLORS.certification,
+                shape: 'star'
+            },
+            'cat-framework': {
+                nodes: [
+                    { id: 'fw-attack', label: 'MITRE\nATT&CK', desc: 'Adversarial tactics, techniques, and procedures (TTPs) knowledge base. Used extensively for threat actor profiling and detection engineering.' },
+                    { id: 'fw-stix', label: 'STIX/TAXII', desc: 'Structured Threat Information Expression & Trusted Automated Exchange. Standardized threat intelligence sharing protocols.' },
+                    { id: 'fw-diamond', label: 'Diamond Model', desc: 'Intrusion analysis framework relating adversary, capability, infrastructure, and victim for structured threat analysis.' },
+                    { id: 'fw-killchain', label: 'Cyber\nKill Chain', desc: 'Lockheed Martin\'s framework for understanding and defending against cyber intrusions across seven phases.' },
+                    { id: 'fw-nist', label: 'NIST CSF', desc: 'National Institute of Standards and Technology Cybersecurity Framework for managing cyber risk.' },
+                    { id: 'fw-icd203', label: 'ICD 203/206', desc: 'Intelligence Community Directives for analytic standards and sourcing requirements in intelligence products.' }
+                ],
+                color: COLORS.framework,
+                shape: 'triangle'
+            },
+            'cat-pub': {
+                nodes: [
+                    { id: 'pub-thesis', label: 'Master\'s Thesis\nResearch', desc: 'Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories. Published in International Journal of Cybersecurity Intelligence & Cybercrime.' },
+                    { id: 'pub-award', label: 'Outstanding\nYoung Alumni', desc: 'Outstanding Young Alumni Award (2023). Awarded by SUNY Albany for exceptional early-career achievements in cyber threat intelligence.' }
+                ],
+                color: COLORS.publication,
+                shape: 'square'
+            },
+            'cat-edu': {
+                nodes: [
+                    { id: 'edu-ms', label: 'M.S. Information\nScience', desc: 'Master of Science in Information Science & Intelligence Analysis. SUNY Albany, 2019-2020. 4.0 GPA.' },
+                    { id: 'edu-bs', label: 'B.S. Emergency\nPreparedness', desc: 'Bachelor of Science in Emergency Preparedness, Homeland Security & Cybersecurity. SUNY Albany, 2016-2020. Magna Cum Laude.' },
+                    { id: 'edu-abroad', label: 'Ben-Gurion\nUniversity', desc: 'Study Abroad - Security Research. Ben-Gurion University, Israel. January - June 2019.' }
+                ],
+                color: COLORS.education,
+                shape: 'circle'
+            }
+        };
+
+        // ========================
+        // Graph State
+        // ========================
+        const expandedCategories = new Set();
+        let nodes, edges, network;
+
+        function buildVisData() {
+            const nodeArray = categoryNodes.map(n => ({
+                id: n.id,
+                label: n.label,
+                color: { background: n.color, border: n.color, highlight: { background: n.color, border: '#fff' } },
+                shape: n.shape,
+                size: n.size,
+                font: n.font || { size: 12, color: '#d1d5db' },
+                borderWidth: 2,
+                shadow: { enabled: true, color: n.color + '40', size: 15 }
+            }));
+
+            const edgeArray = categoryEdges.map(e => ({
+                from: e.from,
+                to: e.to,
+                label: e.label,
+                color: e.color,
+                font: e.font,
+                arrows: { to: { enabled: true, scaleFactor: 0.6 } },
+                smooth: { type: 'continuous' }
+            }));
+
+            // Add expanded children
+            expandedCategories.forEach(catId => {
+                const data = childData[catId];
+                if (!data) return;
+
+                data.nodes.forEach(child => {
+                    nodeArray.push({
+                        id: child.id,
+                        label: child.label,
+                        color: { background: data.color + 'CC', border: data.color, highlight: { background: data.color, border: '#fff' } },
+                        shape: data.shape,
+                        size: 18,
+                        font: { size: 11, color: '#d1d5db', multi: 'html' },
+                        borderWidth: 1,
+                        shadow: { enabled: true, color: data.color + '30', size: 10 }
+                    });
+                    edgeArray.push({
+                        from: catId,
+                        to: child.id,
+                        color: { color: data.color, opacity: 0.4 },
+                        arrows: { to: { enabled: true, scaleFactor: 0.4 } },
+                        smooth: { type: 'continuous' },
+                        width: 1
+                    });
+                });
+            });
+
+            return { nodeArray, edgeArray };
+        }
+
+        function getNodeInfo(nodeId) {
+            // Check category nodes
+            const cat = categoryNodes.find(n => n.id === nodeId);
+            if (cat) return { label: cat.label, type: cat.type === 'identity' ? 'Identity' : 'Category', desc: cat.desc };
+
+            // Check child nodes
+            for (const catId in childData) {
+                const child = childData[catId].nodes.find(n => n.id === nodeId);
+                if (child) {
+                    const typeName = catId.replace('cat-', '');
+                    const typeMap = { org: 'Organization', skill: 'Skill', tool: 'Tool', cert: 'Certification', framework: 'Framework', pub: 'Publication', edu: 'Education' };
+                    return { label: child.label.replace(/\n/g, ' '), type: typeMap[typeName] || typeName, desc: child.desc };
+                }
+            }
+            return null;
+        }
+
+        function initGraph() {
+            const container = document.getElementById('stix-network');
+            const { nodeArray, edgeArray } = buildVisData();
+
+            nodes = new vis.DataSet(nodeArray);
+            edges = new vis.DataSet(edgeArray);
+
+            const options = {
+                nodes: {
+                    font: { face: 'Fira Code, monospace' },
+                    borderWidth: 2
+                },
+                edges: {
+                    width: 1.5,
+                    font: { face: 'Fira Code, monospace', align: 'middle' },
+                    smooth: { type: 'continuous' }
+                },
+                physics: {
+                    solver: 'forceAtlas2Based',
+                    forceAtlas2Based: {
+                        gravitationalConstant: -80,
+                        centralGravity: 0.01,
+                        springLength: 150,
+                        springConstant: 0.05,
+                        damping: 0.4
+                    },
+                    stabilization: { iterations: 150 }
+                },
+                interaction: {
+                    hover: true,
+                    tooltipDelay: 200,
+                    zoomView: true,
+                    dragView: true
+                },
+                layout: {
+                    improvedLayout: true
+                }
+            };
+
+            network = new vis.Network(container, { nodes, edges }, options);
+
+            // Click handler: expand/collapse categories, show info
+            network.on('click', function(params) {
+                if (params.nodes.length > 0) {
+                    const nodeId = params.nodes[0];
+
+                    // Toggle expansion for category nodes
+                    if (nodeId.startsWith('cat-')) {
+                        if (expandedCategories.has(nodeId)) {
+                            expandedCategories.delete(nodeId);
+                        } else {
+                            expandedCategories.add(nodeId);
+                        }
+                        refreshGraph();
+                    }
+
+                    // Show info panel
+                    const info = getNodeInfo(nodeId);
+                    if (info) {
+                        document.getElementById('info-title').textContent = info.label;
+                        document.getElementById('info-type').textContent = info.type;
+                        document.getElementById('info-desc').textContent = info.desc;
+                        document.getElementById('info-panel').classList.add('active');
+                    }
+                } else {
+                    document.getElementById('info-panel').classList.remove('active');
+                }
+            });
+
+            // Double-click to zoom
+            network.on('doubleClick', function(params) {
+                if (params.nodes.length > 0) {
+                    network.focus(params.nodes[0], { scale: 1.5, animation: true });
+                }
+            });
+        }
+
+        function refreshGraph() {
+            const { nodeArray, edgeArray } = buildVisData();
+            nodes.clear();
+            edges.clear();
+            nodes.add(nodeArray);
+            edges.add(edgeArray);
+        }
+
+        // Close info panel
+        document.getElementById('info-close').addEventListener('click', function() {
+            document.getElementById('info-panel').classList.remove('active');
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initGraph);
+    })();
+    </script>
+</body>
+</html>

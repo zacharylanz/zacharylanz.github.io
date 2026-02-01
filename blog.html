@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zachary Lanz - Blog | CTI Insights, Threat Analysis, and Security Research">
     <title>Blog | Zachary Lanz</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Blog | Zachary Lanz">
+    <meta property="og:description" content="Insights on cyber threat intelligence, adversary analysis, and security research.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lanzsec.com/blog.html">
+    <meta property="og:image" content="https://www.lanzsec.com/headshot.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog | Zachary Lanz">
+    <meta name="twitter:description" content="Insights on cyber threat intelligence, adversary analysis, and security research.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0d1f'/><text x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%236366f1' text-anchor='middle'>Z</text><rect x='10' y='82' width='80' height='3' rx='1' fill='%236366f1' opacity='0.6'/></svg>">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,11 +28,11 @@
 </head>
 <body>
     <!-- Background Effects -->
-    <div class="matrix-bg" id="matrix-canvas"></div>
-    <div class="grid-overlay"></div>
+    <div class="matrix-bg" id="matrix-canvas" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="nav-bar">
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
@@ -29,12 +45,16 @@
                 <li><a href="experience.html" class="nav-link">Experience</a></li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="blog.html" class="nav-link active">Blog</a></li>
+                <li><a href="stix-graph.html" class="nav-link">STIX Graph</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">☀</button>
+                <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -48,7 +68,7 @@
                 <p class="section-description">Insights on cyber threat intelligence, adversary analysis, and security research. Deep dives into threat actor tactics, emerging vulnerabilities, and intelligence tradecraft.</p>
             </div>
 
-                    <!-- Blog Cards Grid -->
+            <!-- Blog Cards Grid -->
             <div class="blog-grid" id="blog-grid">
                 <!-- Blog posts will be dynamically loaded here -->
             </div>
@@ -60,11 +80,11 @@
                 <div class="cta-buttons">
                     <a href="experience.html" class="btn btn-secondary">
                         <span class="btn-text">View Experience</span>
-                        <span class="btn-icon">→</span>
+                        <span class="btn-icon">&rarr;</span>
                     </a>
                     <a href="index.html#contact" class="btn btn-primary">
                         <span class="btn-text">Get in Touch</span>
-                        <span class="btn-icon">→</span>
+                        <span class="btn-icon">&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -75,13 +95,34 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2026 Zachary Lanz. All rights reserved.</p>
-                <p class="footer-tagline">
-                    <span class="terminal-prompt">$</span> Intelligence-driven. Threat-focused. Impact-oriented.
-                </p>
+                <div class="footer-brand-section">
+                    <p class="footer-brand"><a href="index.html">root@zacharylanz:~$</a></p>
+                    <p class="footer-copyright">&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="stix-graph.html">STIX Graph</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="footer-social-links">
+                        <a href="https://linkedin.com/in/zacharylanz" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://github.com/zacharylanz" target="_blank" rel="noopener">GitHub</a>
+                        <a href="mailto:zacharylanz@live.com">Email</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
 
     <script src="script.js"></script>
     <script>
@@ -110,13 +151,12 @@
                                 <p class="blog-excerpt">${post.excerpt}</p>
                                 <div class="blog-card-footer">
                                     <span class="read-time">${post.readTime}</span>
-                                    <a href="article.html?id=${post.id}" class="blog-read-more" onclick="event.stopPropagation()">Read More →</a>
+                                    <a href="article.html?id=${post.id}" class="blog-read-more" onclick="event.stopPropagation()">Read More &rarr;</a>
                                 </div>
                             </article>
                         `;
                     }).join('');
                 } else {
-                    // Show coming soon message if no posts
                     blogGrid.innerHTML = `
                         <div class="coming-soon-section" style="grid-column: 1 / -1;">
                             <div class="coming-soon-card">
@@ -137,7 +177,6 @@
             }
         }
 
-        // Load posts when page loads
         document.addEventListener('DOMContentLoaded', loadBlogPosts);
     </script>
 </body>

@@ -3,6 +3,7 @@
 // ===========================
 function initMatrixEffect() {
     const canvas = document.getElementById('matrix-canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
     canvas.width = window.innerWidth;
@@ -44,6 +45,7 @@ function initMatrixEffect() {
 // ===========================
 function initTypingEffect() {
     const typingText = document.querySelector('.typing-text');
+    if (!typingText) return;
     const phrases = [
         "Senior Cyber Threat Intelligence Consultant",
         "Threat Hunter & Adversary Analyst",
@@ -91,6 +93,7 @@ function initTypingEffect() {
 function initNavToggle() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
+    if (!navToggle || !navMenu) return;
     const navLinks = document.querySelectorAll('.nav-link');
 
     navToggle.addEventListener('click', () => {
@@ -163,6 +166,7 @@ function initStatsAnimation() {
     const threatLevel = document.getElementById('threat-level');
     const status = document.getElementById('status');
     const clearance = document.getElementById('clearance');
+    if (!threatLevel || !status || !clearance) return;
 
     const levels = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
     const statuses = ['STANDBY', 'MONITORING', 'ANALYZING', 'ACTIVE'];
@@ -264,6 +268,7 @@ async function fetchGitHubRepos(username) {
 function initGitHubFetch() {
     const fetchButton = document.getElementById('fetch-repos');
     const usernameInput = document.getElementById('github-username');
+    if (!fetchButton || !usernameInput) return;
 
     fetchButton.addEventListener('click', () => {
         const username = usernameInput.value.trim();
@@ -323,20 +328,19 @@ function initScrollAnimations() {
 // ===========================
 function initNavbarScroll() {
     const navbar = document.querySelector('.nav-bar');
-    let lastScroll = 0;
+    if (!navbar) return;
 
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        const style = getComputedStyle(document.documentElement);
 
         if (currentScroll > 100) {
-            navbar.style.background = 'rgba(10, 14, 23, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 65, 0.1)';
+            navbar.style.background = style.getPropertyValue('--nav-bg-scrolled').trim();
+            navbar.style.boxShadow = '0 2px 20px ' + style.getPropertyValue('--glow-primary').trim();
         } else {
-            navbar.style.background = 'rgba(10, 14, 23, 0.95)';
+            navbar.style.background = style.getPropertyValue('--nav-bg').trim();
             navbar.style.boxShadow = 'none';
         }
-
-        lastScroll = currentScroll;
     });
 }
 
@@ -428,13 +432,74 @@ function initKeyboardNav() {
 // Performance Monitoring
 // ===========================
 function logPerformance() {
-    if (window.performance) {
-        window.addEventListener('load', () => {
-            const perfData = window.performance.timing;
-            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
-            console.log(`%c[PERFORMANCE] Page loaded in ${pageLoadTime}ms`, 'color: #00ff41; font-family: monospace;');
-        });
+    window.addEventListener('load', () => {
+        const entries = performance.getEntriesByType('navigation');
+        if (entries.length > 0) {
+            const pageLoadTime = Math.round(entries[0].loadEventEnd);
+            console.log(`%c[PERFORMANCE] Page loaded in ${pageLoadTime}ms`, 'color: #6366f1; font-family: monospace;');
+        }
+    });
+}
+
+// ===========================
+// Theme Toggle (Light/Dark)
+// ===========================
+function initThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (!toggleBtn) return;
+
+    // Load saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(toggleBtn, savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateToggleIcon(toggleBtn, next);
+
+        // Reset navbar inline styles so CSS variables take effect
+        const navbar = document.querySelector('.nav-bar');
+        if (navbar) {
+            navbar.style.background = '';
+            navbar.style.boxShadow = '';
+        }
+    });
+}
+
+function updateToggleIcon(btn, theme) {
+    btn.textContent = theme === 'dark' ? '☀' : '☾';
+    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+// Apply saved theme immediately (before DOMContentLoaded) to avoid flash
+(function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
     }
+})();
+
+// ===========================
+// Back to Top Button
+// ===========================
+function initBackToTop() {
+    const btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // ===========================
@@ -454,6 +519,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTerminalEffects();
     initGlitchHover();
     initKeyboardNav();
+    initBackToTop();
+    initThemeToggle();
 
     // Easter eggs
     initConsoleMessage();

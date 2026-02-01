@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zachary Lanz - Blog Article">
     <title>Article | Zachary Lanz</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Article | Zachary Lanz">
+    <meta property="og:description" content="Cyber threat intelligence insights and security research.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.lanzsec.com/article.html">
+    <meta property="og:image" content="https://www.lanzsec.com/headshot.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Article | Zachary Lanz">
+    <meta name="twitter:description" content="Cyber threat intelligence insights and security research.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0d1f'/><text x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%236366f1' text-anchor='middle'>Z</text><rect x='10' y='82' width='80' height='3' rx='1' fill='%236366f1' opacity='0.6'/></svg>">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,11 +30,11 @@
 </head>
 <body>
     <!-- Background Effects -->
-    <div class="matrix-bg" id="matrix-canvas"></div>
-    <div class="grid-overlay"></div>
+    <div class="matrix-bg" id="matrix-canvas" aria-hidden="true"></div>
+    <div class="grid-overlay" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="nav-bar">
+    <nav class="nav-bar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
@@ -31,12 +47,16 @@
                 <li><a href="experience.html" class="nav-link">Experience</a></li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="stix-graph.html" class="nav-link">STIX Graph</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">☀</button>
+                <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -48,6 +68,12 @@
             <header class="article-header" id="article-header">
                 <!-- Dynamically loaded -->
             </header>
+
+            <!-- Table of Contents -->
+            <div class="article-toc" id="article-toc" style="display: none;">
+                <h3>Table of Contents</h3>
+                <ol id="toc-list"></ol>
+            </div>
 
             <!-- Article Content -->
             <div class="article-content" id="article-content">
@@ -65,13 +91,34 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2026 Zachary Lanz. All rights reserved.</p>
-                <p class="footer-tagline">
-                    <span class="terminal-prompt">$</span> Intelligence-driven. Threat-focused. Impact-oriented.
-                </p>
+                <div class="footer-brand-section">
+                    <p class="footer-brand"><a href="index.html">root@zacharylanz:~$</a></p>
+                    <p class="footer-copyright">&copy; 2026 Zachary Lanz. All rights reserved.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="stix-graph.html">STIX Graph</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="footer-social-links">
+                        <a href="https://linkedin.com/in/zacharylanz" target="_blank" rel="noopener">LinkedIn</a>
+                        <a href="https://github.com/zacharylanz" target="_blank" rel="noopener">GitHub</a>
+                        <a href="mailto:zacharylanz@live.com">Email</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
 
     <script src="script.js"></script>
     <script>
@@ -83,9 +130,33 @@
             mangle: false
         });
 
-        // Get article ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const articleId = urlParams.get('id');
+
+        function generateTOC(contentEl) {
+            const headings = contentEl.querySelectorAll('h2');
+            if (headings.length < 2) return;
+
+            const tocList = document.getElementById('toc-list');
+            const tocContainer = document.getElementById('article-toc');
+
+            headings.forEach((heading, index) => {
+                const id = 'section-' + index;
+                heading.id = id;
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#' + id;
+                a.textContent = heading.textContent;
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+
+            tocContainer.style.display = 'block';
+        }
 
         async function loadArticle() {
             if (!articleId) {
@@ -94,11 +165,8 @@
             }
 
             try {
-                // Load blog posts metadata
                 const response = await fetch('blog-posts.json');
                 const data = await response.json();
-
-                // Find the post
                 const post = data.posts.find(p => p.id === articleId);
 
                 if (!post) {
@@ -106,23 +174,22 @@
                     return;
                 }
 
-                // Update page title
+                // Update page title and meta
                 document.title = `${post.title} | Zachary Lanz`;
-
-                // Update meta description
                 const metaDescription = document.querySelector('meta[name="description"]');
-                if (metaDescription) {
-                    metaDescription.content = post.subtitle || post.excerpt;
-                }
+                if (metaDescription) metaDescription.content = post.subtitle || post.excerpt;
+
+                // Update OG tags dynamically
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                if (ogTitle) ogTitle.content = post.title + ' | Zachary Lanz';
+                if (ogDesc) ogDesc.content = post.subtitle || post.excerpt;
 
                 // Load and parse markdown
                 const markdownResponse = await fetch(post.markdownFile);
                 const markdownText = await markdownResponse.text();
-
-                // Parse markdown to HTML
                 const htmlContent = marked.parse(markdownText);
 
-                // Format date
                 const date = new Date(post.date).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -147,24 +214,48 @@
                 `;
 
                 // Populate article content
-                document.getElementById('article-content').innerHTML = htmlContent;
+                const contentEl = document.getElementById('article-content');
+                contentEl.innerHTML = htmlContent;
 
-                // Populate article footer
+                // Generate TOC from rendered headings
+                generateTOC(contentEl);
+
+                // Build share URL
+                const articleUrl = window.location.href;
+                const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`;
+
+                // Populate article footer with tags + share buttons
                 document.getElementById('article-footer').innerHTML = `
                     <div class="article-tags">
                         <span class="tag-label">Topics:</span>
                         ${post.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
                     </div>
-                    <div class="article-share">
+                    <div class="article-share-row">
+                        <a href="${linkedInShareUrl}" target="_blank" rel="noopener" class="share-btn">Share on LinkedIn</a>
+                        <button class="share-btn" id="copy-link-btn">Copy Link</button>
+                    </div>
+                    <div class="article-share" style="margin-top: 1.5rem;">
                         <a href="blog.html" class="btn btn-primary">
-                            <span class="btn-text">← Back to Blog</span>
+                            <span class="btn-text">&larr; Back to Blog</span>
                         </a>
                         <a href="index.html#contact" class="btn btn-secondary">
                             <span class="btn-text">Get in Touch</span>
-                            <span class="btn-icon">→</span>
+                            <span class="btn-icon">&rarr;</span>
                         </a>
                     </div>
                 `;
+
+                // Copy link button
+                document.getElementById('copy-link-btn').addEventListener('click', function() {
+                    navigator.clipboard.writeText(articleUrl).then(() => {
+                        this.textContent = 'Copied!';
+                        this.classList.add('copied');
+                        setTimeout(() => {
+                            this.textContent = 'Copy Link';
+                            this.classList.remove('copied');
+                        }, 2000);
+                    });
+                });
 
             } catch (error) {
                 console.error('Error loading article:', error);
@@ -184,7 +275,6 @@
             document.getElementById('article-footer').innerHTML = '';
         }
 
-        // Load article when page loads
         document.addEventListener('DOMContentLoaded', loadArticle);
     </script>
 </body>
