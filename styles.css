@@ -808,33 +808,81 @@ section {
    =========================== */
 .diamond-model {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin: var(--spacing-md) 0 var(--spacing-lg);
+}
+
+.diamond-title {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
 }
 
 .diamond-svg {
     width: 100%;
-    max-width: 420px;
+    max-width: 340px;
     height: auto;
 }
 
-.diamond-line {
-    stroke: var(--border-color);
+.diamond-body {
+    fill: var(--accent-primary);
+    opacity: 0.08;
+    stroke: var(--accent-primary);
     stroke-width: 1.5;
+    stroke-opacity: 0.3;
+}
+
+.diamond-edge-arrow {
+    stroke: var(--accent-primary);
+    stroke-width: 1.5;
+    opacity: 0.5;
+    marker-end: url(#arrow);
+}
+
+.diamond-arrow-fill {
+    fill: var(--accent-primary);
     opacity: 0.5;
 }
 
-.diamond-line-cross {
-    stroke-dasharray: 6 4;
-    opacity: 0.25;
+.diamond-center {
+    fill: var(--bg-secondary);
+    stroke: var(--accent-primary);
+    stroke-width: 2;
+}
+
+.diamond-center-icon {
+    font-size: 16px;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.diamond-center-text {
+    fill: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 8px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: central;
+    letter-spacing: 0.1em;
 }
 
 .diamond-node {
-    fill: var(--bg-primary);
+    fill: var(--bg-secondary);
     stroke: var(--accent-primary);
     stroke-width: 2;
-    transition: fill 0.3s ease, stroke 0.3s ease, filter 0.3s ease;
     cursor: pointer;
+    transition: fill 0.3s ease, filter 0.3s ease;
+}
+
+.diamond-node-icon {
+    font-size: 18px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
 }
 
 .diamond-vertex:hover .diamond-node {
@@ -842,39 +890,33 @@ section {
     filter: drop-shadow(0 0 10px var(--glow-primary));
 }
 
-.diamond-vertex:hover .diamond-label {
-    fill: #fff;
-}
-
 .diamond-label {
     fill: var(--text-primary);
     font-family: 'Fira Code', monospace;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
     text-anchor: middle;
-    dominant-baseline: central;
     pointer-events: none;
-    transition: fill 0.3s ease;
 }
 
-.diamond-sublabel {
+.diamond-label-sub {
     fill: var(--text-tertiary);
     font-family: 'Fira Code', monospace;
-    font-size: 9px;
+    font-size: 8px;
     text-anchor: middle;
-    dominant-baseline: auto;
+    pointer-events: none;
 }
 
 @media (max-width: 480px) {
     .diamond-svg {
-        max-width: 300px;
+        max-width: 260px;
     }
 
     .diamond-label {
-        font-size: 8px;
+        font-size: 9px;
     }
 
-    .diamond-sublabel {
+    .diamond-label-sub {
         font-size: 7px;
     }
 }
