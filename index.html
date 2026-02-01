@@ -46,7 +46,7 @@
 </head>
 <body>
     <!-- Background Effects -->
-    <div class="matrix-bg" id="matrix-canvas" aria-hidden="true"></div>
+    <canvas class="matrix-bg" id="matrix-canvas" aria-hidden="true"></canvas>
     <div class="grid-overlay" aria-hidden="true"></div>
 
     <!-- Navigation -->
@@ -67,7 +67,10 @@
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Switch to light mode">☀</button>
+                <label class="theme-switch" title="Toggle light/dark mode">
+                    <input type="checkbox" id="theme-toggle" aria-label="Toggle light/dark mode">
+                    <span class="theme-switch-track"><span class="theme-switch-thumb"></span></span>
+                </label>
                 <div class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>

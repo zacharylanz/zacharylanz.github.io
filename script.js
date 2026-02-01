@@ -506,25 +506,29 @@ function initBackToTop() {
 // Initialize All Functions
 // ===========================
 document.addEventListener('DOMContentLoaded', () => {
-    // Core functionality
-    initMatrixEffect();
-    initTypingEffect();
-    initNavToggle();
-    initSmoothScroll();
-    initScrollSpy();
-    initStatsAnimation();
-    initGitHubFetch();
-    initScrollAnimations();
-    initNavbarScroll();
-    initTerminalEffects();
-    initGlitchHover();
-    initKeyboardNav();
-    initBackToTop();
-    initThemeToggle();
+    // Wrap each init in try/catch so one failure doesn't break everything
+    const inits = [
+        initMatrixEffect,
+        initTypingEffect,
+        initNavToggle,
+        initSmoothScroll,
+        initScrollSpy,
+        initStatsAnimation,
+        initGitHubFetch,
+        initScrollAnimations,
+        initNavbarScroll,
+        initTerminalEffects,
+        initGlitchHover,
+        initKeyboardNav,
+        initBackToTop,
+        initThemeToggle,
+        initConsoleMessage,
+        logPerformance
+    ];
 
-    // Easter eggs
-    initConsoleMessage();
-    logPerformance();
+    inits.forEach(fn => {
+        try { fn(); } catch (e) { console.warn(`[init] ${fn.name} failed:`, e); }
+    });
 
     // Set initial active nav link
     const firstNavLink = document.querySelector('.nav-link');
