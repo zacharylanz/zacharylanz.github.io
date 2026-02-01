@@ -709,9 +709,23 @@ section {
 /* ===========================
    About Section — Card Layout
    =========================== */
+.about-top-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (max-width: 900px) {
+    .about-top-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 .about-intro {
-    max-width: 900px;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0;
 }
 
 .about-intro p {
@@ -725,14 +739,13 @@ section {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    max-width: 900px;
 }
 
 .about-focus-card {
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     border-left: 3px solid var(--accent-primary);
-    padding: 1.5rem 2rem;
+    padding: 1.75rem 2.5rem;
     transition: var(--transition-normal);
     display: grid;
     grid-template-columns: auto 1fr;
@@ -810,7 +823,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: var(--spacing-md) 0 var(--spacing-lg);
+    margin: 0;
 }
 
 .diamond-title {
@@ -824,7 +837,7 @@ section {
 
 .diamond-svg {
     width: 100%;
-    max-width: 340px;
+    max-width: 420px;
     height: auto;
 }
 
@@ -887,7 +900,12 @@ section {
 
 .diamond-vertex:hover .diamond-node {
     fill: var(--accent-primary);
-    filter: drop-shadow(0 0 10px var(--glow-primary));
+    filter: drop-shadow(0 0 12px var(--glow-primary));
+    r: 27;
+}
+
+.diamond-vertex:hover .diamond-node-icon {
+    font-size: 20px;
 }
 
 .diamond-label {
@@ -909,7 +927,7 @@ section {
 
 @media (max-width: 480px) {
     .diamond-svg {
-        max-width: 260px;
+        max-width: 300px;
     }
 
     .diamond-label {
