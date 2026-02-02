@@ -1,3 +1,17 @@
+---
+title: Getting Started in Cyber Threat Intelligence
+subtitle: A practical guide for aspiring CTI professionals navigating the path from curiosity to career
+category: Career Development
+date: 2026-01-08
+readTime: 5 min read
+excerpt: Cyber Threat Intelligence has become one of the most critical disciplines in cybersecurity. If you're considering a career in CTI, here's what you need to know to get started.
+tags:
+  - Cyber Threat Intelligence
+  - Career Development
+  - Getting Started
+  - Professional Growth
+---
+
 # Getting Started in Cyber Threat Intelligence
 
 Cyber Threat Intelligence (CTI) has become one of the most critical disciplines in cybersecurity. As organizations face increasingly sophisticated threats, the demand for skilled intelligence professionals continues to grow. If you're considering a career in CTI, here's what you need to know to get started.

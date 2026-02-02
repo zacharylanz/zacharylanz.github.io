@@ -1,0 +1,39 @@
+name: Generate Blog Manifest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/**.md'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate blog-posts.json
+        run: python scripts/generate-blog-posts.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet blog-posts.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated manifest
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog-posts.json
+          git commit -m "chore: auto-generate blog-posts.json from front matter"
+          git push

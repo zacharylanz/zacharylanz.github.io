@@ -62,6 +62,9 @@
         </div>
     </nav>
 
+    <a href="#blog" class="skip-to-content">Skip to content</a>
+
+    <main id="main-content">
     <!-- Blog Section -->
     <section class="blog page-section" id="blog">
         <div class="container">
@@ -93,6 +96,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -145,7 +149,7 @@
                         });
 
                         return `
-                            <article class="blog-card" onclick="window.location.href='article.html?id=${post.id}'">
+                            <a href="article.html?id=${post.id}" class="blog-card">
                                 <div class="blog-card-header">
                                     <span class="blog-category">${post.category}</span>
                                     <span class="blog-date">${date}</span>
@@ -154,9 +158,9 @@
                                 <p class="blog-excerpt">${post.excerpt}</p>
                                 <div class="blog-card-footer">
                                     <span class="read-time">${post.readTime}</span>
-                                    <a href="article.html?id=${post.id}" class="blog-read-more" onclick="event.stopPropagation()">Read More &rarr;</a>
+                                    <span class="blog-read-more">Read More &rarr;</span>
                                 </div>
-                            </article>
+                            </a>
                         `;
                     }).join('');
                 } else {

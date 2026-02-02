@@ -64,6 +64,9 @@
         </div>
     </nav>
 
+    <a href="#article-header" class="skip-to-content">Skip to content</a>
+
+    <main id="main-content">
     <!-- Article Section -->
     <article class="article-page page-section">
         <div class="container article-container">
@@ -89,6 +92,7 @@
             </footer>
         </div>
     </article>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -190,7 +194,16 @@
 
                 // Load and parse markdown
                 const markdownResponse = await fetch(post.markdownFile);
-                const markdownText = await markdownResponse.text();
+                let markdownText = await markdownResponse.text();
+
+                // Strip YAML front matter if present
+                if (markdownText.startsWith('---')) {
+                    const endIndex = markdownText.indexOf('---', 3);
+                    if (endIndex !== -1) {
+                        markdownText = markdownText.substring(endIndex + 3).trim();
+                    }
+                }
+
                 const htmlContent = marked.parse(markdownText);
 
                 const date = new Date(post.date).toLocaleDateString('en-US', {

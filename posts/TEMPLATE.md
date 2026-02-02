@@ -1,4 +1,17 @@
-# Article Title Here
+---
+title: Your Article Title Here
+subtitle: A brief one-line description of the article
+category: Category Name
+date: 2026-01-01
+readTime: X min read
+excerpt: A 1-2 sentence summary that appears on the blog card. Keep it compelling and concise.
+tags:
+  - Tag One
+  - Tag Two
+  - Tag Three
+---
+
+# Your Article Title Here
 
 Brief introduction paragraph that hooks the reader and explains what the article will cover. Keep it concise and engaging.
 

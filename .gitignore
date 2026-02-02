@@ -1,0 +1,12 @@
+# Windows reserved device names
+nul
+NUL
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
+*~

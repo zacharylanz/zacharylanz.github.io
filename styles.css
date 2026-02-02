@@ -949,6 +949,8 @@ section {
 .timeline {
     position: relative;
     padding: 2rem 0;
+    list-style: none;
+    margin: 0;
 }
 
 .timeline::before {
@@ -989,7 +991,7 @@ section {
 .timeline-content:hover {
     border-left-color: var(--accent-secondary);
     box-shadow: 0 5px 30px var(--glow-primary);
-    transform: translateX(5px);
+    transform: translateY(-5px);
 }
 
 .timeline-header h3 {
@@ -1098,7 +1100,7 @@ section {
 /* Teaching Section */
 .teaching-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 2rem;
 }
 
@@ -1113,7 +1115,7 @@ section {
 .teaching-card:hover {
     border-left-color: var(--accent-primary);
     box-shadow: 0 0 30px var(--glow-secondary);
-    transform: translateX(5px);
+    transform: translateY(-5px);
 }
 
 .teaching-card h4 {
@@ -1193,7 +1195,7 @@ section {
 /* Publications */
 .publications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 2rem;
 }
 
@@ -1365,7 +1367,7 @@ section {
 /* Affiliations */
 .affiliations-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 2rem;
 }
 
@@ -1555,7 +1557,7 @@ section {
 /* Blog Grid */
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
     gap: 2rem;
     margin-top: var(--spacing-lg);
 }
@@ -1570,6 +1572,8 @@ section {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    color: inherit;
 }
 
 .blog-card:hover {
@@ -2158,6 +2162,26 @@ section {
 /* ===========================
    Responsive Design
    =========================== */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand-section {
+        grid-column: 1 / -1;
+    }
+
+    .skills-detailed-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .hero-stats {
+        gap: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -2228,7 +2252,7 @@ section {
 
     .terminal-body {
         padding: 1rem;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
 
     .skills-grid,
@@ -2319,6 +2343,29 @@ section {
     border-width: 0;
 }
 
+/* Skip to content link */
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    z-index: 10000;
+    transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+    outline: 2px solid var(--accent-secondary);
+    outline-offset: 2px;
+}
+
 /* Focus styles for accessibility */
 a:focus,
 button:focus,
@@ -2336,6 +2383,15 @@ input:focus {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .glitch::before,
+    .glitch::after {
+        display: none;
+    }
+
+    .scroll-indicator {
+        display: none;
     }
 }
 
