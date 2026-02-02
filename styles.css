@@ -712,7 +712,7 @@ section {
 .about-top-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 4rem;
     align-items: center;
     margin-bottom: var(--spacing-lg);
 }
@@ -731,8 +731,12 @@ section {
 .about-intro p {
     color: var(--text-secondary);
     font-size: 1.15rem;
-    line-height: 1.8;
-    margin-bottom: 1rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+}
+
+.about-intro p:last-child {
+    margin-bottom: 0;
 }
 
 .about-focus-grid {

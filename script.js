@@ -131,6 +131,23 @@ function initSmoothScroll() {
             }
         });
     });
+
+    // Diamond Model SVG vertex links (use data-scroll-to since SVG <a> href is unreliable)
+    document.querySelectorAll('.diamond-vertex[data-scroll-to]').forEach(vertex => {
+        vertex.style.cursor = 'pointer';
+        vertex.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-scroll-to');
+            const target = document.getElementById(targetId);
+            if (target) {
+                const offsetTop = target.offsetTop - 70;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 }
 
 // ===========================
