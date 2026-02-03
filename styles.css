@@ -2536,6 +2536,22 @@ input:focus {
     border-top: 1px solid var(--border-color);
 }
 
+.stix-attribution {
+    text-align: center;
+    padding: 0.5rem 2rem 1.5rem;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+}
+
+.stix-attribution a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.stix-attribution a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
     .stix-wrapper {
         height: 500px;

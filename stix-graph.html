@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zachary Lanz - Interactive STIX Graph | Explore professional identity through a STIX-style network visualization">
-    <title>STIX Graph | Zachary Lanz</title>
+    <meta name="description" content="Zachary Lanz - Exploration Graph | Explore professional identity through a STIX-style network visualization">
+    <title>Exploration Graph | Zachary Lanz</title>
 
     <!-- Open Graph -->
-    <meta property="og:title" content="STIX Graph | Zachary Lanz">
+    <meta property="og:title" content="Exploration Graph | Zachary Lanz">
     <meta property="og:description" content="Interactive STIX-style network visualization of cyber threat intelligence expertise.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.lanzsec.com/stix-graph.html">
@@ -15,7 +15,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="STIX Graph | Zachary Lanz">
+    <meta name="twitter:title" content="Exploration Graph | Zachary Lanz">
     <meta name="twitter:description" content="Interactive STIX-style network visualization of cyber threat intelligence expertise.">
 
     <!-- Favicon -->
@@ -48,7 +48,7 @@
                 <li><a href="experience.html" class="nav-link">Experience</a></li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="stix-graph.html" class="nav-link active">STIX Graph</a></li>
+                <li><a href="stix-graph.html" class="nav-link active">Exploration Graph</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -71,7 +71,7 @@
     <!-- STIX Graph Page -->
     <div class="stix-page">
         <div class="stix-header">
-            <h2 class="section-title">Interactive STIX Graph</h2>
+            <h2 class="section-title">Exploration Graph</h2>
             <div class="section-line" style="margin: 0 auto 1rem;"></div>
             <p class="section-description">Explore my professional identity as a STIX-style network. Click category nodes to expand and reveal details. Click again to collapse.</p>
         </div>
@@ -88,7 +88,7 @@
                 <div class="legend-item"><span class="legend-dot" style="background: #8b5cf6;"></span> Organization</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #3b82f6;"></span> Skill</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #14b8a6;"></span> Tool</div>
-                <div class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Certification</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #f59e0b;"></span> Certification & Training</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #06b6d4;"></span> Framework</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #ec4899;"></span> Publication</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Education</div>
@@ -106,6 +106,7 @@
         <div class="stix-instructions">
             Click a category node to expand &bull; Click again to collapse &bull; Drag to rearrange &bull; Scroll to zoom &bull; Click any node for details
         </div>
+        <p class="stix-attribution">Icons by <a href="https://github.com/muchdogesec/stix2icons" target="_blank" rel="noopener">DOGESEC stix2icons</a></p>
     </div>
     </main>
 
@@ -124,7 +125,7 @@
                         <li><a href="experience.html">Experience</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="blog.html">Blog</a></li>
-                        <li><a href="stix-graph.html">STIX Graph</a></li>
+                        <li><a href="stix-graph.html">Exploration Graph</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
@@ -160,16 +161,28 @@
             category: '#374151'
         };
 
+        // STIX icon URLs from muchdogesec/stix2icons
+        const STIX_ICONS = {
+            identity: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/identity.svg',
+            organization: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/identity.svg',
+            skill: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/tool.svg',
+            tool: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/tool.svg',
+            certification: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/indicator.svg',
+            framework: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/attack-pattern.svg',
+            publication: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/report.svg',
+            education: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/location.svg'
+        };
+
         // Category nodes (always visible)
         const categoryNodes = [
-            { id: 'identity', label: 'Zachary Lanz', color: COLORS.identity, shape: 'circle', size: 40, font: { size: 16, color: '#fff', bold: true }, type: 'identity', desc: 'Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently consulting at Ernst & Young.' },
-            { id: 'cat-org', label: 'Organizations', color: COLORS.organization, shape: 'diamond', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Professional organizations and employers.' },
-            { id: 'cat-skill', label: 'Skills', color: COLORS.skill, shape: 'hexagon', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Core competencies and expertise areas.' },
-            { id: 'cat-tool', label: 'Tools', color: COLORS.tool, shape: 'box', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Security tools and platforms.' },
-            { id: 'cat-cert', label: 'Certifications', color: COLORS.certification, shape: 'star', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Professional certifications and training.' },
-            { id: 'cat-framework', label: 'Frameworks', color: COLORS.framework, shape: 'triangle', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Intelligence and security frameworks.' },
-            { id: 'cat-pub', label: 'Publications', color: COLORS.publication, shape: 'square', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Published research and awards.' },
-            { id: 'cat-edu', label: 'Education', color: COLORS.education, shape: 'circle', size: 25, font: { size: 13, color: '#fff' }, type: 'category', desc: 'Academic background and credentials.' }
+            { id: 'identity', label: 'Zachary Lanz', color: COLORS.identity, iconType: 'identity', size: 40, font: { size: 16, bold: true }, type: 'identity', desc: 'Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently consulting at Ernst & Young.' },
+            { id: 'cat-org', label: 'Organizations', color: COLORS.organization, iconType: 'organization', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional organizations and employers.' },
+            { id: 'cat-skill', label: 'Skills', color: COLORS.skill, iconType: 'skill', size: 30, font: { size: 13 }, type: 'category', desc: 'Core competencies and expertise areas.' },
+            { id: 'cat-tool', label: 'Tools', color: COLORS.tool, iconType: 'tool', size: 30, font: { size: 13 }, type: 'category', desc: 'Security tools and platforms.' },
+            { id: 'cat-cert', label: 'Certifications\n& Training', color: COLORS.certification, iconType: 'certification', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional certifications and training.' },
+            { id: 'cat-framework', label: 'Frameworks', color: COLORS.framework, iconType: 'framework', size: 30, font: { size: 13 }, type: 'category', desc: 'Intelligence and security frameworks.' },
+            { id: 'cat-pub', label: 'Publications', color: COLORS.publication, iconType: 'publication', size: 30, font: { size: 13 }, type: 'category', desc: 'Published research and awards.' },
+            { id: 'cat-edu', label: 'Education', color: COLORS.education, iconType: 'education', size: 30, font: { size: 13 }, type: 'category', desc: 'Academic background and credentials.' }
         ];
 
         // Category edges (always visible)
@@ -194,8 +207,7 @@
                     { id: 'org-nys', label: 'NYS DHSES', desc: 'Policy & Program Development Intern (2019-2020). Created COVID-19 mobility tracker for NYS Senior Policy Advisor.' },
                     { id: 'org-ualbany-teach', label: 'UAlbany (Adjunct)', desc: 'Adjunct Professor (2024-Present). Teaching 30+ graduate students foundational CTI, analytic techniques, and intelligence writing.' }
                 ],
-                color: COLORS.organization,
-                shape: 'diamond'
+                color: COLORS.organization
             },
             'cat-skill': {
                 nodes: [
@@ -206,8 +218,7 @@
                     { id: 'skill-risk', label: 'Threat-Informed\nRisk', desc: 'Intelligence-driven risk prioritization. Helping organizations understand their priority threats and take decisive action.' },
                     { id: 'skill-writing', label: 'Strategic\nCommunication', desc: 'Translating complex threats for technical and non-technical audiences. Executive briefings, threat advisories, and awareness content.' }
                 ],
-                color: COLORS.skill,
-                shape: 'hexagon'
+                color: COLORS.skill
             },
             'cat-tool': {
                 nodes: [
@@ -222,8 +233,7 @@
                     { id: 'tool-domaintools', label: 'DomainTools', desc: 'Domain intelligence platform for infrastructure analysis and threat actor tracking.' },
                     { id: 'tool-python', label: 'Python', desc: 'Programming language for automation, data analysis, and security tooling development.' }
                 ],
-                color: COLORS.tool,
-                shape: 'box'
+                color: COLORS.tool
             },
             'cat-cert': {
                 nodes: [
@@ -231,8 +241,7 @@
                     { id: 'cert-cysa', label: 'CompTIA CySA+', desc: 'Cybersecurity Analyst (November 2023). Validates skills in threat detection, analysis, and response.' },
                     { id: 'cert-splunk', label: 'Splunk\nFundamentals', desc: 'Splunk Fundamentals Certificates 1 & 2 (February 2023). Core competency in Splunk search, reporting, and dashboards.' }
                 ],
-                color: COLORS.certification,
-                shape: 'star'
+                color: COLORS.certification
             },
             'cat-framework': {
                 nodes: [
@@ -243,16 +252,14 @@
                     { id: 'fw-nist', label: 'NIST CSF', desc: 'National Institute of Standards and Technology Cybersecurity Framework for managing cyber risk.' },
                     { id: 'fw-icd203', label: 'ICD 203/206', desc: 'Intelligence Community Directives for analytic standards and sourcing requirements in intelligence products.' }
                 ],
-                color: COLORS.framework,
-                shape: 'triangle'
+                color: COLORS.framework
             },
             'cat-pub': {
                 nodes: [
                     { id: 'pub-thesis', label: 'Master\'s Thesis\nResearch', desc: 'Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories. Published in International Journal of Cybersecurity Intelligence & Cybercrime.' },
                     { id: 'pub-award', label: 'Outstanding\nYoung Alumni', desc: 'Outstanding Young Alumni Award (2023). Awarded by SUNY Albany for exceptional early-career achievements in cyber threat intelligence.' }
                 ],
-                color: COLORS.publication,
-                shape: 'square'
+                color: COLORS.publication
             },
             'cat-edu': {
                 nodes: [
@@ -260,8 +267,7 @@
                     { id: 'edu-bs', label: 'B.S. Emergency\nPreparedness', desc: 'Bachelor of Science in Emergency Preparedness, Homeland Security & Cybersecurity. SUNY Albany, 2016-2020. Magna Cum Laude.' },
                     { id: 'edu-abroad', label: 'Ben-Gurion\nUniversity', desc: 'Study Abroad - Security Research. Ben-Gurion University, Israel. January - June 2019.' }
                 ],
-                color: COLORS.education,
-                shape: 'circle'
+                color: COLORS.education
             }
         };
 
@@ -278,11 +284,12 @@
             const nodeArray = categoryNodes.map(n => ({
                 id: n.id,
                 label: n.label,
-                color: { background: n.color, border: n.color, highlight: { background: n.color, border: '#fff' } },
-                shape: n.shape,
+                image: STIX_ICONS[n.iconType],
+                shape: 'circularImage',
                 size: n.size,
-                font: { size: (n.font && n.font.size) || 12, color: '#fff', bold: n.font && n.font.bold },
-                borderWidth: 2,
+                font: { size: (n.font && n.font.size) || 12, color: labelColor, bold: n.font && n.font.bold },
+                borderWidth: 3,
+                color: { border: n.color, highlight: { border: '#fff' } },
                 shadow: { enabled: true, color: n.color + '40', size: 15 }
             }));
 
@@ -296,7 +303,17 @@
                 smooth: { type: 'continuous' }
             }));
 
-            // Add expanded children
+            // Add expanded children - map category to icon type
+            const catToIcon = {
+                'cat-org': 'organization',
+                'cat-skill': 'skill',
+                'cat-tool': 'tool',
+                'cat-cert': 'certification',
+                'cat-framework': 'framework',
+                'cat-pub': 'publication',
+                'cat-edu': 'education'
+            };
+
             expandedCategories.forEach(catId => {
                 const data = childData[catId];
                 if (!data) return;
@@ -305,11 +322,12 @@
                     nodeArray.push({
                         id: child.id,
                         label: child.label,
-                        color: { background: data.color + 'CC', border: data.color, highlight: { background: data.color, border: '#fff' } },
-                        shape: data.shape,
-                        size: 18,
+                        image: STIX_ICONS[catToIcon[catId]],
+                        shape: 'circularImage',
+                        size: 22,
                         font: { size: 11, color: labelColor, multi: 'html' },
-                        borderWidth: 1,
+                        borderWidth: 2,
+                        color: { border: data.color, highlight: { border: '#fff' } },
                         shadow: { enabled: true, color: data.color + '30', size: 10 }
                     });
                     edgeArray.push({
@@ -371,7 +389,8 @@
             const options = {
                 nodes: {
                     font: { face: 'Fira Code, monospace' },
-                    borderWidth: 2
+                    borderWidth: 2,
+                    brokenImage: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDUwIDUwIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyMCIgZmlsbD0iIzM3NDE1MSIvPjwvc3ZnPg=='
                 },
                 edges: {
                     width: 1.5,
