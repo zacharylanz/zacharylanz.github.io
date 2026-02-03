@@ -236,10 +236,17 @@
                 if (ogDesc) ogDesc.content = post.subtitle || post.excerpt;
 
                 // Load and parse markdown
-                const markdownResponse = await fetch(post.markdownFile);
+                let markdownResponse;
+                try {
+                    markdownResponse = await fetch(post.markdownFile);
+                } catch (fetchError) {
+                    console.error('Fetch error:', fetchError);
+                    showError('Failed to load article content. If testing locally, please use a local server (e.g., Live Server extension or python -m http.server)');
+                    return;
+                }
                 if (!markdownResponse.ok) {
                     console.error('Failed to load markdown:', markdownResponse.status);
-                    showError('Failed to load article content. Please try refreshing the page.');
+                    showError('Failed to load article content (HTTP ' + markdownResponse.status + '). The markdown file may be missing');
                     return;
                 }
                 let markdownText = await markdownResponse.text();
@@ -393,12 +400,15 @@
 
         function showError(message) {
             document.getElementById('article-header').innerHTML = `
-                <h1 class="article-title">Error</h1>
+                <h1 class="article-title">Unable to Load Article</h1>
             `;
             document.getElementById('article-content').innerHTML = `
-                <p style="text-align: center; color: var(--text-secondary); padding: 3rem;">
-                    ${message}. <a href="blog.html" style="color: var(--accent-primary);">Return to blog</a>
-                </p>
+                <div style="text-align: center; color: var(--text-secondary); padding: 3rem;">
+                    <p style="margin-bottom: 1.5rem;">${message}</p>
+                    <a href="blog.html" class="btn btn-primary" style="display: inline-flex;">
+                        <span class="btn-text">&larr; Return to Blog</span>
+                    </a>
+                </div>
             `;
             document.getElementById('article-footer').innerHTML = '';
         }

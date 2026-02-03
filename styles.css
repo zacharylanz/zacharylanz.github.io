@@ -981,35 +981,53 @@ section {
 .timeline-year-marker {
     position: relative;
     padding-left: 3rem;
-    margin-bottom: 1.5rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .timeline-year-marker:first-child {
     margin-top: 0;
 }
 
+.timeline-year-marker::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    width: 18px;
+    height: 18px;
+    background: var(--bg-primary);
+    border: 3px solid var(--accent-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--glow-primary);
+}
+
 .year-label {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    color: var(--bg-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--accent-primary);
+    color: var(--accent-primary);
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
+    padding: 0.35rem 0.9rem;
+    border-radius: 4px;
     position: relative;
+    margin-left: 0.5rem;
 }
 
 .year-label::before {
     content: '';
     position: absolute;
-    left: -2.1rem;
+    left: -1.5rem;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    width: 12px;
+    height: 2px;
+    background: var(--accent-primary);
 }
 
 .timeline-item {
@@ -2341,9 +2359,15 @@ section {
         padding-left: 2.5rem;
     }
 
-    .year-label::before {
-        left: -1.6rem;
+    .timeline-year-marker::before {
+        left: 2px;
         width: 14px;
+        height: 14px;
+    }
+
+    .year-label::before {
+        left: -1.2rem;
+        width: 10px;
     }
 
     .terminal-body {
@@ -2763,52 +2787,61 @@ input:focus {
     gap: 1rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .blog-search {
-    flex: 1;
-    min-width: 200px;
+    flex: 0 1 300px;
     position: relative;
 }
 
 .blog-search input {
     width: 100%;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    background: var(--bg-secondary);
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    background: var(--bg-tertiary);
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text-primary);
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     transition: var(--transition-fast);
+}
+
+.blog-search input::placeholder {
+    color: var(--text-tertiary);
+    opacity: 0.7;
 }
 
 .blog-search input:focus {
     outline: none;
     border-color: var(--accent-primary);
-    box-shadow: 0 0 10px var(--glow-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    background: var(--bg-secondary);
 }
 
 .blog-search-icon {
     position: absolute;
-    left: 0.75rem;
+    left: 0.85rem;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-tertiary);
     pointer-events: none;
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 .blog-filters {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .filter-btn {
-    padding: 0.5rem 1rem;
-    background: var(--bg-secondary);
+    padding: 0.45rem 0.9rem;
+    background: transparent;
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 6px;
     color: var(--text-secondary);
     font-family: var(--font-mono);
     font-size: 0.8rem;
