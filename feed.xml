@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Zachary Lanz - CTI Insights</title>
+    <description>Cyber Threat Intelligence insights, program development strategies, and geopolitical threat analysis from Zachary Lanz.</description>
+    <link>https://www.lanzsec.com</link>
+    <atom:link href="https://www.lanzsec.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Jan 2026 00:00:00 GMT</lastBuildDate>
+    <managingEditor>zacharylanz@live.com (Zachary Lanz)</managingEditor>
+    <webMaster>zacharylanz@live.com (Zachary Lanz)</webMaster>
+    <image>
+      <url>https://www.lanzsec.com/headshot.jpg</url>
+      <title>Zachary Lanz - CTI Insights</title>
+      <link>https://www.lanzsec.com</link>
+    </image>
+
+    <item>
+      <title>Getting Started in Cyber Threat Intelligence</title>
+      <link>https://www.lanzsec.com/article.html?id=getting-started-cti</link>
+      <guid isPermaLink="true">https://www.lanzsec.com/article.html?id=getting-started-cti</guid>
+      <pubDate>Wed, 08 Jan 2026 00:00:00 GMT</pubDate>
+      <description>A practical guide for aspiring CTI professionals navigating the path from curiosity to career. Cyber Threat Intelligence has become one of the most critical disciplines in cybersecurity. If you're considering a career in CTI, here's what you need to know to get started.</description>
+      <category>Career Development</category>
+      <category>Cyber Threat Intelligence</category>
+      <category>Getting Started</category>
+      <author>zacharylanz@live.com (Zachary Lanz)</author>
+    </item>
+
+  </channel>
+</rss>

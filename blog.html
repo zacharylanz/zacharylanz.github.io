@@ -18,6 +18,29 @@
     <meta name="twitter:title" content="Blog | Zachary Lanz">
     <meta name="twitter:description" content="CTI program insights, geopolitical threat analysis, and intelligence tradecraft.">
 
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Zachary Lanz - CTI Insights" href="https://www.lanzsec.com/feed.xml">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Zachary Lanz - CTI Insights",
+        "description": "CTI program insights, geopolitical threat analysis, and intelligence tradecraft.",
+        "url": "https://www.lanzsec.com/blog.html",
+        "author": {
+            "@type": "Person",
+            "name": "Zachary Lanz",
+            "url": "https://www.lanzsec.com"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Zachary Lanz"
+        }
+    }
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0d1f'/><text x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%236366f1' text-anchor='middle'>Z</text><rect x='10' y='82' width='80' height='3' rx='1' fill='%236366f1' opacity='0.6'/></svg>">
 
@@ -72,6 +95,18 @@
                 <h2 class="section-title">Blog & Research</h2>
                 <div class="section-line"></div>
                 <p class="section-description">Insights on CTI program development, geopolitical threat dynamics, intelligence integration, and tradecraft. Deep dives into translating threat landscapes into strategic, actionable outcomes.</p>
+            </div>
+
+            <!-- Blog Controls: Search & Filters -->
+            <div class="blog-controls">
+                <div class="blog-search">
+                    <span class="blog-search-icon">&#x1F50D;</span>
+                    <input type="text" id="blog-search" placeholder="Search posts..." aria-label="Search blog posts">
+                </div>
+                <div class="blog-filters" id="blog-filters">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <!-- Category buttons will be dynamically added -->
+                </div>
             </div>
 
             <!-- Blog Cards Grid -->
@@ -133,41 +168,111 @@
 
     <script src="script.js"></script>
     <script>
-        // Load blog posts dynamically
+        let allPosts = [];
+        let currentCategory = 'all';
+        let searchQuery = '';
+
+        function renderPosts(posts) {
+            const blogGrid = document.getElementById('blog-grid');
+
+            if (posts && posts.length > 0) {
+                blogGrid.innerHTML = posts.map(post => {
+                    const date = new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                    });
+
+                    return `
+                        <a href="article.html?id=${post.id}" class="blog-card" data-category="${post.category}">
+                            <div class="blog-card-header">
+                                <span class="blog-category">${post.category}</span>
+                                <span class="blog-date">${date}</span>
+                            </div>
+                            <h3 class="blog-title">${post.title}</h3>
+                            <p class="blog-excerpt">${post.excerpt}</p>
+                            <div class="blog-card-footer">
+                                <span class="read-time">${post.readTime}</span>
+                                <span class="blog-read-more">Read More &rarr;</span>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+            } else {
+                blogGrid.innerHTML = `
+                    <div class="no-results" style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-secondary);">
+                        <p>No posts found matching your criteria.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function filterPosts() {
+            let filtered = allPosts;
+
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(post => post.category === currentCategory);
+            }
+
+            // Filter by search query
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                filtered = filtered.filter(post =>
+                    post.title.toLowerCase().includes(query) ||
+                    post.excerpt.toLowerCase().includes(query) ||
+                    post.tags.some(tag => tag.toLowerCase().includes(query))
+                );
+            }
+
+            renderPosts(filtered);
+        }
+
+        function setupFilters(posts) {
+            const filtersContainer = document.getElementById('blog-filters');
+            const categories = [...new Set(posts.map(p => p.category))];
+
+            // Add category buttons
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.dataset.category = category;
+                btn.textContent = category;
+                filtersContainer.appendChild(btn);
+            });
+
+            // Add click handlers
+            filtersContainer.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filtersContainer.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.category;
+                    filterPosts();
+                });
+            });
+        }
+
         async function loadBlogPosts() {
             try {
                 const response = await fetch('blog-posts.json');
                 const data = await response.json();
-                const blogGrid = document.getElementById('blog-grid');
 
                 if (data.posts && data.posts.length > 0) {
-                    blogGrid.innerHTML = data.posts.map(post => {
-                        const date = new Date(post.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric'
-                        });
+                    allPosts = data.posts;
+                    setupFilters(allPosts);
+                    renderPosts(allPosts);
 
-                        return `
-                            <a href="article.html?id=${post.id}" class="blog-card">
-                                <div class="blog-card-header">
-                                    <span class="blog-category">${post.category}</span>
-                                    <span class="blog-date">${date}</span>
-                                </div>
-                                <h3 class="blog-title">${post.title}</h3>
-                                <p class="blog-excerpt">${post.excerpt}</p>
-                                <div class="blog-card-footer">
-                                    <span class="read-time">${post.readTime}</span>
-                                    <span class="blog-read-more">Read More &rarr;</span>
-                                </div>
-                            </a>
-                        `;
-                    }).join('');
+                    // Setup search
+                    const searchInput = document.getElementById('blog-search');
+                    searchInput.addEventListener('input', (e) => {
+                        searchQuery = e.target.value;
+                        filterPosts();
+                    });
                 } else {
-                    blogGrid.innerHTML = `
+                    document.getElementById('blog-grid').innerHTML = `
                         <div class="coming-soon-section" style="grid-column: 1 / -1;">
                             <div class="coming-soon-card">
-                                <div class="coming-soon-icon">🚀</div>
+                                <div class="coming-soon-icon">&#x1F680;</div>
                                 <h3>Coming Soon</h3>
                                 <p>I'm currently working on exciting content covering threat intelligence methodologies, adversary tracking techniques, and real-world CTI case studies.</p>
                             </div>

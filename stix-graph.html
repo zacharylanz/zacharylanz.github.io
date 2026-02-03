@@ -92,6 +92,7 @@
                 <div class="legend-item"><span class="legend-dot" style="background: #06b6d4;"></span> Framework</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #ec4899;"></span> Publication</div>
                 <div class="legend-item"><span class="legend-dot" style="background: #10b981;"></span> Education</div>
+                <div class="legend-item"><span class="legend-dot" style="background: #eab308;"></span> Award</div>
             </div>
 
             <!-- Info Panel -->
@@ -158,6 +159,7 @@
             framework: '#06b6d4',
             publication: '#ec4899',
             education: '#10b981',
+            award: '#eab308',
             category: '#374151'
         };
 
@@ -170,7 +172,8 @@
             certification: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/indicator.svg',
             framework: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/attack-pattern.svg',
             publication: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/report.svg',
-            education: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/location.svg'
+            education: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/location.svg',
+            award: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/campaign.svg'
         };
 
         // Category nodes (always visible)
@@ -181,8 +184,9 @@
             { id: 'cat-tool', label: 'Tools', color: COLORS.tool, iconType: 'tool', size: 30, font: { size: 13 }, type: 'category', desc: 'Security tools and platforms.' },
             { id: 'cat-cert', label: 'Certifications\n& Training', color: COLORS.certification, iconType: 'certification', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional certifications and training.' },
             { id: 'cat-framework', label: 'Frameworks', color: COLORS.framework, iconType: 'framework', size: 30, font: { size: 13 }, type: 'category', desc: 'Intelligence and security frameworks.' },
-            { id: 'cat-pub', label: 'Publications', color: COLORS.publication, iconType: 'publication', size: 30, font: { size: 13 }, type: 'category', desc: 'Published research and awards.' },
-            { id: 'cat-edu', label: 'Education', color: COLORS.education, iconType: 'education', size: 30, font: { size: 13 }, type: 'category', desc: 'Academic background and credentials.' }
+            { id: 'cat-pub', label: 'Publications', color: COLORS.publication, iconType: 'publication', size: 30, font: { size: 13 }, type: 'category', desc: 'Published research and articles.' },
+            { id: 'cat-edu', label: 'Education', color: COLORS.education, iconType: 'education', size: 30, font: { size: 13 }, type: 'category', desc: 'Academic background and credentials.' },
+            { id: 'cat-award', label: 'Awards', color: COLORS.award, iconType: 'award', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional recognition and achievements.' }
         ];
 
         // Category edges (always visible)
@@ -193,7 +197,8 @@
             { from: 'identity', to: 'cat-cert', label: 'has-certification', color: { color: COLORS.certification, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
             { from: 'identity', to: 'cat-framework', label: 'aligned-with', color: { color: COLORS.framework, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
             { from: 'identity', to: 'cat-pub', label: 'published', color: { color: COLORS.publication, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-edu', label: 'educated-at', color: { color: COLORS.education, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } }
+            { from: 'identity', to: 'cat-edu', label: 'educated-at', color: { color: COLORS.education, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
+            { from: 'identity', to: 'cat-award', label: 'received', color: { color: COLORS.award, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } }
         ];
 
         // Child nodes by category
@@ -231,6 +236,9 @@
                     { id: 'tool-crowdstrike', label: 'CrowdStrike\nFalcon', desc: 'Endpoint detection and response (EDR) platform for threat hunting and incident response.' },
                     { id: 'tool-maltego', label: 'Maltego', desc: 'OSINT and link analysis tool for mapping adversary infrastructure and relationships.' },
                     { id: 'tool-domaintools', label: 'DomainTools', desc: 'Domain intelligence platform for infrastructure analysis and threat actor tracking.' },
+                    { id: 'tool-virustotal', label: 'VirusTotal', desc: 'Malware and URL analysis platform for IOC enrichment and threat research.' },
+                    { id: 'tool-shodan', label: 'Shodan', desc: 'Internet-connected device search engine for infrastructure reconnaissance and attack surface analysis.' },
+                    { id: 'tool-silentpush', label: 'Silent Push', desc: 'Threat intelligence platform for infrastructure tracking and adversary attribution.' },
                     { id: 'tool-python', label: 'Python', desc: 'Programming language for automation, data analysis, and security tooling development.' }
                 ],
                 color: COLORS.tool
@@ -256,10 +264,15 @@
             },
             'cat-pub': {
                 nodes: [
-                    { id: 'pub-thesis', label: 'Master\'s Thesis\nResearch', desc: 'Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories. Published in International Journal of Cybersecurity Intelligence & Cybercrime.' },
-                    { id: 'pub-award', label: 'Outstanding\nYoung Alumni', desc: 'Outstanding Young Alumni Award (2023). Awarded by SUNY Albany for exceptional early-career achievements in cyber threat intelligence.' }
+                    { id: 'pub-thesis', label: 'Master\'s Thesis\nResearch', desc: 'Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories. Published in International Journal of Cybersecurity Intelligence & Cybercrime.' }
                 ],
                 color: COLORS.publication
+            },
+            'cat-award': {
+                nodes: [
+                    { id: 'award-alumni', label: 'Outstanding\nYoung Alumni', desc: 'Outstanding Young Alumni Award (2023). Awarded by SUNY Albany for exceptional early-career achievements in cyber threat intelligence.' }
+                ],
+                color: COLORS.award
             },
             'cat-edu': {
                 nodes: [
@@ -311,7 +324,8 @@
                 'cat-cert': 'certification',
                 'cat-framework': 'framework',
                 'cat-pub': 'publication',
-                'cat-edu': 'education'
+                'cat-edu': 'education',
+                'cat-award': 'award'
             };
 
             expandedCategories.forEach(catId => {
@@ -354,7 +368,7 @@
                 const child = childData[catId].nodes.find(n => n.id === nodeId);
                 if (child) {
                     const typeName = catId.replace('cat-', '');
-                    const typeMap = { org: 'Organization', skill: 'Skill', tool: 'Tool', cert: 'Certification', framework: 'Framework', pub: 'Publication', edu: 'Education' };
+                    const typeMap = { org: 'Organization', skill: 'Skill', tool: 'Tool', cert: 'Certification', framework: 'Framework', pub: 'Publication', edu: 'Education', award: 'Award' };
                     return { label: child.label.replace(/\n/g, ' '), type: typeMap[typeName] || typeName, desc: child.desc };
                 }
             }
