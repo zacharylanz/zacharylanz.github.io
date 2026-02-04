@@ -18,6 +18,9 @@
     <meta name="twitter:title" content="Zachary Lanz | Cyber Threat Intelligence">
     <meta name="twitter:description" content="CTI specialist focused on building and maturing threat intelligence programs, geopolitical threat analysis, and driving intelligence-led security operations.">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.lanzsec.com/">
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -63,6 +66,7 @@
                 <li><a href="experience.html" class="nav-link">Experience</a></li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
                 <li><a href="stix-graph.html" class="nav-link">Exploration Graph</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
@@ -156,26 +160,26 @@
 
                         <!-- Center icon circle (Threat Actor - the analyst) -->
                         <circle cx="190" cy="190" r="26" class="diamond-center"/>
-                        <image x="164" y="164" width="52" height="52" href="https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/threat-actor.svg" class="diamond-stix-icon"/>
+                        <image x="164" y="164" width="52" height="52" href="images/icons/stix/threat-actor.svg" class="diamond-stix-icon"/>
 
                         <!-- Zachary Lanz (top) - Identity -->
                         <a class="diamond-vertex" data-scroll-to="about-intro">
                             <circle cx="190" cy="52" r="24" class="diamond-node"/>
-                            <image x="166" y="28" width="48" height="48" href="https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/identity.svg" class="diamond-stix-icon"/>
+                            <image x="166" y="28" width="48" height="48" href="images/icons/stix/identity.svg" class="diamond-stix-icon"/>
                         </a>
                         <text x="190" y="18" class="diamond-label">Zachary Lanz</text>
 
                         <!-- Tools & Platforms (right) - Infrastructure -->
                         <a class="diamond-vertex" data-scroll-to="about-tools">
                             <circle cx="328" cy="190" r="24" class="diamond-node"/>
-                            <image x="304" y="166" width="48" height="48" href="https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/infrastructure.svg" class="diamond-stix-icon"/>
+                            <image x="304" y="166" width="48" height="48" href="images/icons/stix/infrastructure.svg" class="diamond-stix-icon"/>
                         </a>
                         <text x="328" y="232" class="diamond-label">Tools &amp; Platforms</text>
 
                         <!-- Integration & Collaboration (bottom) - Grouping -->
                         <a class="diamond-vertex" data-scroll-to="about-integration">
                             <circle cx="190" cy="328" r="24" class="diamond-node"/>
-                            <image x="166" y="304" width="48" height="48" href="https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/grouping.svg" class="diamond-stix-icon"/>
+                            <image x="166" y="304" width="48" height="48" href="images/icons/stix/grouping.svg" class="diamond-stix-icon"/>
                         </a>
                         <text x="190" y="362" class="diamond-label">Integration &amp;</text>
                         <text x="190" y="376" class="diamond-label">Collaboration</text>
@@ -183,7 +187,7 @@
                         <!-- Capabilities (left) - Attack Pattern -->
                         <a class="diamond-vertex" data-scroll-to="about-capabilities">
                             <circle cx="52" cy="190" r="24" class="diamond-node"/>
-                            <image x="28" y="166" width="48" height="48" href="https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/attack-pattern.svg" class="diamond-stix-icon"/>
+                            <image x="28" y="166" width="48" height="48" href="images/icons/stix/attack-pattern.svg" class="diamond-stix-icon"/>
                         </a>
                         <text x="52" y="232" class="diamond-label">Capabilities</text>
                     </svg>
@@ -283,6 +287,24 @@
         </div>
     </section>
 
+    <!-- Blog Preview Section -->
+    <section class="blog-preview" id="blog-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Insights</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="blog-preview-grid" id="blog-preview-grid">
+                <!-- Blog posts loaded dynamically -->
+            </div>
+            <div class="blog-preview-cta">
+                <a href="blog.html" class="btn btn-secondary">
+                    <span class="btn-text">View All Posts</span>
+                    <span class="btn-icon">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -362,7 +384,47 @@
 
     <!-- Back to Top -->
     <button class="back-to-top" aria-label="Back to top">&uarr;</button>
-  
+
     <script src="script.js"></script>
+    <script>
+        // Load blog preview
+        async function loadBlogPreview() {
+            try {
+                const response = await fetch('blog-posts.json');
+                const data = await response.json();
+                const grid = document.getElementById('blog-preview-grid');
+
+                if (data.posts && data.posts.length > 0) {
+                    const latestPosts = data.posts.slice(0, 3);
+                    grid.innerHTML = latestPosts.map(post => {
+                        const date = new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+                        return `
+                            <a href="article.html?id=${post.id}" class="blog-preview-card">
+                                ${post.image ? `<div class="blog-preview-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+                                <div class="blog-preview-content">
+                                    <span class="blog-category">${post.category}</span>
+                                    <h3>${post.title}</h3>
+                                    <p>${post.excerpt}</p>
+                                    <div class="blog-preview-meta">
+                                        <span class="blog-date">${date}</span>
+                                        <span class="read-time">${post.readTime}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        `;
+                    }).join('');
+                } else {
+                    grid.innerHTML = '<p style="text-align: center; color: var(--text-secondary);">Blog posts coming soon...</p>';
+                }
+            } catch (error) {
+                console.error('Error loading blog preview:', error);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadBlogPreview);
+    </script>
 </body>
 </html>

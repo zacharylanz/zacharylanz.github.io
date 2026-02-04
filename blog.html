@@ -21,6 +21,9 @@
     <!-- RSS Feed -->
     <link rel="alternate" type="application/rss+xml" title="Zachary Lanz - CTI Insights" href="https://www.lanzsec.com/feed.xml">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.lanzsec.com/blog.html">
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -69,6 +72,7 @@
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="blog.html" class="nav-link active">Blog</a></li>
                 <li><a href="stix-graph.html" class="nav-link">Exploration Graph</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 0.5rem;">
@@ -184,16 +188,19 @@
                     });
 
                     return `
-                        <a href="article.html?id=${post.id}" class="blog-card" data-category="${post.category}">
-                            <div class="blog-card-header">
-                                <span class="blog-category">${post.category}</span>
-                                <span class="blog-date">${date}</span>
-                            </div>
-                            <h3 class="blog-title">${post.title}</h3>
-                            <p class="blog-excerpt">${post.excerpt}</p>
-                            <div class="blog-card-footer">
-                                <span class="read-time">${post.readTime}</span>
-                                <span class="blog-read-more">Read More &rarr;</span>
+                        <a href="article.html?id=${post.id}" class="blog-card ${post.image ? 'has-image' : ''}" data-category="${post.category}">
+                            ${post.image ? `<div class="blog-card-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+                            <div class="blog-card-content">
+                                <div class="blog-card-header">
+                                    <span class="blog-category">${post.category}</span>
+                                    <span class="blog-date">${date}</span>
+                                </div>
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt}</p>
+                                <div class="blog-card-footer">
+                                    <span class="read-time">${post.readTime}</span>
+                                    <span class="blog-read-more">Read More &rarr;</span>
+                                </div>
                             </div>
                         </a>
                     `;
