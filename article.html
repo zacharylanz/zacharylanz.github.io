@@ -11,7 +11,7 @@
     <meta property="og:description" content="CTI program insights, geopolitical threat analysis, and intelligence tradecraft.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.lanzsec.com/article.html">
-    <meta property="og:image" content="https://www.lanzsec.com/headshot.jpg">
+    <meta property="og:image" content="https://www.lanzsec.com/images/headshot.jpg">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
@@ -276,8 +276,9 @@
                     </div>
                     <h1 class="article-title">${post.title}</h1>
                     ${post.subtitle ? `<p class="article-subtitle">${post.subtitle}</p>` : ''}
+                    ${post.image ? `<img src="${post.image}" alt="${post.title}" class="article-cover-image">` : ''}
                     <div class="article-author">
-                        <img src="headshot.jpg" alt="Zachary Lanz" class="author-image">
+                        <img src="images/headshot.jpg" alt="Zachary Lanz" class="author-image">
                         <div class="author-info">
                             <span class="author-name">Zachary Lanz</span>
                         </div>
