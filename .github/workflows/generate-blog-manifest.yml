@@ -21,19 +21,19 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Generate blog-posts.json
+      - name: Generate data/blog-posts.json
         run: python scripts/generate-blog-posts.py
 
       - name: Check for changes
         id: changes
         run: |
-          git diff --quiet blog-posts.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --quiet data/blog-posts.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Commit updated manifest
         if: steps.changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add blog-posts.json
-          git commit -m "chore: auto-generate blog-posts.json from front matter"
+          git add data/blog-posts.json
+          git commit -m "chore: auto-generate data/blog-posts.json from front matter"
           git push

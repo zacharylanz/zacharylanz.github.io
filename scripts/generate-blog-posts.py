@@ -61,7 +61,7 @@ def main():
     # Resolve paths relative to repo root
     repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     posts_dir = os.path.join(repo_root, "posts")
-    output_file = os.path.join(repo_root, "blog-posts.json")
+    output_file = os.path.join(repo_root, "data", "blog-posts.json")
 
     md_files = sorted(glob.glob(os.path.join(posts_dir, "*.md")))
 

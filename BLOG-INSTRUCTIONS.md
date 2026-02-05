@@ -31,9 +31,9 @@ Your content here with **bold text** and *italic text*.
 More content...
 ```
 
-### Step 2: Add Metadata to blog-posts.json
+### Step 2: Add Metadata to data/blog-posts.json
 
-Open `blog-posts.json` and add a new entry to the `posts` array:
+Open `data/blog-posts.json` and add a new entry to the `posts` array:
 
 ```json
 {
@@ -64,7 +64,7 @@ Open `blog-posts.json` and add a new entry to the `posts` array:
 
 1. Commit your changes to git:
    ```bash
-   git add posts/your-article.md blog-posts.json
+   git add posts/your-article.md data/blog-posts.json
    git commit -m "Add new blog post: Your Article Title"
    git push
    ```
@@ -131,7 +131,7 @@ The blog system automatically applies your site's styling to markdown content:
 - **Blockquotes** have left borders
 - All content is responsive and mobile-friendly
 
-## Example: Complete blog-posts.json Entry
+## Example: Complete data/blog-posts.json Entry
 
 ```json
 {
@@ -172,7 +172,7 @@ The blog system automatically applies your site's styling to markdown content:
 ## Troubleshooting
 
 **Article not showing on blog page:**
-- Check that `blog-posts.json` is valid JSON (use a JSON validator)
+- Check that `data/blog-posts.json` is valid JSON (use a JSON validator)
 - Ensure the markdown file path is correct
 - Clear browser cache and reload
 

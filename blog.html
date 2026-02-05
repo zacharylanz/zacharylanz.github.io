@@ -47,7 +47,7 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0d1f'/><text x='50' y='68' font-family='monospace' font-size='55' font-weight='bold' fill='%236366f1' text-anchor='middle'>Z</text><rect x='10' y='82' width='80' height='3' rx='1' fill='%236366f1' opacity='0.6'/></svg>">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -174,7 +174,7 @@
     <!-- Back to Top -->
     <button class="back-to-top" aria-label="Back to top">&uarr;</button>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
     <script>
         let allPosts = [];
         let currentCategory = 'all';
@@ -265,7 +265,7 @@
 
         async function loadBlogPosts() {
             try {
-                const response = await fetch('blog-posts.json');
+                const response = await fetch('data/blog-posts.json');
                 const data = await response.json();
 
                 if (data.posts && data.posts.length > 0) {
