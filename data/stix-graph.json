@@ -1,7 +1,7 @@
 {
   "identity": {
     "label": "Zachary Lanz",
-    "description": "Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently serving as Senior CTI Consultant at Ernst & Young and Adjunct Professor at the University at Albany."
+    "description": "Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently serving as Manager, Cyber Threat Intelligence at Mondelez International and Adjunct Professor at the University at Albany."
   },
   "categories": {
     "cat-org": {
@@ -11,9 +11,14 @@
       "description": "Professional organizations and employers where CTI expertise has been applied — from Fortune 500 consulting to federal internships and academia.",
       "children": [
         {
+          "id": "org-mondelez",
+          "label": "Mondelez International",
+          "description": "Manager, Cyber Threat Intelligence (2026–Present). Leading CTI operations at one of the world's largest snacking companies, driving intelligence-led security across a global enterprise."
+        },
+        {
           "id": "org-ey",
           "label": "Ernst & Young",
-          "description": "Senior CTI Consultant (2025–Present). Building and maturing CTI programs for Fortune 500 clients across multiple industries. Integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level."
+          "description": "Senior CTI Consultant (2025–2026). Built and matured CTI programs for Fortune 500 clients across multiple industries. Integrated intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level."
         },
         {
           "id": "org-nuharbor",

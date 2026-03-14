@@ -1,7 +1,7 @@
 {
   "identity": {
     "label": "Zachary Lanz",
-    "description": "Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently serving as Senior CTI Consultant at Ernst & Young and Adjunct Professor at the University at Albany."
+    "description": "Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently serving as Manager, Cyber Threat Intelligence at Mondelez International and Adjunct Professor at the University at Albany."
   },
   "categories": {
     "cat-org": {
@@ -54,6 +54,7 @@
     }
   },
   "id_map": {
+    "Mondelez International": "org-mondelez",
     "Ernst & Young": "org-ey",
     "NuHarbor Security": "org-nuharbor",
     "VMware": "org-vmware",
@@ -111,7 +112,8 @@
     "edu-abroad": "Ben-Gurion\nUniversity"
   },
   "descriptions": {
-    "org-ey": "Senior CTI Consultant (2025\u2013Present). Building and maturing CTI programs for Fortune 500 clients across multiple industries. Integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level.",
+    "org-mondelez": "Manager, Cyber Threat Intelligence (2026\u2013Present). Leading CTI operations at one of the world's largest snacking companies, driving intelligence-led security across a global enterprise.",
+    "org-ey": "Senior CTI Consultant (2025\u20132026). Built and matured CTI programs for Fortune 500 clients across multiple industries. Integrated intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level.",
     "org-nuharbor": "Threat Intelligence Lead (2023\u20132025). Owned 100% of Threat Operations strategy for managed security clients. Led a full TIP migration from ThreatConnect to OpenCTI, delivering a 75% reduction in licensing costs while improving intelligence workflow efficiency and analyst productivity.",
     "org-vmware": "Information Security Analyst (2021\u20132022). Drove security awareness and policy compliance initiatives across the organization. Increased employee security engagement by 45% and achieved 99% security policy compliance through targeted campaigns and metrics-driven reporting.",
     "org-ge": "Cybersecurity Threat Management Intern (2020). Supported enterprise threat operations by identifying 16,000+ indicators of compromise and resolving 6 incidents involving malware infections and APT campaign artifacts. Gained hands-on experience with SIEM triage and IOC enrichment workflows.",
