@@ -69,10 +69,6 @@ def main():
     for filepath in md_files:
         basename = os.path.basename(filepath)
 
-        # Skip template file
-        if basename.upper().startswith("TEMPLATE"):
-            continue
-
         meta = parse_front_matter(filepath)
         if meta is None:
             print(f"  Skipping {basename} (no front matter found)")

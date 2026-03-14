@@ -177,135 +177,6 @@ function initScrollSpy() {
 }
 
 // ===========================
-// Hero Stats Animation
-// ===========================
-function initStatsAnimation() {
-    const threatLevel = document.getElementById('threat-level');
-    const status = document.getElementById('status');
-    const clearance = document.getElementById('clearance');
-    if (!threatLevel || !status || !clearance) return;
-
-    const levels = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
-    const statuses = ['STANDBY', 'MONITORING', 'ANALYZING', 'ACTIVE'];
-    const clearances = ['PENDING', 'VERIFIED', 'AUTHORIZED'];
-
-    let levelIndex = 0;
-    let statusIndex = 0;
-    let clearanceIndex = 0;
-
-    // Animate to final values
-    const levelInterval = setInterval(() => {
-        threatLevel.textContent = levels[levelIndex];
-        levelIndex++;
-        if (levelIndex >= levels.length) {
-            clearInterval(levelInterval);
-        }
-    }, 300);
-
-    setTimeout(() => {
-        const statusInterval = setInterval(() => {
-            status.textContent = statuses[statusIndex];
-            statusIndex++;
-            if (statusIndex >= statuses.length) {
-                clearInterval(statusInterval);
-            }
-        }, 300);
-    }, 500);
-
-    setTimeout(() => {
-        const clearanceInterval = setInterval(() => {
-            clearance.textContent = clearances[clearanceIndex];
-            clearanceIndex++;
-            if (clearanceIndex >= clearances.length) {
-                clearInterval(clearanceInterval);
-            }
-        }, 300);
-    }, 1000);
-}
-
-// ===========================
-// GitHub API Integration
-// ===========================
-async function fetchGitHubRepos(username) {
-    const reposContainer = document.getElementById('github-repos');
-
-    try {
-        reposContainer.innerHTML = '<div class="loading-message"><p>Fetching repositories...</p></div>';
-
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
-
-        if (!response.ok) {
-            throw new Error('User not found or API limit reached');
-        }
-
-        const repos = await response.json();
-
-        if (repos.length === 0) {
-            reposContainer.innerHTML = '<div class="loading-message"><p>No repositories found</p></div>';
-            return;
-        }
-
-        reposContainer.innerHTML = '';
-
-        repos.forEach(repo => {
-            const repoCard = document.createElement('div');
-            repoCard.className = 'repo-card';
-
-            repoCard.innerHTML = `
-                <div class="repo-header">
-                    <h4 class="repo-name">
-                        <a href="${repo.html_url}" target="_blank" rel="noopener" class="repo-link">
-                            ${repo.name}
-                        </a>
-                    </h4>
-                </div>
-                <p class="repo-description">
-                    ${repo.description || 'No description available'}
-                </p>
-                <div class="repo-meta">
-                    ${repo.language ? `<span class="repo-language">▪ ${repo.language}</span>` : ''}
-                    <span class="repo-stat">★ ${repo.stargazers_count}</span>
-                    <span class="repo-stat">⑂ ${repo.forks_count}</span>
-                </div>
-            `;
-
-            reposContainer.appendChild(repoCard);
-        });
-
-    } catch (error) {
-        reposContainer.innerHTML = `
-            <div class="loading-message">
-                <p style="color: var(--accent-danger);">Error: ${error.message}</p>
-                <p>Please check the username and try again</p>
-            </div>
-        `;
-    }
-}
-
-function initGitHubFetch() {
-    const fetchButton = document.getElementById('fetch-repos');
-    const usernameInput = document.getElementById('github-username');
-    if (!fetchButton || !usernameInput) return;
-
-    fetchButton.addEventListener('click', () => {
-        const username = usernameInput.value.trim();
-        if (username) {
-            fetchGitHubRepos(username);
-        }
-    });
-
-    // Allow Enter key to trigger fetch
-    usernameInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const username = usernameInput.value.trim();
-            if (username) {
-                fetchGitHubRepos(username);
-            }
-        }
-    });
-}
-
-// ===========================
 // Intersection Observer for Animations
 // ===========================
 function initScrollAnimations() {
@@ -521,8 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initNavToggle,
         initSmoothScroll,
         initScrollSpy,
-        initStatsAnimation,
-        initGitHubFetch,
         initScrollAnimations,
         initNavbarScroll,
         initTerminalEffects,
@@ -544,28 +413,6 @@ document.addEventListener('DOMContentLoaded', () => {
         firstNavLink.classList.add('active');
     }
 });
-
-// ===========================
-// Service Worker Registration (Optional for PWA)
-// ===========================
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        // Uncomment when you want to add PWA functionality
-        // navigator.serviceWorker.register('/sw.js')
-        //     .then(reg => console.log('Service Worker registered'))
-        //     .catch(err => console.log('Service Worker registration failed'));
-    });
-}
-
-// ===========================
-// Prevent Right Click on Images (Optional)
-// ===========================
-// Uncomment if you want to protect your content
-// document.addEventListener('contextmenu', (e) => {
-//     if (e.target.tagName === 'IMG') {
-//         e.preventDefault();
-//     }
-// });
 
 // ===========================
 // Copy Email to Clipboard
