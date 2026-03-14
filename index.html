@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Background Effects -->
@@ -168,32 +168,32 @@
                         <image x="164" y="164" width="52" height="52" href="images/icons/stix/threat-actor.svg" class="diamond-stix-icon"/>
 
                         <!-- Zachary Lanz (top) - Identity -->
-                        <a class="diamond-vertex" data-scroll-to="about-intro">
+                        <g class="diamond-vertex">
                             <circle cx="190" cy="52" r="24" class="diamond-node"/>
                             <image x="166" y="28" width="48" height="48" href="images/icons/stix/identity.svg" class="diamond-stix-icon"/>
-                        </a>
+                        </g>
                         <text x="190" y="18" class="diamond-label">Zachary Lanz</text>
 
                         <!-- Tools & Platforms (right) - Infrastructure -->
-                        <a class="diamond-vertex" data-scroll-to="about-tools">
+                        <g class="diamond-vertex">
                             <circle cx="328" cy="190" r="24" class="diamond-node"/>
                             <image x="304" y="166" width="48" height="48" href="images/icons/stix/infrastructure.svg" class="diamond-stix-icon"/>
-                        </a>
+                        </g>
                         <text x="328" y="232" class="diamond-label">Tools &amp; Platforms</text>
 
                         <!-- Integration & Collaboration (bottom) - Grouping -->
-                        <a class="diamond-vertex" data-scroll-to="about-integration">
+                        <g class="diamond-vertex">
                             <circle cx="190" cy="328" r="24" class="diamond-node"/>
                             <image x="166" y="304" width="48" height="48" href="images/icons/stix/grouping.svg" class="diamond-stix-icon"/>
-                        </a>
+                        </g>
                         <text x="190" y="362" class="diamond-label">Integration &amp;</text>
                         <text x="190" y="376" class="diamond-label">Collaboration</text>
 
                         <!-- Capabilities (left) - Attack Pattern -->
-                        <a class="diamond-vertex" data-scroll-to="about-capabilities">
+                        <g class="diamond-vertex">
                             <circle cx="52" cy="190" r="24" class="diamond-node"/>
                             <image x="28" y="166" width="48" height="48" href="images/icons/stix/attack-pattern.svg" class="diamond-stix-icon"/>
-                        </a>
+                        </g>
                         <text x="52" y="232" class="diamond-label">Capabilities</text>
                     </svg>
                 </div>
@@ -261,10 +261,13 @@
                 <span class="tag">Threat Hunting</span>
                 <span class="tag">Detection Engineering</span>
                 <span class="tag">SOC & Incident Response</span>
+                <span class="tag">Offensive Security</span>
                 <span class="tag">Crisis Management</span>
                 <span class="tag">Communications & Awareness</span>
+                <span class="tag">Executive Leadership</span>
                 <span class="tag">Risk Management</span>
-                <span class="tag">HR & Insider Threat</span>
+                <span class="tag">Human Resources</span>
+                <span class="tag">Insider Threat</span>
             </div>
 
             <!-- Tools & Platforms -->
@@ -282,6 +285,9 @@
                 <span class="skill-badge">VirusTotal</span>
                 <span class="skill-badge">Shodan</span>
                 <span class="skill-badge">Silent Push</span>
+                <span class="skill-badge">Volatility</span>
+                <span class="skill-badge">Wireshark</span>
+                <span class="skill-badge">Feedly</span>
                 <span class="skill-badge">Python</span>
                 <span class="skill-badge">PowerBI</span>
                 <span class="skill-badge">Tableau</span>
@@ -393,6 +399,21 @@
 
     <script src="js/script.js"></script>
     <script>
+        function getCategoryGradient(category) {
+            const gradients = {
+                'Career Development': 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                'Threat Intelligence': 'linear-gradient(135deg, #059669, #0d9488)',
+                'OSINT': 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                'Malware Analysis': 'linear-gradient(135deg, #dc2626, #f59e0b)',
+                'Detection Engineering': 'linear-gradient(135deg, #f59e0b, #ea580c)',
+                'Incident Response': 'linear-gradient(135deg, #ef4444, #ec4899)',
+                'Geopolitical Analysis': 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+                'Tools & Techniques': 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+                'Research': 'linear-gradient(135deg, #14b8a6, #3b82f6)',
+            };
+            return gradients[category] || 'linear-gradient(135deg, #6366f1, #3b82f6)';
+        }
+
         // Load blog preview
         async function loadBlogPreview() {
             try {
@@ -408,9 +429,13 @@
                             month: 'short',
                             day: 'numeric'
                         });
+                        const gradient = getCategoryGradient(post.category);
                         return `
                             <a href="article.html?id=${post.id}" class="blog-preview-card">
-                                ${post.image ? `<div class="blog-preview-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+                                ${post.image
+                                    ? `<div class="blog-preview-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>`
+                                    : `<div class="blog-preview-gradient" style="background: ${gradient};"><span class="gradient-category">${post.category}</span></div>`
+                                }
                                 <div class="blog-preview-content">
                                     <span class="blog-category">${post.category}</span>
                                     <h3>${post.title}</h3>

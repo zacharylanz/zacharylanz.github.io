@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
@@ -175,6 +175,21 @@
 
     <script src="js/script.js"></script>
     <script>
+        function getCategoryGradient(category) {
+            const gradients = {
+                'Career Development': 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                'Threat Intelligence': 'linear-gradient(135deg, #059669, #0d9488)',
+                'OSINT': 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                'Malware Analysis': 'linear-gradient(135deg, #dc2626, #f59e0b)',
+                'Detection Engineering': 'linear-gradient(135deg, #f59e0b, #ea580c)',
+                'Incident Response': 'linear-gradient(135deg, #ef4444, #ec4899)',
+                'Geopolitical Analysis': 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+                'Tools & Techniques': 'linear-gradient(135deg, #8b5cf6, #ec4899)',
+                'Research': 'linear-gradient(135deg, #14b8a6, #3b82f6)',
+            };
+            return gradients[category] || 'linear-gradient(135deg, #6366f1, #3b82f6)';
+        }
+
         // Reading progress bar
         function updateReadingProgress() {
             const progressBar = document.getElementById('reading-progress');
@@ -325,7 +340,10 @@
                     </div>
                     <h1 class="article-title">${post.title}</h1>
                     ${post.subtitle ? `<p class="article-subtitle">${post.subtitle}</p>` : ''}
-                    ${post.image ? `<img src="${post.image}" alt="${post.title}" class="article-cover-image">` : ''}
+                    ${post.image
+                        ? `<img src="${post.image}" alt="${post.title}" class="article-cover-image">`
+                        : `<div class="article-cover-gradient" style="background: ${getCategoryGradient(post.category)};"><span class="gradient-category">${post.category}</span></div>`
+                    }
                     <div class="article-author">
                         <img src="images/headshot.jpg" alt="Zachary Lanz" class="author-image">
                         <div class="author-info">
@@ -418,9 +436,13 @@
                         month: 'short',
                         day: 'numeric'
                     });
+                    const gradient = getCategoryGradient(post.category);
                     return `
                         <a href="article.html?id=${post.id}" class="related-post-card">
-                            ${post.image ? `<div class="related-post-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>` : ''}
+                            ${post.image
+                                ? `<div class="related-post-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>`
+                                : `<div class="blog-preview-gradient" style="background: ${gradient};"><span class="gradient-category">${post.category}</span></div>`
+                            }
                             <div class="related-post-content">
                                 <span class="blog-category">${post.category}</span>
                                 <h4>${post.title}</h4>
