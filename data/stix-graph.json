@@ -8,22 +8,22 @@
       "label": "Organizations",
       "group": "organization",
       "edge_label": "works-for",
-      "description": "Professional organizations and employers where CTI expertise has been applied \u2014 from Fortune 500 consulting to federal internships and academia.",
+      "description": "Professional organizations and employers where CTI expertise has been applied — from Fortune 500 consulting to federal internships and academia.",
       "children": [
         {
           "id": "org-ey",
           "label": "Ernst & Young",
-          "description": "Senior CTI Consultant (2025\u2013Present). Building and maturing CTI programs for Fortune 500 clients across multiple industries. Integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level."
+          "description": "Senior CTI Consultant (2025–Present). Building and maturing CTI programs for Fortune 500 clients across multiple industries. Integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level."
         },
         {
           "id": "org-nuharbor",
           "label": "NuHarbor Security",
-          "description": "Threat Intelligence Lead (2023\u20132025). Owned 100% of Threat Operations strategy for managed security clients. Led a full TIP migration from ThreatConnect to OpenCTI, delivering a 75% reduction in licensing costs while improving intelligence workflow efficiency and analyst productivity."
+          "description": "Threat Intelligence Lead (2023–2025). Owned 100% of Threat Operations strategy for managed security clients. Led a full TIP migration from ThreatConnect to OpenCTI, delivering a 75% reduction in licensing costs while improving intelligence workflow efficiency and analyst productivity."
         },
         {
           "id": "org-vmware",
           "label": "VMware",
-          "description": "Information Security Analyst (2021\u20132022). Drove security awareness and policy compliance initiatives across the organization. Increased employee security engagement by 45% and achieved 99% security policy compliance through targeted campaigns and metrics-driven reporting."
+          "description": "Information Security Analyst (2021–2022). Drove security awareness and policy compliance initiatives across the organization. Increased employee security engagement by 45% and achieved 99% security policy compliance through targeted campaigns and metrics-driven reporting."
         },
         {
           "id": "org-ge",
@@ -33,17 +33,17 @@
         {
           "id": "org-nys",
           "label": "NYS DHSES",
-          "description": "Policy & Program Development Intern (2019\u20132020). Supported emergency management policy development at the New York State Division of Homeland Security and Emergency Services. Created a COVID-19 mobility tracker used by the NYS Senior Policy Advisor for situational awareness during the pandemic response."
+          "description": "Policy & Program Development Intern (2019–2020). Supported emergency management policy development at the New York State Division of Homeland Security and Emergency Services. Created a COVID-19 mobility tracker used by the NYS Senior Policy Advisor for situational awareness during the pandemic response."
         },
         {
           "id": "org-ualbany-teach",
           "label": "UAlbany (Adjunct)",
-          "description": "Adjunct Professor (2024\u2013Present). Teaching 30+ graduate students foundational CTI concepts, structured analytic techniques, intelligence writing, and threat assessment methodologies. Bridging academic theory with real-world operational intelligence experience."
+          "description": "Adjunct Professor (2024–Present). Teaching 30+ graduate students foundational CTI concepts, structured analytic techniques, intelligence writing, and threat assessment methodologies. Bridging academic theory with real-world operational intelligence experience."
         },
         {
           "id": "org-iq4",
           "label": "IQ4",
-          "description": "Volunteer Mentor (2019\u20132023). Taught college students insider threats and risk management practices in accordance with the NIST cybersecurity framework through IQ4's 'The Threat Within' program."
+          "description": "Volunteer Mentor (2019–2023). Taught college students insider threats and risk management practices in accordance with the NIST cybersecurity framework through IQ4's 'The Threat Within' program."
         }
       ]
     },
@@ -51,7 +51,7 @@
       "label": "Skills",
       "group": "skill",
       "edge_label": "skilled-in",
-      "description": "Core competencies spanning the full intelligence lifecycle \u2014 from collection and analysis to stakeholder integration and strategic communication.",
+      "description": "Core competencies spanning the full intelligence lifecycle — from collection and analysis to stakeholder integration and strategic communication.",
       "children": [
         {
           "id": "skill-cti",
@@ -81,7 +81,7 @@
         {
           "id": "skill-writing",
           "label": "Strategic\nCommunication",
-          "description": "Translating complex technical threats for diverse audiences \u2014 from detailed analyst reports to executive briefings and board-level presentations. Crafting threat advisories, intelligence summaries, and awareness content that drives action across technical and non-technical stakeholders."
+          "description": "Translating complex technical threats for diverse audiences — from detailed analyst reports to executive briefings and board-level presentations. Crafting threat advisories, intelligence summaries, and awareness content that drives action across technical and non-technical stakeholders."
         }
       ]
     },
@@ -104,7 +104,7 @@
         {
           "id": "tool-misp",
           "label": "MISP",
-          "description": "Malware Information Sharing Platform \u2014 open-source threat intelligence sharing and collaboration platform. Used for structured IOC sharing with ISACs, partner organizations, and automated feed ingestion into TIP environments."
+          "description": "Malware Information Sharing Platform — open-source threat intelligence sharing and collaboration platform. Used for structured IOC sharing with ISACs, partner organizations, and automated feed ingestion into TIP environments."
         },
         {
           "id": "tool-rf",
@@ -192,17 +192,17 @@
         {
           "id": "cert-gcti",
           "label": "GIAC GCTI",
-          "description": "GIAC Cyber Threat Intelligence (GCTI) \u2014 obtained November 2025 after completing SANS FOR578. Validates expertise across the full intelligence lifecycle: requirements development, collection management, structured analysis, dissemination, and feedback. The premier certification for CTI professionals."
+          "description": "GIAC Cyber Threat Intelligence (GCTI) — obtained November 2025 after completing SANS FOR578. Validates expertise across the full intelligence lifecycle: requirements development, collection management, structured analysis, dissemination, and feedback. The premier certification for CTI professionals."
         },
         {
           "id": "cert-cysa",
           "label": "CompTIA CySA+",
-          "description": "CompTIA Cybersecurity Analyst (CySA+) \u2014 obtained November 2023. Validates skills in threat detection and analysis, vulnerability management, security monitoring, and incident response. Demonstrates proficiency in using behavioral analytics to identify and combat network threats."
+          "description": "CompTIA Cybersecurity Analyst (CySA+) — obtained November 2023. Validates skills in threat detection and analysis, vulnerability management, security monitoring, and incident response. Demonstrates proficiency in using behavioral analytics to identify and combat network threats."
         },
         {
           "id": "cert-splunk",
           "label": "Splunk\nFundamentals",
-          "description": "Splunk Fundamentals Certificates 1 & 2 \u2014 obtained February 2023. Core competency in Splunk search processing language (SPL), report building, dashboard creation, and data visualization for security operations and threat hunting workflows."
+          "description": "Splunk Fundamentals Certificates 1 & 2 — obtained February 2023. Core competency in Splunk search processing language (SPL), report building, dashboard creation, and data visualization for security operations and threat hunting workflows."
         }
       ]
     },
@@ -215,7 +215,7 @@
         {
           "id": "fw-attack",
           "label": "MITRE\nATT&CK",
-          "description": "MITRE ATT&CK \u2014 comprehensive knowledge base of adversarial tactics, techniques, and procedures (TTPs). Used extensively for threat actor profiling, detection engineering gap analysis, purple team exercises, and mapping organizational defensive coverage against priority threat groups."
+          "description": "MITRE ATT&CK — comprehensive knowledge base of adversarial tactics, techniques, and procedures (TTPs). Used extensively for threat actor profiling, detection engineering gap analysis, purple team exercises, and mapping organizational defensive coverage against priority threat groups."
         },
         {
           "id": "fw-stix",
@@ -225,22 +225,22 @@
         {
           "id": "fw-icd203",
           "label": "ICD 203/206",
-          "description": "Intelligence Community Directives 203 (Analytic Standards) and 206 (Sourcing Requirements). Applied to ensure intelligence products meet rigorous standards for objectivity, sourcing transparency, analytic tradecraft, and uncertainty communication \u2014 bridging IC methodology with private-sector CTI."
+          "description": "Intelligence Community Directives 203 (Analytic Standards) and 206 (Sourcing Requirements). Applied to ensure intelligence products meet rigorous standards for objectivity, sourcing transparency, analytic tradecraft, and uncertainty communication — bridging IC methodology with private-sector CTI."
         },
         {
           "id": "fw-nist",
           "label": "NIST CSF",
-          "description": "NIST Cybersecurity Framework \u2014 risk-based approach to managing cybersecurity across Identify, Protect, Detect, Respond, and Recover functions. Used for aligning CTI program outputs with organizational risk management objectives and regulatory requirements."
+          "description": "NIST Cybersecurity Framework — risk-based approach to managing cybersecurity across Identify, Protect, Detect, Respond, and Recover functions. Used for aligning CTI program outputs with organizational risk management objectives and regulatory requirements."
         },
         {
           "id": "fw-diamond",
           "label": "Diamond Model",
-          "description": "Diamond Model of Intrusion Analysis \u2014 framework relating adversary, capability, infrastructure, and victim across intrusion events. Applied for structuring intrusion analysis, identifying analytic pivots, and communicating threat relationships to stakeholders."
+          "description": "Diamond Model of Intrusion Analysis — framework relating adversary, capability, infrastructure, and victim across intrusion events. Applied for structuring intrusion analysis, identifying analytic pivots, and communicating threat relationships to stakeholders."
         },
         {
           "id": "fw-killchain",
           "label": "Cyber\nKill Chain",
-          "description": "Lockheed Martin Cyber Kill Chain \u2014 seven-phase framework for understanding and defending against cyber intrusions: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, C2, and Actions on Objectives. Used for mapping defensive capabilities and identifying detection opportunities."
+          "description": "Lockheed Martin Cyber Kill Chain — seven-phase framework for understanding and defending against cyber intrusions: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, C2, and Actions on Objectives. Used for mapping defensive capabilities and identifying detection opportunities."
         }
       ]
     },
@@ -251,9 +251,9 @@
       "description": "Peer-reviewed research contributions to the cybersecurity and intelligence community.",
       "children": [
         {
-          "id": "pub-thesis",
-          "label": "Master's Thesis\nResearch",
-          "description": "\"Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories.\" Published in the International Journal of Cybersecurity Intelligence & Cybercrime, Vol. 5(1), pp. 43\u201370 (April 2022). Analyzed patterns in CISA advisories to identify systemic vulnerabilities across critical infrastructure sectors."
+          "id": "pub-master-s-thesis-research",
+          "label": "Master's Thesis Research",
+          "description": "Master's Thesis Research — part of the professional CTI toolkit and experience."
         }
       ]
     },
@@ -261,22 +261,22 @@
       "label": "Education",
       "group": "education",
       "edge_label": "educated-at",
-      "description": "Academic foundation combining intelligence analysis, homeland security, and cybersecurity \u2014 including international research experience.",
+      "description": "Academic foundation combining intelligence analysis, homeland security, and cybersecurity — including international research experience.",
       "children": [
         {
           "id": "edu-ms",
           "label": "M.S. Information\nScience",
-          "description": "Master of Science in Information Science with a concentration in Intelligence Analysis. SUNY Albany, 2019\u20132020. Graduated with a 4.0 GPA. Coursework focused on intelligence collection, structured analytic techniques, geospatial analysis, and cybersecurity policy. Thesis published in a peer-reviewed journal."
+          "description": "Master of Science in Information Science with a concentration in Intelligence Analysis. SUNY Albany, 2019–2020. Graduated with a 4.0 GPA. Coursework focused on intelligence collection, structured analytic techniques, geospatial analysis, and cybersecurity policy. Thesis published in a peer-reviewed journal."
         },
         {
           "id": "edu-bs",
           "label": "B.S. Emergency\nPreparedness",
-          "description": "Bachelor of Science in Emergency Preparedness, Homeland Security & Cybersecurity. SUNY Albany, 2016\u20132020. Graduated Magna Cum Laude. Built a foundation in risk assessment, critical infrastructure protection, emergency management, and cybersecurity principles."
+          "description": "Bachelor of Science in Emergency Preparedness, Homeland Security & Cybersecurity. SUNY Albany, 2016–2020. Graduated Magna Cum Laude. Built a foundation in risk assessment, critical infrastructure protection, emergency management, and cybersecurity principles."
         },
         {
           "id": "edu-abroad",
           "label": "Ben-Gurion\nUniversity",
-          "description": "Study Abroad \u2014 Security and Conflict Research. Ben-Gurion University of the Negev, Israel, January\u2013June 2019. Studied counterterrorism policy, regional security dynamics, and intelligence methodology in one of the world's leading security research environments."
+          "description": "Study Abroad — Security and Conflict Research. Ben-Gurion University of the Negev, Israel, January–June 2019. Studied counterterrorism policy, regional security dynamics, and intelligence methodology in one of the world's leading security research environments."
         }
       ]
     },
@@ -289,10 +289,10 @@
         {
           "id": "award-alumni",
           "label": "Outstanding\nYoung Alumni",
-          "description": "Outstanding Young Alumni Award (May 2023) \u2014 Awarded by the State University of New York at Albany to alumni whose early career achievements and civic life demonstrate great promise and accomplishment beyond the norm expected in their field. Recognized for exceptional impact in cyber threat intelligence and contributions to the cybersecurity community."
+          "description": "Outstanding Young Alumni Award (May 2023) — Awarded by the State University of New York at Albany to alumni whose early career achievements and civic life demonstrate great promise and accomplishment beyond the norm expected in their field. Recognized for exceptional impact in cyber threat intelligence and contributions to the cybersecurity community."
         }
       ]
     }
   },
-  "generated": "2026-03-14T00:00:00+00:00"
+  "generated": "2026-03-14T17:33:05.542102+00:00"
 }
