@@ -1,0 +1,298 @@
+{
+  "identity": {
+    "label": "Zachary Lanz",
+    "description": "Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently serving as Senior CTI Consultant at Ernst & Young and Adjunct Professor at the University at Albany."
+  },
+  "categories": {
+    "cat-org": {
+      "label": "Organizations",
+      "group": "organization",
+      "edge_label": "works-for",
+      "description": "Professional organizations and employers where CTI expertise has been applied \u2014 from Fortune 500 consulting to federal internships and academia.",
+      "children": [
+        {
+          "id": "org-ey",
+          "label": "Ernst & Young",
+          "description": "Senior CTI Consultant (2025\u2013Present). Building and maturing CTI programs for Fortune 500 clients across multiple industries. Integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management to drive threat-informed decision-making at the executive level."
+        },
+        {
+          "id": "org-nuharbor",
+          "label": "NuHarbor Security",
+          "description": "Threat Intelligence Lead (2023\u20132025). Owned 100% of Threat Operations strategy for managed security clients. Led a full TIP migration from ThreatConnect to OpenCTI, delivering a 75% reduction in licensing costs while improving intelligence workflow efficiency and analyst productivity."
+        },
+        {
+          "id": "org-vmware",
+          "label": "VMware",
+          "description": "Information Security Analyst (2021\u20132022). Drove security awareness and policy compliance initiatives across the organization. Increased employee security engagement by 45% and achieved 99% security policy compliance through targeted campaigns and metrics-driven reporting."
+        },
+        {
+          "id": "org-ge",
+          "label": "GE Power",
+          "description": "Cybersecurity Threat Management Intern (2020). Supported enterprise threat operations by identifying 16,000+ indicators of compromise and resolving 6 incidents involving malware infections and APT campaign artifacts. Gained hands-on experience with SIEM triage and IOC enrichment workflows."
+        },
+        {
+          "id": "org-nys",
+          "label": "NYS DHSES",
+          "description": "Policy & Program Development Intern (2019\u20132020). Supported emergency management policy development at the New York State Division of Homeland Security and Emergency Services. Created a COVID-19 mobility tracker used by the NYS Senior Policy Advisor for situational awareness during the pandemic response."
+        },
+        {
+          "id": "org-ualbany-teach",
+          "label": "UAlbany (Adjunct)",
+          "description": "Adjunct Professor (2024\u2013Present). Teaching 30+ graduate students foundational CTI concepts, structured analytic techniques, intelligence writing, and threat assessment methodologies. Bridging academic theory with real-world operational intelligence experience."
+        },
+        {
+          "id": "org-iq4",
+          "label": "IQ4",
+          "description": "Volunteer Mentor (2019\u20132023). Taught college students insider threats and risk management practices in accordance with the NIST cybersecurity framework through IQ4's 'The Threat Within' program."
+        }
+      ]
+    },
+    "cat-skill": {
+      "label": "Skills",
+      "group": "skill",
+      "edge_label": "skilled-in",
+      "description": "Core competencies spanning the full intelligence lifecycle \u2014 from collection and analysis to stakeholder integration and strategic communication.",
+      "children": [
+        {
+          "id": "skill-cti",
+          "label": "CTI Program\nDevelopment",
+          "description": "Designing and maturing CTI programs end-to-end: defining intelligence requirements with stakeholders, building collection strategies and source evaluation criteria, establishing analytic tradecraft standards, creating product catalogs, and measuring program effectiveness through stakeholder feedback loops."
+        },
+        {
+          "id": "skill-integration",
+          "label": "Intelligence\nIntegration",
+          "description": "Embedding CTI across security functions and business units. Partnering with vulnerability management to prioritize remediation, supporting detection engineering with TTP-based signatures, enriching SOC/IR workflows with contextual intelligence, enabling threat hunting with adversary profiles, and advising crisis management and communications teams."
+        },
+        {
+          "id": "skill-adversary",
+          "label": "Adversary\nProfiling",
+          "description": "Tracking and profiling advanced persistent threats (APTs) and cybercriminal groups. Performing threat actor attribution using infrastructure analysis, TTP mapping to MITRE ATT&CK, capability assessments, and structured analytic techniques to reduce cognitive bias in attribution judgments."
+        },
+        {
+          "id": "skill-osint",
+          "label": "Geopolitical &\nCyber Analysis",
+          "description": "Connecting geopolitical events, regional conflict dynamics, and global threat trends to client-specific cyber risk. Translating tactical indicators and campaign analysis into strategic intelligence products that inform executive decision-making and organizational risk posture."
+        },
+        {
+          "id": "skill-risk",
+          "label": "Threat-Informed\nRisk",
+          "description": "Applying intelligence-driven prioritization to organizational risk management. Mapping priority threats to critical assets, evaluating adversary intent and capability against defensive posture, and producing actionable risk assessments that help security leaders allocate resources effectively."
+        },
+        {
+          "id": "skill-writing",
+          "label": "Strategic\nCommunication",
+          "description": "Translating complex technical threats for diverse audiences \u2014 from detailed analyst reports to executive briefings and board-level presentations. Crafting threat advisories, intelligence summaries, and awareness content that drives action across technical and non-technical stakeholders."
+        }
+      ]
+    },
+    "cat-tool": {
+      "label": "Tools",
+      "group": "tool",
+      "edge_label": "uses",
+      "description": "Security platforms and tools used for threat intelligence collection, analysis, enrichment, and operationalization across enterprise environments.",
+      "children": [
+        {
+          "id": "tool-opencti",
+          "label": "OpenCTI",
+          "description": "Open-source cyber threat intelligence platform built on STIX 2.1. Led a full migration from ThreatConnect to OpenCTI, designing custom connectors, dashboards, and automated enrichment pipelines. Achieved 75% cost reduction while improving analyst workflow efficiency."
+        },
+        {
+          "id": "tool-threatconnect",
+          "label": "ThreatConnect",
+          "description": "Enterprise threat intelligence platform for aggregating, analyzing, and operationalizing threat data. Used for intelligence management, playbook automation, and integrating CTI into security operations workflows."
+        },
+        {
+          "id": "tool-misp",
+          "label": "MISP",
+          "description": "Malware Information Sharing Platform \u2014 open-source threat intelligence sharing and collaboration platform. Used for structured IOC sharing with ISACs, partner organizations, and automated feed ingestion into TIP environments."
+        },
+        {
+          "id": "tool-rf",
+          "label": "Recorded Future",
+          "description": "Premium threat intelligence platform providing real-time threat analysis, risk scoring, and alerting. Used for brand monitoring, vulnerability intelligence, dark web monitoring, and geopolitical threat tracking at scale."
+        },
+        {
+          "id": "tool-mandiant",
+          "label": "Mandiant\nAdvantage",
+          "description": "Google/Mandiant threat intelligence and adversary analysis platform. Leveraged for detailed APT profiles, campaign tracking, incident response intelligence, and breach analytics to support threat-informed defense strategies."
+        },
+        {
+          "id": "tool-splunk",
+          "label": "Splunk",
+          "description": "SIEM platform for security monitoring, log correlation, threat detection, and incident investigation. Used for building detection rules, creating intelligence dashboards, and correlating IOCs against enterprise telemetry."
+        },
+        {
+          "id": "tool-crowdstrike",
+          "label": "CrowdStrike\nFalcon",
+          "description": "Endpoint detection and response (EDR) platform for real-time threat hunting, endpoint visibility, and incident response. Used for adversary tracking, behavioral analysis, and correlating endpoint telemetry with CTI findings."
+        },
+        {
+          "id": "tool-maltego",
+          "label": "Maltego",
+          "description": "OSINT and link analysis tool for mapping adversary infrastructure, relationships, and digital footprints. Used for pivot analysis, domain/IP infrastructure mapping, and visualizing connections between threat actor artifacts."
+        },
+        {
+          "id": "tool-domaintools",
+          "label": "DomainTools",
+          "description": "Domain and DNS intelligence platform for infrastructure analysis, WHOIS research, and threat actor infrastructure tracking. Used for predictive risk scoring and connecting adversary domains to broader campaign infrastructure."
+        },
+        {
+          "id": "tool-virustotal",
+          "label": "VirusTotal",
+          "description": "Multi-engine malware and URL analysis platform for IOC enrichment, file reputation checks, and threat research. Used for rapid sample triage, behavioral analysis review, and cross-referencing indicators across vendor detection engines."
+        },
+        {
+          "id": "tool-shodan",
+          "label": "Shodan",
+          "description": "Internet-connected device search engine for attack surface analysis, infrastructure reconnaissance, and vulnerability discovery. Used for identifying exposed assets, monitoring adversary infrastructure, and validating threat intelligence findings."
+        },
+        {
+          "id": "tool-silentpush",
+          "label": "Silent Push",
+          "description": "Threat intelligence platform specializing in DNS-based infrastructure tracking and adversary attribution. Used for proactive threat hunting, infrastructure pivot analysis, and identifying adversary staging environments before attacks."
+        },
+        {
+          "id": "tool-volatility",
+          "label": "Volatility",
+          "description": "Open-source memory forensics framework for analyzing RAM dumps and identifying malicious artifacts. Used for investigating in-memory malware, extracting process artifacts, and supporting incident response with forensic evidence."
+        },
+        {
+          "id": "tool-wireshark",
+          "label": "Wireshark",
+          "description": "Network protocol analyzer for deep packet inspection and network traffic analysis. Used for investigating suspicious communications, analyzing C2 traffic patterns, and validating network-based indicators of compromise."
+        },
+        {
+          "id": "tool-feedly",
+          "label": "Feedly",
+          "description": "AI-powered threat intelligence feed aggregator and research platform. Used for monitoring threat landscape developments, tracking vendor publications, and curating intelligence sources for analyst consumption and situational awareness."
+        },
+        {
+          "id": "tool-python",
+          "label": "Python",
+          "description": "Primary programming language for automation, data analysis, and custom security tooling. Used for building API integrations, automating IOC enrichment workflows, parsing threat feeds, and developing analysis scripts for intelligence production."
+        },
+        {
+          "id": "tool-powerbi",
+          "label": "PowerBI",
+          "description": "Business intelligence and data visualization platform used for creating interactive dashboards, intelligence metrics reporting, and communicating CTI program effectiveness to stakeholders."
+        },
+        {
+          "id": "tool-tableau",
+          "label": "Tableau",
+          "description": "Data visualization and analytics platform used for creating interactive dashboards, visualizing threat landscape trends, and presenting intelligence findings to diverse audiences."
+        }
+      ]
+    },
+    "cat-cert": {
+      "label": "Certifications\n& Training",
+      "group": "certification",
+      "edge_label": "has-certification",
+      "description": "Industry-recognized certifications and specialized training validating expertise in cyber threat intelligence, security analysis, and SIEM technologies.",
+      "children": [
+        {
+          "id": "cert-gcti",
+          "label": "GIAC GCTI",
+          "description": "GIAC Cyber Threat Intelligence (GCTI) \u2014 obtained November 2025 after completing SANS FOR578. Validates expertise across the full intelligence lifecycle: requirements development, collection management, structured analysis, dissemination, and feedback. The premier certification for CTI professionals."
+        },
+        {
+          "id": "cert-cysa",
+          "label": "CompTIA CySA+",
+          "description": "CompTIA Cybersecurity Analyst (CySA+) \u2014 obtained November 2023. Validates skills in threat detection and analysis, vulnerability management, security monitoring, and incident response. Demonstrates proficiency in using behavioral analytics to identify and combat network threats."
+        },
+        {
+          "id": "cert-splunk",
+          "label": "Splunk\nFundamentals",
+          "description": "Splunk Fundamentals Certificates 1 & 2 \u2014 obtained February 2023. Core competency in Splunk search processing language (SPL), report building, dashboard creation, and data visualization for security operations and threat hunting workflows."
+        }
+      ]
+    },
+    "cat-framework": {
+      "label": "Frameworks",
+      "group": "framework",
+      "edge_label": "aligned-with",
+      "description": "Intelligence and security frameworks used to structure analysis, communicate findings, and align CTI operations with organizational objectives.",
+      "children": [
+        {
+          "id": "fw-attack",
+          "label": "MITRE\nATT&CK",
+          "description": "MITRE ATT&CK \u2014 comprehensive knowledge base of adversarial tactics, techniques, and procedures (TTPs). Used extensively for threat actor profiling, detection engineering gap analysis, purple team exercises, and mapping organizational defensive coverage against priority threat groups."
+        },
+        {
+          "id": "fw-stix",
+          "label": "STIX/TAXII",
+          "description": "Structured Threat Information Expression (STIX) 2.1 & Trusted Automated Exchange of Intelligence Information (TAXII). The standardized protocols for representing and exchanging cyber threat intelligence. Used for building interoperable intelligence sharing pipelines and TIP integrations."
+        },
+        {
+          "id": "fw-icd203",
+          "label": "ICD 203/206",
+          "description": "Intelligence Community Directives 203 (Analytic Standards) and 206 (Sourcing Requirements). Applied to ensure intelligence products meet rigorous standards for objectivity, sourcing transparency, analytic tradecraft, and uncertainty communication \u2014 bridging IC methodology with private-sector CTI."
+        },
+        {
+          "id": "fw-nist",
+          "label": "NIST CSF",
+          "description": "NIST Cybersecurity Framework \u2014 risk-based approach to managing cybersecurity across Identify, Protect, Detect, Respond, and Recover functions. Used for aligning CTI program outputs with organizational risk management objectives and regulatory requirements."
+        },
+        {
+          "id": "fw-diamond",
+          "label": "Diamond Model",
+          "description": "Diamond Model of Intrusion Analysis \u2014 framework relating adversary, capability, infrastructure, and victim across intrusion events. Applied for structuring intrusion analysis, identifying analytic pivots, and communicating threat relationships to stakeholders."
+        },
+        {
+          "id": "fw-killchain",
+          "label": "Cyber\nKill Chain",
+          "description": "Lockheed Martin Cyber Kill Chain \u2014 seven-phase framework for understanding and defending against cyber intrusions: Reconnaissance, Weaponization, Delivery, Exploitation, Installation, C2, and Actions on Objectives. Used for mapping defensive capabilities and identifying detection opportunities."
+        }
+      ]
+    },
+    "cat-pub": {
+      "label": "Publications",
+      "group": "publication",
+      "edge_label": "published",
+      "description": "Peer-reviewed research contributions to the cybersecurity and intelligence community.",
+      "children": [
+        {
+          "id": "pub-thesis",
+          "label": "Master's Thesis\nResearch",
+          "description": "\"Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories.\" Published in the International Journal of Cybersecurity Intelligence & Cybercrime, Vol. 5(1), pp. 43\u201370 (April 2022). Analyzed patterns in CISA advisories to identify systemic vulnerabilities across critical infrastructure sectors."
+        }
+      ]
+    },
+    "cat-edu": {
+      "label": "Education",
+      "group": "education",
+      "edge_label": "educated-at",
+      "description": "Academic foundation combining intelligence analysis, homeland security, and cybersecurity \u2014 including international research experience.",
+      "children": [
+        {
+          "id": "edu-ms",
+          "label": "M.S. Information\nScience",
+          "description": "Master of Science in Information Science with a concentration in Intelligence Analysis. SUNY Albany, 2019\u20132020. Graduated with a 4.0 GPA. Coursework focused on intelligence collection, structured analytic techniques, geospatial analysis, and cybersecurity policy. Thesis published in a peer-reviewed journal."
+        },
+        {
+          "id": "edu-bs",
+          "label": "B.S. Emergency\nPreparedness",
+          "description": "Bachelor of Science in Emergency Preparedness, Homeland Security & Cybersecurity. SUNY Albany, 2016\u20132020. Graduated Magna Cum Laude. Built a foundation in risk assessment, critical infrastructure protection, emergency management, and cybersecurity principles."
+        },
+        {
+          "id": "edu-abroad",
+          "label": "Ben-Gurion\nUniversity",
+          "description": "Study Abroad \u2014 Security and Conflict Research. Ben-Gurion University of the Negev, Israel, January\u2013June 2019. Studied counterterrorism policy, regional security dynamics, and intelligence methodology in one of the world's leading security research environments."
+        }
+      ]
+    },
+    "cat-award": {
+      "label": "Awards",
+      "group": "award",
+      "edge_label": "received",
+      "description": "Professional recognition for early-career impact in cyber threat intelligence and contributions to the cybersecurity community.",
+      "children": [
+        {
+          "id": "award-alumni",
+          "label": "Outstanding\nYoung Alumni",
+          "description": "Outstanding Young Alumni Award (May 2023) \u2014 Awarded by the State University of New York at Albany to alumni whose early career achievements and civic life demonstrate great promise and accomplishment beyond the norm expected in their field. Recognized for exceptional impact in cyber threat intelligence and contributions to the cybersecurity community."
+        }
+      ]
+    }
+  },
+  "generated": "2026-03-14T00:00:00+00:00"
+}

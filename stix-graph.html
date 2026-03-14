@@ -57,7 +57,7 @@
                     </ul>
                 </li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
-                <li><a href="stix-graph.html" class="nav-link active">Exploration Graph</a></li>
+                <li><a href="stix-graph.html" class="nav-link active" aria-current="page">Exploration Graph</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -158,7 +158,7 @@
     <script>
     (function() {
         // ========================
-        // STIX Graph Data
+        // Presentation constants (colors & icons stay in JS)
         // ========================
         const COLORS = {
             identity: '#6366f1',
@@ -173,7 +173,6 @@
             category: '#374151'
         };
 
-        // STIX icon URLs from muchdogesec/stix2icons
         const STIX_ICONS = {
             identity: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/identity.svg',
             organization: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/identity.svg',
@@ -186,174 +185,143 @@
             award: 'https://raw.githubusercontent.com/muchdogesec/stix2icons/main/output_files/rgb/round/svg/sdo/campaign.svg'
         };
 
-        // Category nodes (always visible)
-        const categoryNodes = [
-            { id: 'identity', label: 'Zachary Lanz', color: COLORS.identity, iconType: 'identity', size: 40, font: { size: 16, bold: true }, type: 'identity', desc: 'Cyber Threat Intelligence specialist focused on building and maturing CTI programs, integrating intelligence across security and business stakeholders, and translating threat landscapes into strategic action. Currently consulting at Ernst & Young.' },
-            { id: 'cat-org', label: 'Organizations', color: COLORS.organization, iconType: 'organization', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional organizations and employers.' },
-            { id: 'cat-skill', label: 'Skills', color: COLORS.skill, iconType: 'skill', size: 30, font: { size: 13 }, type: 'category', desc: 'Core competencies and expertise areas.' },
-            { id: 'cat-tool', label: 'Tools', color: COLORS.tool, iconType: 'tool', size: 30, font: { size: 13 }, type: 'category', desc: 'Security tools and platforms.' },
-            { id: 'cat-cert', label: 'Certifications\n& Training', color: COLORS.certification, iconType: 'certification', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional certifications and training.' },
-            { id: 'cat-framework', label: 'Frameworks', color: COLORS.framework, iconType: 'framework', size: 30, font: { size: 13 }, type: 'category', desc: 'Intelligence and security frameworks.' },
-            { id: 'cat-pub', label: 'Publications', color: COLORS.publication, iconType: 'publication', size: 30, font: { size: 13 }, type: 'category', desc: 'Published research and articles.' },
-            { id: 'cat-edu', label: 'Education', color: COLORS.education, iconType: 'education', size: 30, font: { size: 13 }, type: 'category', desc: 'Academic background and credentials.' },
-            { id: 'cat-award', label: 'Awards', color: COLORS.award, iconType: 'award', size: 30, font: { size: 13 }, type: 'category', desc: 'Professional recognition and achievements.' }
-        ];
+        const TYPE_MAP = { org: 'Organization', skill: 'Skill', tool: 'Tool', cert: 'Certification & Training', framework: 'Framework', pub: 'Publication', edu: 'Education', award: 'Award' };
 
-        // Category edges (always visible)
-        const categoryEdges = [
-            { from: 'identity', to: 'cat-org', label: 'works-for', color: { color: COLORS.organization, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-skill', label: 'skilled-in', color: { color: COLORS.skill, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-tool', label: 'uses', color: { color: COLORS.tool, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-cert', label: 'has-certification', color: { color: COLORS.certification, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-framework', label: 'aligned-with', color: { color: COLORS.framework, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-pub', label: 'published', color: { color: COLORS.publication, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-edu', label: 'educated-at', color: { color: COLORS.education, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } },
-            { from: 'identity', to: 'cat-award', label: 'received', color: { color: COLORS.award, opacity: 0.6 }, font: { size: 10, color: '#9ca3af', strokeWidth: 0 } }
-        ];
-
-        // Child nodes by category
-        const childData = {
-            'cat-org': {
-                nodes: [
-                    { id: 'org-ey', label: 'Ernst & Young', desc: 'Senior CTI Consultant (2025-Present). Building and maturing CTI programs for Fortune 500 clients, integrating intelligence across vulnerability management, threat hunting, SOC/IR, and crisis management.' },
-                    { id: 'org-nuharbor', label: 'NuHarbor Security', desc: 'Threat Intelligence Lead (2023-2025). Led 100% of Threat Operations strategy. Delivered 75% reduction in TIP costs via OpenCTI migration.' },
-                    { id: 'org-vmware', label: 'VMware', desc: 'Information Security Analyst (2021-2022). Increased employee security engagement by 45% and achieved 99% security policy compliance.' },
-                    { id: 'org-ge', label: 'GE Power', desc: 'Cybersecurity Threat Management Intern (2020). Identified 16,000+ IOCs and resolved 6 incidents involving malware and APT campaigns.' },
-                    { id: 'org-nys', label: 'NYS DHSES', desc: 'Policy & Program Development Intern (2019-2020). Created COVID-19 mobility tracker for NYS Senior Policy Advisor.' },
-                    { id: 'org-ualbany-teach', label: 'UAlbany (Adjunct)', desc: 'Adjunct Professor (2024-Present). Teaching 30+ graduate students foundational CTI, analytic techniques, and intelligence writing.' }
-                ],
-                color: COLORS.organization
-            },
-            'cat-skill': {
-                nodes: [
-                    { id: 'skill-cti', label: 'CTI Program\nDevelopment', desc: 'Building and maturing CTI programs end-to-end: intelligence requirements, collection strategies, analytic tradecraft, product catalogs, and stakeholder integration.' },
-                    { id: 'skill-integration', label: 'Intelligence\nIntegration', desc: 'Integrating CTI across security functions (vulnerability management, detection engineering, SOC/IR, threat hunting) and business units (crisis management, HR, communications).' },
-                    { id: 'skill-adversary', label: 'Adversary\nProfiling', desc: 'APT tracking, threat actor attribution, and adversary capability assessment using structured analytic techniques and TTP analysis.' },
-                    { id: 'skill-osint', label: 'Geopolitical &\nCyber Analysis', desc: 'Connecting geopolitical events and global threat dynamics to client-specific cyber risk. Translating tactical indicators into strategic intelligence.' },
-                    { id: 'skill-risk', label: 'Threat-Informed\nRisk', desc: 'Intelligence-driven risk prioritization. Helping organizations understand their priority threats and take decisive action.' },
-                    { id: 'skill-writing', label: 'Strategic\nCommunication', desc: 'Translating complex threats for technical and non-technical audiences. Executive briefings, threat advisories, and awareness content.' }
-                ],
-                color: COLORS.skill
-            },
-            'cat-tool': {
-                nodes: [
-                    { id: 'tool-opencti', label: 'OpenCTI', desc: 'Open-source threat intelligence platform. Led migration from ThreatConnect, saving 75% in licensing costs.' },
-                    { id: 'tool-threatconnect', label: 'ThreatConnect', desc: 'Threat intelligence platform for intelligence aggregation and operationalization.' },
-                    { id: 'tool-misp', label: 'MISP', desc: 'Malware Information Sharing Platform. Used for IOC sharing and threat intelligence collaboration.' },
-                    { id: 'tool-rf', label: 'Recorded Future', desc: 'Premium threat intelligence platform for real-time threat analysis and risk scoring.' },
-                    { id: 'tool-mandiant', label: 'Mandiant\nAdvantage', desc: 'Threat intelligence and adversary analysis platform from Google/Mandiant.' },
-                    { id: 'tool-splunk', label: 'Splunk', desc: 'SIEM platform for security monitoring, log analysis, and threat detection.' },
-                    { id: 'tool-crowdstrike', label: 'CrowdStrike\nFalcon', desc: 'Endpoint detection and response (EDR) platform for threat hunting and incident response.' },
-                    { id: 'tool-maltego', label: 'Maltego', desc: 'OSINT and link analysis tool for mapping adversary infrastructure and relationships.' },
-                    { id: 'tool-domaintools', label: 'DomainTools', desc: 'Domain intelligence platform for infrastructure analysis and threat actor tracking.' },
-                    { id: 'tool-virustotal', label: 'VirusTotal', desc: 'Malware and URL analysis platform for IOC enrichment and threat research.' },
-                    { id: 'tool-shodan', label: 'Shodan', desc: 'Internet-connected device search engine for infrastructure reconnaissance and attack surface analysis.' },
-                    { id: 'tool-silentpush', label: 'Silent Push', desc: 'Threat intelligence platform for infrastructure tracking and adversary attribution.' },
-                    { id: 'tool-python', label: 'Python', desc: 'Programming language for automation, data analysis, and security tooling development.' }
-                ],
-                color: COLORS.tool
-            },
-            'cat-cert': {
-                nodes: [
-                    { id: 'cert-for578', label: 'SANS FOR578', desc: 'Cyber Threat Intelligence (November 2025). SANS Institute\'s premier CTI course covering intelligence lifecycle and tradecraft.' },
-                    { id: 'cert-cysa', label: 'CompTIA CySA+', desc: 'Cybersecurity Analyst (November 2023). Validates skills in threat detection, analysis, and response.' },
-                    { id: 'cert-splunk', label: 'Splunk\nFundamentals', desc: 'Splunk Fundamentals Certificates 1 & 2 (February 2023). Core competency in Splunk search, reporting, and dashboards.' }
-                ],
-                color: COLORS.certification
-            },
-            'cat-framework': {
-                nodes: [
-                    { id: 'fw-attack', label: 'MITRE\nATT&CK', desc: 'Adversarial tactics, techniques, and procedures (TTPs) knowledge base. Used extensively for threat actor profiling and detection engineering.' },
-                    { id: 'fw-stix', label: 'STIX/TAXII', desc: 'Structured Threat Information Expression & Trusted Automated Exchange. Standardized threat intelligence sharing protocols.' },
-                    { id: 'fw-diamond', label: 'Diamond Model', desc: 'Intrusion analysis framework relating adversary, capability, infrastructure, and victim for structured threat analysis.' },
-                    { id: 'fw-killchain', label: 'Cyber\nKill Chain', desc: 'Lockheed Martin\'s framework for understanding and defending against cyber intrusions across seven phases.' },
-                    { id: 'fw-nist', label: 'NIST CSF', desc: 'National Institute of Standards and Technology Cybersecurity Framework for managing cyber risk.' },
-                    { id: 'fw-icd203', label: 'ICD 203/206', desc: 'Intelligence Community Directives for analytic standards and sourcing requirements in intelligence products.' }
-                ],
-                color: COLORS.framework
-            },
-            'cat-pub': {
-                nodes: [
-                    { id: 'pub-thesis', label: 'Master\'s Thesis\nResearch', desc: 'Cybersecurity Risk in U.S. Critical Infrastructure: An Analysis of Publicly Available U.S. Government Alerts and Advisories. Published in International Journal of Cybersecurity Intelligence & Cybercrime.' }
-                ],
-                color: COLORS.publication
-            },
-            'cat-award': {
-                nodes: [
-                    { id: 'award-alumni', label: 'Outstanding\nYoung Alumni', desc: 'Outstanding Young Alumni Award (2023). Awarded by SUNY Albany for exceptional early-career achievements in cyber threat intelligence.' }
-                ],
-                color: COLORS.award
-            },
-            'cat-edu': {
-                nodes: [
-                    { id: 'edu-ms', label: 'M.S. Information\nScience', desc: 'Master of Science in Information Science & Intelligence Analysis. SUNY Albany, 2019-2020. 4.0 GPA.' },
-                    { id: 'edu-bs', label: 'B.S. Emergency\nPreparedness', desc: 'Bachelor of Science in Emergency Preparedness, Homeland Security & Cybersecurity. SUNY Albany, 2016-2020. Magna Cum Laude.' },
-                    { id: 'edu-abroad', label: 'Ben-Gurion\nUniversity', desc: 'Study Abroad - Security Research. Ben-Gurion University, Israel. January - June 2019.' }
-                ],
-                color: COLORS.education
-            }
-        };
+        // ========================
+        // Data loaded from JSON
+        // ========================
+        let categoryNodes = [];
+        let categoryEdges = [];
+        let childData = {};
 
         // ========================
         // Graph State
         // ========================
         const expandedCategories = new Set();
+        const pinnedPositions = {};
         let nodes, edges, network;
 
+        // ========================
+        // Build graph data from JSON
+        // ========================
+        function buildGraphDataFromJSON(graphData) {
+            categoryNodes = [];
+            categoryEdges = [];
+            childData = {};
+
+            // Identity node
+            categoryNodes.push({
+                id: 'identity',
+                label: graphData.identity.label,
+                color: COLORS.identity,
+                iconType: 'identity',
+                size: 40,
+                font: { size: 16, bold: true },
+                type: 'identity',
+                desc: graphData.identity.description
+            });
+
+            // Category nodes and edges
+            for (var catId in graphData.categories) {
+                var cat = graphData.categories[catId];
+                var group = cat.group;
+
+                categoryNodes.push({
+                    id: catId,
+                    label: cat.label,
+                    color: COLORS[group] || COLORS.category,
+                    iconType: group,
+                    size: 30,
+                    font: { size: 13 },
+                    type: 'category',
+                    desc: cat.description
+                });
+
+                categoryEdges.push({
+                    from: 'identity',
+                    to: catId,
+                    label: cat.edge_label,
+                    color: { color: COLORS[group] || COLORS.category, opacity: 0.6 },
+                    font: { size: 10, color: '#9ca3af', strokeWidth: 0 }
+                });
+
+                // Child nodes
+                childData[catId] = {
+                    nodes: (cat.children || []).map(function(child) {
+                        return { id: child.id, label: child.label, desc: child.description };
+                    }),
+                    color: COLORS[group] || COLORS.category
+                };
+            }
+        }
+
         function buildVisData() {
-            const labelColor = getLabelColor();
-            const edgeLabelColor = getEdgeLabelColor();
+            var labelColor = getLabelColor();
+            var edgeLabelColor = getEdgeLabelColor();
 
-            const nodeArray = categoryNodes.map(n => ({
-                id: n.id,
-                label: n.label,
-                image: STIX_ICONS[n.iconType],
-                shape: 'circularImage',
-                size: n.size,
-                font: { size: (n.font && n.font.size) || 12, color: labelColor, bold: n.font && n.font.bold },
-                borderWidth: 3,
-                color: { border: n.color, highlight: { border: '#fff' } },
-                shadow: { enabled: true, color: n.color + '40', size: 15 }
-            }));
+            var nodeArray = categoryNodes.map(function(n) {
+                var node = {
+                    id: n.id,
+                    label: n.label,
+                    image: STIX_ICONS[n.iconType],
+                    shape: 'circularImage',
+                    size: n.size,
+                    font: { size: (n.font && n.font.size) || 12, color: labelColor, bold: n.font && n.font.bold },
+                    borderWidth: 3,
+                    color: { border: n.color, highlight: { border: '#fff' } },
+                    shadow: { enabled: true, color: n.color + '40', size: 15 }
+                };
+                if (pinnedPositions[n.id]) {
+                    node.x = pinnedPositions[n.id].x;
+                    node.y = pinnedPositions[n.id].y;
+                    node.fixed = { x: true, y: true };
+                    node.physics = false;
+                }
+                return node;
+            });
 
-            const edgeArray = categoryEdges.map(e => ({
-                from: e.from,
-                to: e.to,
-                label: e.label,
-                color: e.color,
-                font: { size: 10, color: edgeLabelColor, strokeWidth: 0 },
-                arrows: { to: { enabled: true, scaleFactor: 0.6 } },
-                smooth: { type: 'continuous' }
-            }));
+            var edgeArray = categoryEdges.map(function(e) {
+                return {
+                    from: e.from,
+                    to: e.to,
+                    label: e.label,
+                    color: e.color,
+                    font: { size: 10, color: edgeLabelColor, strokeWidth: 0 },
+                    arrows: { to: { enabled: true, scaleFactor: 0.6 } },
+                    smooth: { type: 'continuous' }
+                };
+            });
 
-            // Add expanded children - map category to icon type
-            const catToIcon = {
-                'cat-org': 'organization',
-                'cat-skill': 'skill',
-                'cat-tool': 'tool',
-                'cat-cert': 'certification',
-                'cat-framework': 'framework',
-                'cat-pub': 'publication',
-                'cat-edu': 'education',
-                'cat-award': 'award'
-            };
+            // Build catToIcon from loaded data
+            var catToIcon = {};
+            for (var catId in childData) {
+                var catNode = categoryNodes.find(function(n) { return n.id === catId; });
+                if (catNode) catToIcon[catId] = catNode.iconType;
+            }
 
-            expandedCategories.forEach(catId => {
-                const data = childData[catId];
+            expandedCategories.forEach(function(catId) {
+                var data = childData[catId];
                 if (!data) return;
 
-                data.nodes.forEach(child => {
-                    nodeArray.push({
+                data.nodes.forEach(function(child) {
+                    var childNode = {
                         id: child.id,
                         label: child.label,
-                        image: STIX_ICONS[catToIcon[catId]],
+                        image: STIX_ICONS[catToIcon[catId]] || STIX_ICONS.tool,
                         shape: 'circularImage',
                         size: 22,
                         font: { size: 11, color: labelColor, multi: 'html' },
                         borderWidth: 2,
                         color: { border: data.color, highlight: { border: '#fff' } },
                         shadow: { enabled: true, color: data.color + '30', size: 10 }
-                    });
+                    };
+                    if (pinnedPositions[child.id]) {
+                        childNode.x = pinnedPositions[child.id].x;
+                        childNode.y = pinnedPositions[child.id].y;
+                        childNode.fixed = { x: true, y: true };
+                        childNode.physics = false;
+                    }
+                    nodeArray.push(childNode);
                     edgeArray.push({
                         from: catId,
                         to: child.id,
@@ -365,52 +333,48 @@
                 });
             });
 
-            return { nodeArray, edgeArray };
+            return { nodeArray: nodeArray, edgeArray: edgeArray };
         }
 
         function getNodeInfo(nodeId) {
-            // Check category nodes
-            const cat = categoryNodes.find(n => n.id === nodeId);
+            var cat = categoryNodes.find(function(n) { return n.id === nodeId; });
             if (cat) return { label: cat.label, type: cat.type === 'identity' ? 'Identity' : 'Category', desc: cat.desc };
 
-            // Check child nodes
-            for (const catId in childData) {
-                const child = childData[catId].nodes.find(n => n.id === nodeId);
+            for (var catId in childData) {
+                var child = childData[catId].nodes.find(function(n) { return n.id === nodeId; });
                 if (child) {
-                    const typeName = catId.replace('cat-', '');
-                    const typeMap = { org: 'Organization', skill: 'Skill', tool: 'Tool', cert: 'Certification', framework: 'Framework', pub: 'Publication', edu: 'Education', award: 'Award' };
-                    return { label: child.label.replace(/\n/g, ' '), type: typeMap[typeName] || typeName, desc: child.desc };
+                    var typeName = catId.replace('cat-', '');
+                    return { label: child.label.replace(/\n/g, ' '), type: TYPE_MAP[typeName] || typeName, desc: child.desc };
                 }
             }
             return null;
         }
 
         function getLabelColor() {
-            const theme = document.documentElement.getAttribute('data-theme');
+            var theme = document.documentElement.getAttribute('data-theme');
             return theme === 'light' ? '#1e293b' : '#d1d5db';
         }
 
         function getEdgeLabelColor() {
-            const theme = document.documentElement.getAttribute('data-theme');
+            var theme = document.documentElement.getAttribute('data-theme');
             return theme === 'light' ? '#64748b' : '#9ca3af';
         }
 
         function initGraph() {
-            const container = document.getElementById('stix-network');
+            var container = document.getElementById('stix-network');
             if (!container) return;
 
-            // Ensure container has dimensions before initializing
             if (container.offsetWidth === 0 || container.offsetHeight === 0) {
                 setTimeout(initGraph, 100);
                 return;
             }
 
-            const { nodeArray, edgeArray } = buildVisData();
+            var data = buildVisData();
 
-            nodes = new vis.DataSet(nodeArray);
-            edges = new vis.DataSet(edgeArray);
+            nodes = new vis.DataSet(data.nodeArray);
+            edges = new vis.DataSet(data.edgeArray);
 
-            const options = {
+            var options = {
                 nodes: {
                     font: { face: 'Fira Code, monospace' },
                     borderWidth: 2,
@@ -422,40 +386,59 @@
                     smooth: { type: 'continuous' }
                 },
                 physics: {
+                    enabled: true,
                     solver: 'forceAtlas2Based',
                     forceAtlas2Based: {
-                        gravitationalConstant: -80,
-                        centralGravity: 0.01,
-                        springLength: 150,
-                        springConstant: 0.05,
-                        damping: 0.4
+                        gravitationalConstant: -100,
+                        centralGravity: 0.008,
+                        springLength: 180,
+                        springConstant: 0.04,
+                        damping: 0.5,
+                        avoidOverlap: 0.3
                     },
-                    stabilization: { iterations: 150 }
+                    stabilization: {
+                        enabled: true,
+                        iterations: 200,
+                        updateInterval: 25
+                    },
+                    maxVelocity: 50,
+                    minVelocity: 0.75
                 },
                 interaction: {
                     hover: true,
                     tooltipDelay: 200,
                     zoomView: true,
-                    dragView: true
+                    dragView: true,
+                    dragNodes: true
                 },
                 layout: {
                     improvedLayout: true
                 }
             };
 
-            network = new vis.Network(container, { nodes, edges }, options);
+            network = new vis.Network(container, { nodes: nodes, edges: edges }, options);
 
-            // After stabilization, fit the view
             network.once('stabilizationIterationsDone', function() {
+                network.setOptions({ physics: { enabled: false } });
                 network.fit({ animation: { duration: 500, easingFunction: 'easeInOutQuad' } });
             });
 
-            // Click handler: expand/collapse categories, show info
+            network.on('dragEnd', function(params) {
+                if (params.nodes.length > 0) {
+                    params.nodes.forEach(function(nodeId) {
+                        var pos = network.getPositions([nodeId])[nodeId];
+                        if (pos) {
+                            pinnedPositions[nodeId] = { x: pos.x, y: pos.y };
+                            nodes.update({ id: nodeId, x: pos.x, y: pos.y, fixed: { x: true, y: true }, physics: false });
+                        }
+                    });
+                }
+            });
+
             network.on('click', function(params) {
                 if (params.nodes.length > 0) {
-                    const nodeId = params.nodes[0];
+                    var nodeId = params.nodes[0];
 
-                    // Toggle expansion for category nodes
                     if (nodeId.startsWith('cat-')) {
                         if (expandedCategories.has(nodeId)) {
                             expandedCategories.delete(nodeId);
@@ -465,8 +448,7 @@
                         refreshGraph();
                     }
 
-                    // Show info panel
-                    const info = getNodeInfo(nodeId);
+                    var info = getNodeInfo(nodeId);
                     if (info) {
                         document.getElementById('info-title').textContent = info.label;
                         document.getElementById('info-type').textContent = info.type;
@@ -478,7 +460,6 @@
                 }
             });
 
-            // Double-click to zoom
             network.on('doubleClick', function(params) {
                 if (params.nodes.length > 0) {
                     network.focus(params.nodes[0], { scale: 1.5, animation: true });
@@ -487,11 +468,26 @@
         }
 
         function refreshGraph() {
-            const { nodeArray, edgeArray } = buildVisData();
+            if (network) {
+                var currentPositions = network.getPositions();
+                for (var id in currentPositions) {
+                    if (!pinnedPositions[id]) {
+                        pinnedPositions[id] = currentPositions[id];
+                    }
+                }
+            }
+
+            var data = buildVisData();
             nodes.clear();
             edges.clear();
-            nodes.add(nodeArray);
-            edges.add(edgeArray);
+            nodes.add(data.nodeArray);
+            edges.add(data.edgeArray);
+
+            network.setOptions({ physics: { enabled: true } });
+            network.once('stabilizationIterationsDone', function() {
+                network.setOptions({ physics: { enabled: false } });
+            });
+            network.stabilize(100);
         }
 
         // Close info panel
@@ -499,16 +495,33 @@
             document.getElementById('info-panel').classList.remove('active');
         });
 
-        // Initialize on load
+        // ========================
+        // Load JSON and initialize
+        // ========================
+        async function loadGraphData() {
+            var container = document.getElementById('stix-network');
+
+            try {
+                var response = await fetch('data/stix-graph.json');
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                var graphData = await response.json();
+                buildGraphDataFromJSON(graphData);
+                initGraph();
+            } catch (err) {
+                console.error('Failed to load graph data:', err);
+                container.innerHTML = '<p style="text-align:center; padding:3rem; color:var(--text-secondary);">Failed to load graph data. Please refresh the page.</p>';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof vis === 'undefined') {
                 document.getElementById('stix-network').innerHTML = '<p style="text-align:center; padding:3rem; color:var(--text-secondary);">Failed to load graph library. Please refresh the page.</p>';
                 return;
             }
-            initGraph();
+            loadGraphData();
 
             // Refresh graph colors when theme changes
-            const observer = new MutationObserver(function(mutations) {
+            var observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(m) {
                     if (m.attributeName === 'data-theme' && network) {
                         refreshGraph();

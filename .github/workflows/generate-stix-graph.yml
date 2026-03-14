@@ -1,0 +1,42 @@
+name: Generate STIX Graph Data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'experience.html'
+      - 'portfolio.html'
+      - 'index.html'
+      - 'data/stix-graph-overrides.json'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate data/stix-graph.json
+        run: python scripts/generate-stix-graph.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --quiet data/stix-graph.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated graph data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/stix-graph.json
+          git commit -m "chore: auto-generate data/stix-graph.json from HTML sources"
+          git push
