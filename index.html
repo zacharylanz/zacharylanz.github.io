@@ -68,7 +68,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="experience.html" class="dropdown-link">Professional Experience</a></li>
                         <li><a href="portfolio.html" class="dropdown-link">Achievements</a></li>
-                        <li><a href="resources.html" class="dropdown-link">Favorite Resources</a></li>
                     </ul>
                 </li>
                 <li><a href="blog.html" class="nav-link">Blog</a></li>
@@ -377,7 +376,6 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="experience.html">Experience</a></li>
                         <li><a href="portfolio.html">Achievements</a></li>
-                        <li><a href="resources.html">Resources</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="stix-graph.html">Exploration Graph</a></li>
                     </ul>
@@ -434,7 +432,7 @@
                             <a href="article.html?id=${post.id}" class="blog-preview-card">
                                 ${post.image
                                     ? `<div class="blog-preview-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>`
-                                    : `<div class="blog-preview-gradient" style="background: ${gradient};"><span class="gradient-category">${post.category}</span></div>`
+                                    : ''
                                 }
                                 <div class="blog-preview-content">
                                     <span class="blog-category">${post.category}</span>
