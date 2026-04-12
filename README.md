@@ -1,6 +1,6 @@
 # zacharylanz.github.io
 
-Personal portfolio and blog for Zachary Lanz — Cyber Threat Intelligence specialist.
+Personal portfolio!
 
 **Live site:** [www.lanzsec.com](https://www.lanzsec.com)
 
